@@ -1,0 +1,1178 @@
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 536F6E67 		.ascii	"Song1:0 \000"
+  21      313A3020 
+  21      00
+  22 0009 000000   		.align	2
+  23              	.LC1:
+  24 000c 536F6E67 		.ascii	"Song2:0\000"
+  24      323A3000 
+  25              		.align	2
+  26              	.LC2:
+  27 0014 536F6E67 		.ascii	"Song3:0 \000"
+  27      333A3020 
+  27      00
+  28 001d 000000   		.align	2
+  29              	.LC3:
+  30 0020 536F6E67 		.ascii	"Song4:0\000"
+  30      343A3000 
+  31              		.section	.text.main,"ax",%progbits
+  32              		.align	2
+  33              		.global	main
+  34              		.thumb
+  35              		.thumb_func
+  36              		.type	main, %function
+  37              	main:
+  38              	.LFB63:
+  39              		.file 1 "main.c"
+   1:main.c        **** 
+   2:main.c        **** 
+   3:main.c        **** 
+   4:main.c        **** #include <project.h>
+   5:main.c        **** #include "cypins.h"
+   6:main.c        **** #include <math.h>
+   7:main.c        **** int main()
+   8:main.c        **** {
+  40              		.loc 1 8 0
+  41              		.cfi_startproc
+  42              		@ args = 0, pretend = 0, frame = 16
+  43              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 2
+
+
+  44 0000 80B5     		push	{r7, lr}
+  45              		.cfi_def_cfa_offset 8
+  46              		.cfi_offset 7, -8
+  47              		.cfi_offset 14, -4
+  48 0002 84B0     		sub	sp, sp, #16
+  49              		.cfi_def_cfa_offset 24
+  50 0004 00AF     		add	r7, sp, #0
+  51              		.cfi_def_cfa_register 7
+   9:main.c        ****     
+  10:main.c        **** 	SensorScan_Start(); // start scanning comparator
+  52              		.loc 1 10 0
+  53 0006 FFF7FEFF 		bl	SensorScan_Start
+  11:main.c        ****     VDAC8_1_Start(); // start voltage dac to provide reference voltage for scanning comparator
+  54              		.loc 1 11 0
+  55 000a FFF7FEFF 		bl	VDAC8_1_Start
+  12:main.c        ****     
+  13:main.c        **** 	LCD_Char_1_Start();					// initialize lcd
+  56              		.loc 1 13 0
+  57 000e FFF7FEFF 		bl	LCD_Char_1_Start
+  14:main.c        **** 	LCD_Char_1_ClearDisplay();  
+  58              		.loc 1 14 0
+  59 0012 0120     		movs	r0, #1
+  60 0014 FFF7FEFF 		bl	LCD_Char_1_WriteControl
+  15:main.c        ****     //print out initial state of song counts
+  16:main.c        ****     LCD_Char_1_Position(0, 0);          
+  61              		.loc 1 16 0
+  62 0018 0020     		movs	r0, #0
+  63 001a 0021     		movs	r1, #0
+  64 001c FFF7FEFF 		bl	LCD_Char_1_Position
+  17:main.c        **** 	LCD_Char_1_PrintString("Song1:0 ");   
+  65              		.loc 1 17 0
+  66 0020 A048     		ldr	r0, .L16
+  67 0022 FFF7FEFF 		bl	LCD_Char_1_PrintString
+  18:main.c        **** 	LCD_Char_1_Position(0, 8);
+  68              		.loc 1 18 0
+  69 0026 0020     		movs	r0, #0
+  70 0028 0821     		movs	r1, #8
+  71 002a FFF7FEFF 		bl	LCD_Char_1_Position
+  19:main.c        ****     LCD_Char_1_PrintString("Song2:0");
+  72              		.loc 1 19 0
+  73 002e 9E48     		ldr	r0, .L16+4
+  74 0030 FFF7FEFF 		bl	LCD_Char_1_PrintString
+  20:main.c        ****     LCD_Char_1_Position(1, 0);
+  75              		.loc 1 20 0
+  76 0034 0120     		movs	r0, #1
+  77 0036 0021     		movs	r1, #0
+  78 0038 FFF7FEFF 		bl	LCD_Char_1_Position
+  21:main.c        ****     LCD_Char_1_PrintString("Song3:0 ");
+  79              		.loc 1 21 0
+  80 003c 9B48     		ldr	r0, .L16+8
+  81 003e FFF7FEFF 		bl	LCD_Char_1_PrintString
+  22:main.c        ****     LCD_Char_1_Position(1, 8);
+  82              		.loc 1 22 0
+  83 0042 0120     		movs	r0, #1
+  84 0044 0821     		movs	r1, #8
+  85 0046 FFF7FEFF 		bl	LCD_Char_1_Position
+  23:main.c        ****     LCD_Char_1_PrintString("Song4:0");
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 3
+
+
+  86              		.loc 1 23 0
+  87 004a 9948     		ldr	r0, .L16+12
+  88 004c FFF7FEFF 		bl	LCD_Char_1_PrintString
+  24:main.c        ****     
+  25:main.c        ****     //song counts
+  26:main.c        ****     uint8 case1count = 0x00;
+  89              		.loc 1 26 0
+  90 0050 0023     		movs	r3, #0
+  91 0052 FB73     		strb	r3, [r7, #15]
+  27:main.c        ****     uint8 case2count = 0x00;
+  92              		.loc 1 27 0
+  93 0054 0023     		movs	r3, #0
+  94 0056 BB73     		strb	r3, [r7, #14]
+  28:main.c        ****     uint8 case3count = 0x00;            
+  95              		.loc 1 28 0
+  96 0058 0023     		movs	r3, #0
+  97 005a 7B73     		strb	r3, [r7, #13]
+  29:main.c        ****     uint8 case4count = 0x00;
+  98              		.loc 1 29 0
+  99 005c 0023     		movs	r3, #0
+ 100 005e 3B73     		strb	r3, [r7, #12]
+  30:main.c        **** 	
+  31:main.c        ****     //print out initial state of song counts
+  32:main.c        ****     LCD_Char_1_Position(0, 6);
+ 101              		.loc 1 32 0
+ 102 0060 0020     		movs	r0, #0
+ 103 0062 0621     		movs	r1, #6
+ 104 0064 FFF7FEFF 		bl	LCD_Char_1_Position
+  33:main.c        ****     LCD_Char_1_PrintNumber(case1count);
+ 105              		.loc 1 33 0
+ 106 0068 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 107 006a 1846     		mov	r0, r3
+ 108 006c FFF7FEFF 		bl	LCD_Char_1_PrintU32Number
+  34:main.c        ****     LCD_Char_1_Position(0, 14);
+ 109              		.loc 1 34 0
+ 110 0070 0020     		movs	r0, #0
+ 111 0072 0E21     		movs	r1, #14
+ 112 0074 FFF7FEFF 		bl	LCD_Char_1_Position
+  35:main.c        ****     LCD_Char_1_PrintNumber(case2count);
+ 113              		.loc 1 35 0
+ 114 0078 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 115 007a 1846     		mov	r0, r3
+ 116 007c FFF7FEFF 		bl	LCD_Char_1_PrintU32Number
+  36:main.c        ****     LCD_Char_1_Position(1, 6);
+ 117              		.loc 1 36 0
+ 118 0080 0120     		movs	r0, #1
+ 119 0082 0621     		movs	r1, #6
+ 120 0084 FFF7FEFF 		bl	LCD_Char_1_Position
+  37:main.c        ****     LCD_Char_1_PrintNumber(case3count);
+ 121              		.loc 1 37 0
+ 122 0088 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 123 008a 1846     		mov	r0, r3
+ 124 008c FFF7FEFF 		bl	LCD_Char_1_PrintU32Number
+  38:main.c        ****     LCD_Char_1_Position(1, 14);
+ 125              		.loc 1 38 0
+ 126 0090 0120     		movs	r0, #1
+ 127 0092 0E21     		movs	r1, #14
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 4
+
+
+ 128 0094 FFF7FEFF 		bl	LCD_Char_1_Position
+  39:main.c        ****     LCD_Char_1_PrintNumber(case4count);
+ 129              		.loc 1 39 0
+ 130 0098 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 131 009a 1846     		mov	r0, r3
+ 132 009c FFF7FEFF 		bl	LCD_Char_1_PrintU32Number
+  40:main.c        ****     
+  41:main.c        ****     //dummy variables to only single trigger values
+  42:main.c        ****     uint8 flag1 = 0;
+ 133              		.loc 1 42 0
+ 134 00a0 0023     		movs	r3, #0
+ 135 00a2 FB72     		strb	r3, [r7, #11]
+  43:main.c        ****     uint8 flag2 = 0;
+ 136              		.loc 1 43 0
+ 137 00a4 0023     		movs	r3, #0
+ 138 00a6 BB72     		strb	r3, [r7, #10]
+  44:main.c        ****     uint8 flag3 = 0;
+ 139              		.loc 1 44 0
+ 140 00a8 0023     		movs	r3, #0
+ 141 00aa 7B72     		strb	r3, [r7, #9]
+  45:main.c        ****     uint8 flag4 = 0;
+ 142              		.loc 1 45 0
+ 143 00ac 0023     		movs	r3, #0
+ 144 00ae 3B72     		strb	r3, [r7, #8]
+  46:main.c        ****     PGA_Start();        //start programmable gain amplifier
+ 145              		.loc 1 46 0
+ 146 00b0 FFF7FEFF 		bl	PGA_Start
+  47:main.c        ****     ADC_Start();        // start adc to convert analog voltage of distance sensor to digital byte
+ 147              		.loc 1 47 0
+ 148 00b4 FFF7FEFF 		bl	ADC_Start
+  48:main.c        ****     ADC_StartConvert(); // start conversion of voltage to digital byte
+ 149              		.loc 1 48 0
+ 150 00b8 FFF7FEFF 		bl	ADC_StartConvert
+ 151              	.L15:
+  49:main.c        ****     
+  50:main.c        ****     int16 distance;     // variable for adc result
+  51:main.c        ****     
+  52:main.c        ****     
+  53:main.c        ****     for(;;)
+  54:main.c        ****     {
+  55:main.c        ****         //debugging code for sensor readings
+  56:main.c        ****         
+  57:main.c        ****         /*
+  58:main.c        ****         LCD_Char_1_Position(1, 8);
+  59:main.c        ****         LCD_Char_1_PrintNumber(SensorValue1_Read());
+  60:main.c        ****         LCD_Char_1_Position(1, 9);
+  61:main.c        ****         LCD_Char_1_PrintNumber(SensorValue2_Read());
+  62:main.c        ****         LCD_Char_1_Position(1, 10);
+  63:main.c        ****         LCD_Char_1_PrintNumber(SensorValue3_Read());
+  64:main.c        ****         LCD_Char_1_Position(1, 11);
+  65:main.c        ****         LCD_Char_1_PrintNumber(SensorValue4_Read());
+  66:main.c        ****         LCD_Char_1_Position(1, 12);
+  67:main.c        ****         LCD_Char_1_PrintNumber(SensorValue5_Read());
+  68:main.c        ****         LCD_Char_1_Position(1, 13);
+  69:main.c        ****         
+  70:main.c        ****         */
+  71:main.c        ****         // clearing interrupt after 1 ms
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 5
+
+
+  72:main.c        ****         if (Sensor_Interrupt_Read()) {
+ 152              		.loc 1 72 0
+ 153 00bc FFF7FEFF 		bl	Sensor_Interrupt_Read
+ 154 00c0 0346     		mov	r3, r0
+ 155 00c2 002B     		cmp	r3, #0
+ 156 00c4 11D0     		beq	.L2
+  73:main.c        ****             CyDelay(1);
+ 157              		.loc 1 73 0
+ 158 00c6 0120     		movs	r0, #1
+ 159 00c8 FFF7FEFF 		bl	CyDelay
+  74:main.c        ****             SensorScan_GetInterruptSource(0);
+ 160              		.loc 1 74 0
+ 161 00cc 0020     		movs	r0, #0
+ 162 00ce FFF7FEFF 		bl	SensorScan_GetInterruptSource
+  75:main.c        ****             SensorScan_GetInterruptSource(1);
+ 163              		.loc 1 75 0
+ 164 00d2 0120     		movs	r0, #1
+ 165 00d4 FFF7FEFF 		bl	SensorScan_GetInterruptSource
+  76:main.c        ****             SensorScan_GetInterruptSource(2);
+ 166              		.loc 1 76 0
+ 167 00d8 0220     		movs	r0, #2
+ 168 00da FFF7FEFF 		bl	SensorScan_GetInterruptSource
+  77:main.c        ****             SensorScan_GetInterruptSource(3);
+ 169              		.loc 1 77 0
+ 170 00de 0320     		movs	r0, #3
+ 171 00e0 FFF7FEFF 		bl	SensorScan_GetInterruptSource
+  78:main.c        ****             SensorScan_GetInterruptSource(4);
+ 172              		.loc 1 78 0
+ 173 00e4 0420     		movs	r0, #4
+ 174 00e6 FFF7FEFF 		bl	SensorScan_GetInterruptSource
+ 175              	.L2:
+  79:main.c        ****             
+  80:main.c        ****             
+  81:main.c        ****         }
+  82:main.c        ****         
+  83:main.c        ****         //LCD_Char_1_PrintNumber(Sensor_Interrupt_Read());
+  84:main.c        ****         
+  85:main.c        ****         //wait for adc conversion to finish before processing distance value
+  86:main.c        ****         if (ADC_IsEndConversion(ADC_WAIT_FOR_RESULT)){
+ 176              		.loc 1 86 0
+ 177 00ea 0020     		movs	r0, #0
+ 178 00ec FFF7FEFF 		bl	ADC_IsEndConversion
+ 179 00f0 0346     		mov	r3, r0
+ 180 00f2 002B     		cmp	r3, #0
+ 181 00f4 29D0     		beq	.L3
+  87:main.c        ****             distance = ADC_GetResult16();
+ 182              		.loc 1 87 0
+ 183 00f6 FFF7FEFF 		bl	ADC_GetResult16
+ 184 00fa 0346     		mov	r3, r0
+ 185 00fc FB80     		strh	r3, [r7, #6]	@ movhi
+  88:main.c        ****             
+  89:main.c        ****             distance = distance/10;
+ 186              		.loc 1 89 0
+ 187 00fe B7F90630 		ldrsh	r3, [r7, #6]
+ 188 0102 6C4A     		ldr	r2, .L16+16
+ 189 0104 82FB0312 		smull	r1, r2, r2, r3
+ 190 0108 9210     		asrs	r2, r2, #2
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 6
+
+
+ 191 010a DB17     		asrs	r3, r3, #31
+ 192 010c D31A     		subs	r3, r2, r3
+ 193 010e FB80     		strh	r3, [r7, #6]	@ movhi
+  90:main.c        ****             //LCD_Char_1_Position(1, 8);
+  91:main.c        ****             //LCD_Char_1_PrintNumber(distance);
+  92:main.c        ****             
+  93:main.c        ****             //set gain based on distance value
+  94:main.c        ****             if (distance >400){        
+ 194              		.loc 1 94 0
+ 195 0110 B7F90630 		ldrsh	r3, [r7, #6]
+ 196 0114 B3F5C87F 		cmp	r3, #400
+ 197 0118 03DD     		ble	.L4
+  95:main.c        ****                 PGA_SetGain(PGA_GAIN_01);
+ 198              		.loc 1 95 0
+ 199 011a 0020     		movs	r0, #0
+ 200 011c FFF7FEFF 		bl	PGA_SetGain
+ 201 0120 13E0     		b	.L3
+ 202              	.L4:
+  96:main.c        ****                 
+  97:main.c        ****             }
+  98:main.c        ****             else if (distance > 300){
+ 203              		.loc 1 98 0
+ 204 0122 B7F90630 		ldrsh	r3, [r7, #6]
+ 205 0126 B3F5967F 		cmp	r3, #300
+ 206 012a 03DD     		ble	.L5
+  99:main.c        ****                 PGA_SetGain(PGA_GAIN_02);
+ 207              		.loc 1 99 0
+ 208 012c 0120     		movs	r0, #1
+ 209 012e FFF7FEFF 		bl	PGA_SetGain
+ 210 0132 0AE0     		b	.L3
+ 211              	.L5:
+ 100:main.c        ****                 
+ 101:main.c        ****             }
+ 102:main.c        ****             else if (distance > 200){
+ 212              		.loc 1 102 0
+ 213 0134 B7F90630 		ldrsh	r3, [r7, #6]
+ 214 0138 C82B     		cmp	r3, #200
+ 215 013a 03DD     		ble	.L6
+ 103:main.c        ****                 PGA_SetGain(PGA_GAIN_04);
+ 216              		.loc 1 103 0
+ 217 013c 0220     		movs	r0, #2
+ 218 013e FFF7FEFF 		bl	PGA_SetGain
+ 219 0142 02E0     		b	.L3
+ 220              	.L6:
+ 104:main.c        ****                 
+ 105:main.c        ****             }
+ 106:main.c        ****             else {
+ 107:main.c        ****                 PGA_SetGain(PGA_GAIN_08);
+ 221              		.loc 1 107 0
+ 222 0144 0320     		movs	r0, #3
+ 223 0146 FFF7FEFF 		bl	PGA_SetGain
+ 224              	.L3:
+ 108:main.c        ****                 
+ 109:main.c        ****             }  
+ 110:main.c        ****       
+ 111:main.c        ****             
+ 112:main.c        ****         }
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 7
+
+
+ 113:main.c        ****         //play different frequency tone based on which pin is triggered 
+ 114:main.c        ****         //via setting the clock divider
+ 115:main.c        ****         if ((Song1Trigger_Read() == 1) & (flag1 ==0)){
+ 225              		.loc 1 115 0
+ 226 014a FFF7FEFF 		bl	Song1Trigger_Read
+ 227 014e 0346     		mov	r3, r0
+ 228 0150 012B     		cmp	r3, #1
+ 229 0152 0CBF     		ite	eq
+ 230 0154 0123     		moveq	r3, #1
+ 231 0156 0023     		movne	r3, #0
+ 232 0158 DAB2     		uxtb	r2, r3
+ 233 015a FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 234 015c 002B     		cmp	r3, #0
+ 235 015e 0CBF     		ite	eq
+ 236 0160 0123     		moveq	r3, #1
+ 237 0162 0023     		movne	r3, #0
+ 238 0164 DBB2     		uxtb	r3, r3
+ 239 0166 1340     		ands	r3, r3, r2
+ 240 0168 DBB2     		uxtb	r3, r3
+ 241 016a 002B     		cmp	r3, #0
+ 242 016c 12D0     		beq	.L7
+ 116:main.c        ****             SineWaveClock_SetDivider(9);
+ 243              		.loc 1 116 0
+ 244 016e 0920     		movs	r0, #9
+ 245 0170 0121     		movs	r1, #1
+ 246 0172 FFF7FEFF 		bl	SineWaveClock_SetDividerRegister
+ 117:main.c        ****             SineWaveGen_Start();
+ 247              		.loc 1 117 0
+ 248 0176 FFF7FEFF 		bl	SineWaveGen_Start
+ 118:main.c        ****             
+ 119:main.c        ****             case1count = case1count+1;
+ 249              		.loc 1 119 0
+ 250 017a FB7B     		ldrb	r3, [r7, #15]
+ 251 017c 0133     		adds	r3, r3, #1
+ 252 017e FB73     		strb	r3, [r7, #15]
+ 120:main.c        ****             LCD_Char_1_Position(0, 6);
+ 253              		.loc 1 120 0
+ 254 0180 0020     		movs	r0, #0
+ 255 0182 0621     		movs	r1, #6
+ 256 0184 FFF7FEFF 		bl	LCD_Char_1_Position
+ 121:main.c        ****             LCD_Char_1_PrintNumber(case1count);
+ 257              		.loc 1 121 0
+ 258 0188 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 259 018a 1846     		mov	r0, r3
+ 260 018c FFF7FEFF 		bl	LCD_Char_1_PrintU32Number
+ 122:main.c        ****             flag1 = 1;
+ 261              		.loc 1 122 0
+ 262 0190 0123     		movs	r3, #1
+ 263 0192 FB72     		strb	r3, [r7, #11]
+ 264              	.L7:
+ 123:main.c        ****             
+ 124:main.c        ****         }
+ 125:main.c        ****         if (Song1Trigger_Read() == 0) {
+ 265              		.loc 1 125 0
+ 266 0194 FFF7FEFF 		bl	Song1Trigger_Read
+ 267 0198 0346     		mov	r3, r0
+ 268 019a 002B     		cmp	r3, #0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 8
+
+
+ 269 019c 01D1     		bne	.L8
+ 126:main.c        ****             flag1 = 0;
+ 270              		.loc 1 126 0
+ 271 019e 0023     		movs	r3, #0
+ 272 01a0 FB72     		strb	r3, [r7, #11]
+ 273              	.L8:
+ 127:main.c        ****         }
+ 128:main.c        ****         
+ 129:main.c        ****         
+ 130:main.c        ****         if ((Song2Trigger_Read() == 1) & (flag2 ==0)){
+ 274              		.loc 1 130 0
+ 275 01a2 FFF7FEFF 		bl	Song2Trigger_Read
+ 276 01a6 0346     		mov	r3, r0
+ 277 01a8 012B     		cmp	r3, #1
+ 278 01aa 0CBF     		ite	eq
+ 279 01ac 0123     		moveq	r3, #1
+ 280 01ae 0023     		movne	r3, #0
+ 281 01b0 DAB2     		uxtb	r2, r3
+ 282 01b2 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 283 01b4 002B     		cmp	r3, #0
+ 284 01b6 0CBF     		ite	eq
+ 285 01b8 0123     		moveq	r3, #1
+ 286 01ba 0023     		movne	r3, #0
+ 287 01bc DBB2     		uxtb	r3, r3
+ 288 01be 1340     		ands	r3, r3, r2
+ 289 01c0 DBB2     		uxtb	r3, r3
+ 290 01c2 002B     		cmp	r3, #0
+ 291 01c4 12D0     		beq	.L9
+ 131:main.c        ****             SineWaveClock_SetDivider(10);
+ 292              		.loc 1 131 0
+ 293 01c6 0A20     		movs	r0, #10
+ 294 01c8 0121     		movs	r1, #1
+ 295 01ca FFF7FEFF 		bl	SineWaveClock_SetDividerRegister
+ 132:main.c        ****             SineWaveGen_Start();
+ 296              		.loc 1 132 0
+ 297 01ce FFF7FEFF 		bl	SineWaveGen_Start
+ 133:main.c        ****             
+ 134:main.c        ****             case2count = case2count+1;
+ 298              		.loc 1 134 0
+ 299 01d2 BB7B     		ldrb	r3, [r7, #14]
+ 300 01d4 0133     		adds	r3, r3, #1
+ 301 01d6 BB73     		strb	r3, [r7, #14]
+ 135:main.c        ****             LCD_Char_1_Position(0, 14);
+ 302              		.loc 1 135 0
+ 303 01d8 0020     		movs	r0, #0
+ 304 01da 0E21     		movs	r1, #14
+ 305 01dc FFF7FEFF 		bl	LCD_Char_1_Position
+ 136:main.c        ****             LCD_Char_1_PrintNumber(case2count);
+ 306              		.loc 1 136 0
+ 307 01e0 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 308 01e2 1846     		mov	r0, r3
+ 309 01e4 FFF7FEFF 		bl	LCD_Char_1_PrintU32Number
+ 137:main.c        ****             flag2 = 1;
+ 310              		.loc 1 137 0
+ 311 01e8 0123     		movs	r3, #1
+ 312 01ea BB72     		strb	r3, [r7, #10]
+ 313              	.L9:
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 9
+
+
+ 138:main.c        ****             
+ 139:main.c        ****             
+ 140:main.c        ****         }
+ 141:main.c        ****         if (Song2Trigger_Read() == 0) {
+ 314              		.loc 1 141 0
+ 315 01ec FFF7FEFF 		bl	Song2Trigger_Read
+ 316 01f0 0346     		mov	r3, r0
+ 317 01f2 002B     		cmp	r3, #0
+ 318 01f4 01D1     		bne	.L10
+ 142:main.c        ****             flag2 = 0;
+ 319              		.loc 1 142 0
+ 320 01f6 0023     		movs	r3, #0
+ 321 01f8 BB72     		strb	r3, [r7, #10]
+ 322              	.L10:
+ 143:main.c        ****         }
+ 144:main.c        ****         if ((Song3Trigger_Read() == 1) & (flag3 == 0)){
+ 323              		.loc 1 144 0
+ 324 01fa FFF7FEFF 		bl	Song3Trigger_Read
+ 325 01fe 0346     		mov	r3, r0
+ 326 0200 012B     		cmp	r3, #1
+ 327 0202 0CBF     		ite	eq
+ 328 0204 0123     		moveq	r3, #1
+ 329 0206 0023     		movne	r3, #0
+ 330 0208 DAB2     		uxtb	r2, r3
+ 331 020a 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 332 020c 002B     		cmp	r3, #0
+ 333 020e 0CBF     		ite	eq
+ 334 0210 0123     		moveq	r3, #1
+ 335 0212 0023     		movne	r3, #0
+ 336 0214 DBB2     		uxtb	r3, r3
+ 337 0216 1340     		ands	r3, r3, r2
+ 338 0218 DBB2     		uxtb	r3, r3
+ 339 021a 002B     		cmp	r3, #0
+ 340 021c 12D0     		beq	.L11
+ 145:main.c        ****             SineWaveClock_SetDivider(11);
+ 341              		.loc 1 145 0
+ 342 021e 0B20     		movs	r0, #11
+ 343 0220 0121     		movs	r1, #1
+ 344 0222 FFF7FEFF 		bl	SineWaveClock_SetDividerRegister
+ 146:main.c        ****             SineWaveGen_Start();
+ 345              		.loc 1 146 0
+ 346 0226 FFF7FEFF 		bl	SineWaveGen_Start
+ 147:main.c        ****             
+ 148:main.c        ****             case3count = case3count+1;
+ 347              		.loc 1 148 0
+ 348 022a 7B7B     		ldrb	r3, [r7, #13]
+ 349 022c 0133     		adds	r3, r3, #1
+ 350 022e 7B73     		strb	r3, [r7, #13]
+ 149:main.c        ****             LCD_Char_1_Position(1, 6);
+ 351              		.loc 1 149 0
+ 352 0230 0120     		movs	r0, #1
+ 353 0232 0621     		movs	r1, #6
+ 354 0234 FFF7FEFF 		bl	LCD_Char_1_Position
+ 150:main.c        ****             LCD_Char_1_PrintNumber(case3count);
+ 355              		.loc 1 150 0
+ 356 0238 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 357 023a 1846     		mov	r0, r3
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 10
+
+
+ 358 023c FFF7FEFF 		bl	LCD_Char_1_PrintU32Number
+ 151:main.c        ****             flag3 = 1;
+ 359              		.loc 1 151 0
+ 360 0240 0123     		movs	r3, #1
+ 361 0242 7B72     		strb	r3, [r7, #9]
+ 362              	.L11:
+ 152:main.c        ****             
+ 153:main.c        ****             
+ 154:main.c        ****         }
+ 155:main.c        ****         if (Song3Trigger_Read() == 0) {
+ 363              		.loc 1 155 0
+ 364 0244 FFF7FEFF 		bl	Song3Trigger_Read
+ 365 0248 0346     		mov	r3, r0
+ 366 024a 002B     		cmp	r3, #0
+ 367 024c 01D1     		bne	.L12
+ 156:main.c        ****             flag3 = 0;
+ 368              		.loc 1 156 0
+ 369 024e 0023     		movs	r3, #0
+ 370 0250 7B72     		strb	r3, [r7, #9]
+ 371              	.L12:
+ 157:main.c        ****         }
+ 158:main.c        ****         
+ 159:main.c        ****         if ((Song4Trigger_Read() == 1) & (flag4 == 0)){
+ 372              		.loc 1 159 0
+ 373 0252 FFF7FEFF 		bl	Song4Trigger_Read
+ 374 0256 0346     		mov	r3, r0
+ 375 0258 012B     		cmp	r3, #1
+ 376 025a 0CBF     		ite	eq
+ 377 025c 0123     		moveq	r3, #1
+ 378 025e 0023     		movne	r3, #0
+ 379 0260 DAB2     		uxtb	r2, r3
+ 380 0262 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 381 0264 002B     		cmp	r3, #0
+ 382 0266 0CBF     		ite	eq
+ 383 0268 0123     		moveq	r3, #1
+ 384 026a 0023     		movne	r3, #0
+ 385 026c DBB2     		uxtb	r3, r3
+ 386 026e 1340     		ands	r3, r3, r2
+ 387 0270 DBB2     		uxtb	r3, r3
+ 388 0272 002B     		cmp	r3, #0
+ 389 0274 0ED0     		beq	.L13
+ 160:main.c        ****             SineWaveGen_Stop();
+ 390              		.loc 1 160 0
+ 391 0276 FFF7FEFF 		bl	SineWaveGen_Stop
+ 161:main.c        ****             
+ 162:main.c        ****             case4count = case4count+1;
+ 392              		.loc 1 162 0
+ 393 027a 3B7B     		ldrb	r3, [r7, #12]
+ 394 027c 0133     		adds	r3, r3, #1
+ 395 027e 3B73     		strb	r3, [r7, #12]
+ 163:main.c        ****             LCD_Char_1_Position(1, 14);
+ 396              		.loc 1 163 0
+ 397 0280 0120     		movs	r0, #1
+ 398 0282 0E21     		movs	r1, #14
+ 399 0284 FFF7FEFF 		bl	LCD_Char_1_Position
+ 164:main.c        ****             LCD_Char_1_PrintNumber(case4count);
+ 400              		.loc 1 164 0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 11
+
+
+ 401 0288 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 402 028a 1846     		mov	r0, r3
+ 403 028c FFF7FEFF 		bl	LCD_Char_1_PrintU32Number
+ 165:main.c        ****             flag4 = 1;
+ 404              		.loc 1 165 0
+ 405 0290 0123     		movs	r3, #1
+ 406 0292 3B72     		strb	r3, [r7, #8]
+ 407              	.L13:
+ 166:main.c        ****             
+ 167:main.c        ****             
+ 168:main.c        ****         }
+ 169:main.c        ****         if (Song4Trigger_Read() == 0) {
+ 408              		.loc 1 169 0
+ 409 0294 FFF7FEFF 		bl	Song4Trigger_Read
+ 410 0298 0346     		mov	r3, r0
+ 411 029a 002B     		cmp	r3, #0
+ 412 029c 01D1     		bne	.L14
+ 170:main.c        ****             flag4 = 0;
+ 413              		.loc 1 170 0
+ 414 029e 0023     		movs	r3, #0
+ 415 02a0 3B72     		strb	r3, [r7, #8]
+ 416              	.L14:
+ 171:main.c        ****         }
+ 172:main.c        ****     }
+ 417              		.loc 1 172 0
+ 418 02a2 0BE7     		b	.L15
+ 419              	.L17:
+ 420              		.align	2
+ 421              	.L16:
+ 422 02a4 00000000 		.word	.LC0
+ 423 02a8 0C000000 		.word	.LC1
+ 424 02ac 14000000 		.word	.LC2
+ 425 02b0 20000000 		.word	.LC3
+ 426 02b4 67666666 		.word	1717986919
+ 427              		.cfi_endproc
+ 428              	.LFE63:
+ 429              		.size	main, .-main
+ 430              		.text
+ 431              	.Letext0:
+ 432              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 433              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 434              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 435              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 436              		.section	.debug_info,"",%progbits
+ 437              	.Ldebug_info0:
+ 438 0000 6E010000 		.4byte	0x16e
+ 439 0004 0400     		.2byte	0x4
+ 440 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 441 000a 04       		.byte	0x4
+ 442 000b 01       		.uleb128 0x1
+ 443 000c 22000000 		.4byte	.LASF28
+ 444 0010 01       		.byte	0x1
+ 445 0011 10020000 		.4byte	.LASF29
+ 446 0015 52010000 		.4byte	.LASF30
+ 447 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 448 001d 00000000 		.4byte	0
+ 449 0021 00000000 		.4byte	.Ldebug_line0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 12
+
+
+ 450 0025 02       		.uleb128 0x2
+ 451 0026 01       		.byte	0x1
+ 452 0027 06       		.byte	0x6
+ 453 0028 4C020000 		.4byte	.LASF0
+ 454 002c 02       		.uleb128 0x2
+ 455 002d 01       		.byte	0x1
+ 456 002e 08       		.byte	0x8
+ 457 002f CA000000 		.4byte	.LASF1
+ 458 0033 02       		.uleb128 0x2
+ 459 0034 02       		.byte	0x2
+ 460 0035 05       		.byte	0x5
+ 461 0036 1C020000 		.4byte	.LASF2
+ 462 003a 02       		.uleb128 0x2
+ 463 003b 02       		.byte	0x2
+ 464 003c 07       		.byte	0x7
+ 465 003d F0000000 		.4byte	.LASF3
+ 466 0041 03       		.uleb128 0x3
+ 467 0042 18000000 		.4byte	.LASF9
+ 468 0046 02       		.byte	0x2
+ 469 0047 3F       		.byte	0x3f
+ 470 0048 4C000000 		.4byte	0x4c
+ 471 004c 02       		.uleb128 0x2
+ 472 004d 04       		.byte	0x4
+ 473 004e 05       		.byte	0x5
+ 474 004f 37020000 		.4byte	.LASF4
+ 475 0053 02       		.uleb128 0x2
+ 476 0054 04       		.byte	0x4
+ 477 0055 07       		.byte	0x7
+ 478 0056 DE000000 		.4byte	.LASF5
+ 479 005a 02       		.uleb128 0x2
+ 480 005b 08       		.byte	0x8
+ 481 005c 05       		.byte	0x5
+ 482 005d 02020000 		.4byte	.LASF6
+ 483 0061 02       		.uleb128 0x2
+ 484 0062 08       		.byte	0x8
+ 485 0063 07       		.byte	0x7
+ 486 0064 3B010000 		.4byte	.LASF7
+ 487 0068 04       		.uleb128 0x4
+ 488 0069 04       		.byte	0x4
+ 489 006a 05       		.byte	0x5
+ 490 006b 696E7400 		.ascii	"int\000"
+ 491 006f 02       		.uleb128 0x2
+ 492 0070 04       		.byte	0x4
+ 493 0071 07       		.byte	0x7
+ 494 0072 2E010000 		.4byte	.LASF8
+ 495 0076 03       		.uleb128 0x3
+ 496 0077 F1010000 		.4byte	.LASF10
+ 497 007b 03       		.byte	0x3
+ 498 007c 2C       		.byte	0x2c
+ 499 007d 41000000 		.4byte	0x41
+ 500 0081 05       		.uleb128 0x5
+ 501 0082 26020000 		.4byte	.LASF11
+ 502 0086 04       		.byte	0x4
+ 503 0087 9201     		.2byte	0x192
+ 504 0089 2C000000 		.4byte	0x2c
+ 505 008d 05       		.uleb128 0x5
+ 506 008e 27010000 		.4byte	.LASF12
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 13
+
+
+ 507 0092 04       		.byte	0x4
+ 508 0093 9301     		.2byte	0x193
+ 509 0095 3A000000 		.4byte	0x3a
+ 510 0099 05       		.uleb128 0x5
+ 511 009a D8000000 		.4byte	.LASF13
+ 512 009e 04       		.byte	0x4
+ 513 009f 9601     		.2byte	0x196
+ 514 00a1 33000000 		.4byte	0x33
+ 515 00a5 02       		.uleb128 0x2
+ 516 00a6 04       		.byte	0x4
+ 517 00a7 04       		.byte	0x4
+ 518 00a8 C4000000 		.4byte	.LASF14
+ 519 00ac 02       		.uleb128 0x2
+ 520 00ad 08       		.byte	0x8
+ 521 00ae 04       		.byte	0x4
+ 522 00af 10010000 		.4byte	.LASF15
+ 523 00b3 02       		.uleb128 0x2
+ 524 00b4 01       		.byte	0x1
+ 525 00b5 08       		.byte	0x8
+ 526 00b6 17020000 		.4byte	.LASF16
+ 527 00ba 02       		.uleb128 0x2
+ 528 00bb 04       		.byte	0x4
+ 529 00bc 07       		.byte	0x7
+ 530 00bd F9010000 		.4byte	.LASF17
+ 531 00c1 02       		.uleb128 0x2
+ 532 00c2 08       		.byte	0x8
+ 533 00c3 04       		.byte	0x4
+ 534 00c4 40020000 		.4byte	.LASF18
+ 535 00c8 06       		.uleb128 0x6
+ 536 00c9 22010000 		.4byte	.LASF31
+ 537 00cd 01       		.byte	0x1
+ 538 00ce 07       		.byte	0x7
+ 539 00cf 68000000 		.4byte	0x68
+ 540 00d3 00000000 		.4byte	.LFB63
+ 541 00d7 B8020000 		.4byte	.LFE63-.LFB63
+ 542 00db 01       		.uleb128 0x1
+ 543 00dc 9C       		.byte	0x9c
+ 544 00dd 60010000 		.4byte	0x160
+ 545 00e1 07       		.uleb128 0x7
+ 546 00e2 17010000 		.4byte	.LASF19
+ 547 00e6 01       		.byte	0x1
+ 548 00e7 1A       		.byte	0x1a
+ 549 00e8 81000000 		.4byte	0x81
+ 550 00ec 02       		.uleb128 0x2
+ 551 00ed 91       		.byte	0x91
+ 552 00ee 77       		.sleb128 -9
+ 553 00ef 07       		.uleb128 0x7
+ 554 00f0 E6010000 		.4byte	.LASF20
+ 555 00f4 01       		.byte	0x1
+ 556 00f5 1B       		.byte	0x1b
+ 557 00f6 81000000 		.4byte	0x81
+ 558 00fa 02       		.uleb128 0x2
+ 559 00fb 91       		.byte	0x91
+ 560 00fc 76       		.sleb128 -10
+ 561 00fd 07       		.uleb128 0x7
+ 562 00fe 2C020000 		.4byte	.LASF21
+ 563 0102 01       		.byte	0x1
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 14
+
+
+ 564 0103 1C       		.byte	0x1c
+ 565 0104 81000000 		.4byte	0x81
+ 566 0108 02       		.uleb128 0x2
+ 567 0109 91       		.byte	0x91
+ 568 010a 75       		.sleb128 -11
+ 569 010b 07       		.uleb128 0x7
+ 570 010c B0000000 		.4byte	.LASF22
+ 571 0110 01       		.byte	0x1
+ 572 0111 1D       		.byte	0x1d
+ 573 0112 81000000 		.4byte	0x81
+ 574 0116 02       		.uleb128 0x2
+ 575 0117 91       		.byte	0x91
+ 576 0118 74       		.sleb128 -12
+ 577 0119 07       		.uleb128 0x7
+ 578 011a 00000000 		.4byte	.LASF23
+ 579 011e 01       		.byte	0x1
+ 580 011f 2A       		.byte	0x2a
+ 581 0120 81000000 		.4byte	0x81
+ 582 0124 02       		.uleb128 0x2
+ 583 0125 91       		.byte	0x91
+ 584 0126 73       		.sleb128 -13
+ 585 0127 07       		.uleb128 0x7
+ 586 0128 06000000 		.4byte	.LASF24
+ 587 012c 01       		.byte	0x1
+ 588 012d 2B       		.byte	0x2b
+ 589 012e 81000000 		.4byte	0x81
+ 590 0132 02       		.uleb128 0x2
+ 591 0133 91       		.byte	0x91
+ 592 0134 72       		.sleb128 -14
+ 593 0135 07       		.uleb128 0x7
+ 594 0136 0C000000 		.4byte	.LASF25
+ 595 013a 01       		.byte	0x1
+ 596 013b 2C       		.byte	0x2c
+ 597 013c 81000000 		.4byte	0x81
+ 598 0140 02       		.uleb128 0x2
+ 599 0141 91       		.byte	0x91
+ 600 0142 71       		.sleb128 -15
+ 601 0143 07       		.uleb128 0x7
+ 602 0144 12000000 		.4byte	.LASF26
+ 603 0148 01       		.byte	0x1
+ 604 0149 2D       		.byte	0x2d
+ 605 014a 81000000 		.4byte	0x81
+ 606 014e 02       		.uleb128 0x2
+ 607 014f 91       		.byte	0x91
+ 608 0150 70       		.sleb128 -16
+ 609 0151 07       		.uleb128 0x7
+ 610 0152 BB000000 		.4byte	.LASF27
+ 611 0156 01       		.byte	0x1
+ 612 0157 32       		.byte	0x32
+ 613 0158 99000000 		.4byte	0x99
+ 614 015c 02       		.uleb128 0x2
+ 615 015d 91       		.byte	0x91
+ 616 015e 6E       		.sleb128 -18
+ 617 015f 00       		.byte	0
+ 618 0160 08       		.uleb128 0x8
+ 619 0161 03010000 		.4byte	.LASF32
+ 620 0165 05       		.byte	0x5
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 15
+
+
+ 621 0166 9606     		.2byte	0x696
+ 622 0168 6C010000 		.4byte	0x16c
+ 623 016c 09       		.uleb128 0x9
+ 624 016d 76000000 		.4byte	0x76
+ 625 0171 00       		.byte	0
+ 626              		.section	.debug_abbrev,"",%progbits
+ 627              	.Ldebug_abbrev0:
+ 628 0000 01       		.uleb128 0x1
+ 629 0001 11       		.uleb128 0x11
+ 630 0002 01       		.byte	0x1
+ 631 0003 25       		.uleb128 0x25
+ 632 0004 0E       		.uleb128 0xe
+ 633 0005 13       		.uleb128 0x13
+ 634 0006 0B       		.uleb128 0xb
+ 635 0007 03       		.uleb128 0x3
+ 636 0008 0E       		.uleb128 0xe
+ 637 0009 1B       		.uleb128 0x1b
+ 638 000a 0E       		.uleb128 0xe
+ 639 000b 55       		.uleb128 0x55
+ 640 000c 17       		.uleb128 0x17
+ 641 000d 11       		.uleb128 0x11
+ 642 000e 01       		.uleb128 0x1
+ 643 000f 10       		.uleb128 0x10
+ 644 0010 17       		.uleb128 0x17
+ 645 0011 00       		.byte	0
+ 646 0012 00       		.byte	0
+ 647 0013 02       		.uleb128 0x2
+ 648 0014 24       		.uleb128 0x24
+ 649 0015 00       		.byte	0
+ 650 0016 0B       		.uleb128 0xb
+ 651 0017 0B       		.uleb128 0xb
+ 652 0018 3E       		.uleb128 0x3e
+ 653 0019 0B       		.uleb128 0xb
+ 654 001a 03       		.uleb128 0x3
+ 655 001b 0E       		.uleb128 0xe
+ 656 001c 00       		.byte	0
+ 657 001d 00       		.byte	0
+ 658 001e 03       		.uleb128 0x3
+ 659 001f 16       		.uleb128 0x16
+ 660 0020 00       		.byte	0
+ 661 0021 03       		.uleb128 0x3
+ 662 0022 0E       		.uleb128 0xe
+ 663 0023 3A       		.uleb128 0x3a
+ 664 0024 0B       		.uleb128 0xb
+ 665 0025 3B       		.uleb128 0x3b
+ 666 0026 0B       		.uleb128 0xb
+ 667 0027 49       		.uleb128 0x49
+ 668 0028 13       		.uleb128 0x13
+ 669 0029 00       		.byte	0
+ 670 002a 00       		.byte	0
+ 671 002b 04       		.uleb128 0x4
+ 672 002c 24       		.uleb128 0x24
+ 673 002d 00       		.byte	0
+ 674 002e 0B       		.uleb128 0xb
+ 675 002f 0B       		.uleb128 0xb
+ 676 0030 3E       		.uleb128 0x3e
+ 677 0031 0B       		.uleb128 0xb
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 16
+
+
+ 678 0032 03       		.uleb128 0x3
+ 679 0033 08       		.uleb128 0x8
+ 680 0034 00       		.byte	0
+ 681 0035 00       		.byte	0
+ 682 0036 05       		.uleb128 0x5
+ 683 0037 16       		.uleb128 0x16
+ 684 0038 00       		.byte	0
+ 685 0039 03       		.uleb128 0x3
+ 686 003a 0E       		.uleb128 0xe
+ 687 003b 3A       		.uleb128 0x3a
+ 688 003c 0B       		.uleb128 0xb
+ 689 003d 3B       		.uleb128 0x3b
+ 690 003e 05       		.uleb128 0x5
+ 691 003f 49       		.uleb128 0x49
+ 692 0040 13       		.uleb128 0x13
+ 693 0041 00       		.byte	0
+ 694 0042 00       		.byte	0
+ 695 0043 06       		.uleb128 0x6
+ 696 0044 2E       		.uleb128 0x2e
+ 697 0045 01       		.byte	0x1
+ 698 0046 3F       		.uleb128 0x3f
+ 699 0047 19       		.uleb128 0x19
+ 700 0048 03       		.uleb128 0x3
+ 701 0049 0E       		.uleb128 0xe
+ 702 004a 3A       		.uleb128 0x3a
+ 703 004b 0B       		.uleb128 0xb
+ 704 004c 3B       		.uleb128 0x3b
+ 705 004d 0B       		.uleb128 0xb
+ 706 004e 49       		.uleb128 0x49
+ 707 004f 13       		.uleb128 0x13
+ 708 0050 11       		.uleb128 0x11
+ 709 0051 01       		.uleb128 0x1
+ 710 0052 12       		.uleb128 0x12
+ 711 0053 06       		.uleb128 0x6
+ 712 0054 40       		.uleb128 0x40
+ 713 0055 18       		.uleb128 0x18
+ 714 0056 9642     		.uleb128 0x2116
+ 715 0058 19       		.uleb128 0x19
+ 716 0059 01       		.uleb128 0x1
+ 717 005a 13       		.uleb128 0x13
+ 718 005b 00       		.byte	0
+ 719 005c 00       		.byte	0
+ 720 005d 07       		.uleb128 0x7
+ 721 005e 34       		.uleb128 0x34
+ 722 005f 00       		.byte	0
+ 723 0060 03       		.uleb128 0x3
+ 724 0061 0E       		.uleb128 0xe
+ 725 0062 3A       		.uleb128 0x3a
+ 726 0063 0B       		.uleb128 0xb
+ 727 0064 3B       		.uleb128 0x3b
+ 728 0065 0B       		.uleb128 0xb
+ 729 0066 49       		.uleb128 0x49
+ 730 0067 13       		.uleb128 0x13
+ 731 0068 02       		.uleb128 0x2
+ 732 0069 18       		.uleb128 0x18
+ 733 006a 00       		.byte	0
+ 734 006b 00       		.byte	0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 17
+
+
+ 735 006c 08       		.uleb128 0x8
+ 736 006d 34       		.uleb128 0x34
+ 737 006e 00       		.byte	0
+ 738 006f 03       		.uleb128 0x3
+ 739 0070 0E       		.uleb128 0xe
+ 740 0071 3A       		.uleb128 0x3a
+ 741 0072 0B       		.uleb128 0xb
+ 742 0073 3B       		.uleb128 0x3b
+ 743 0074 05       		.uleb128 0x5
+ 744 0075 49       		.uleb128 0x49
+ 745 0076 13       		.uleb128 0x13
+ 746 0077 3F       		.uleb128 0x3f
+ 747 0078 19       		.uleb128 0x19
+ 748 0079 3C       		.uleb128 0x3c
+ 749 007a 19       		.uleb128 0x19
+ 750 007b 00       		.byte	0
+ 751 007c 00       		.byte	0
+ 752 007d 09       		.uleb128 0x9
+ 753 007e 35       		.uleb128 0x35
+ 754 007f 00       		.byte	0
+ 755 0080 49       		.uleb128 0x49
+ 756 0081 13       		.uleb128 0x13
+ 757 0082 00       		.byte	0
+ 758 0083 00       		.byte	0
+ 759 0084 00       		.byte	0
+ 760              		.section	.debug_aranges,"",%progbits
+ 761 0000 1C000000 		.4byte	0x1c
+ 762 0004 0200     		.2byte	0x2
+ 763 0006 00000000 		.4byte	.Ldebug_info0
+ 764 000a 04       		.byte	0x4
+ 765 000b 00       		.byte	0
+ 766 000c 0000     		.2byte	0
+ 767 000e 0000     		.2byte	0
+ 768 0010 00000000 		.4byte	.LFB63
+ 769 0014 B8020000 		.4byte	.LFE63-.LFB63
+ 770 0018 00000000 		.4byte	0
+ 771 001c 00000000 		.4byte	0
+ 772              		.section	.debug_ranges,"",%progbits
+ 773              	.Ldebug_ranges0:
+ 774 0000 00000000 		.4byte	.LFB63
+ 775 0004 B8020000 		.4byte	.LFE63
+ 776 0008 00000000 		.4byte	0
+ 777 000c 00000000 		.4byte	0
+ 778              		.section	.debug_line,"",%progbits
+ 779              	.Ldebug_line0:
+ 780 0000 B4010000 		.section	.debug_str,"MS",%progbits,1
+ 780      02004701 
+ 780      00000201 
+ 780      FB0E0D00 
+ 780      01010101 
+ 781              	.LASF23:
+ 782 0000 666C6167 		.ascii	"flag1\000"
+ 782      3100
+ 783              	.LASF24:
+ 784 0006 666C6167 		.ascii	"flag2\000"
+ 784      3200
+ 785              	.LASF25:
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 18
+
+
+ 786 000c 666C6167 		.ascii	"flag3\000"
+ 786      3300
+ 787              	.LASF26:
+ 788 0012 666C6167 		.ascii	"flag4\000"
+ 788      3400
+ 789              	.LASF9:
+ 790 0018 5F5F696E 		.ascii	"__int32_t\000"
+ 790      7433325F 
+ 790      7400
+ 791              	.LASF28:
+ 792 0022 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 792      4320342E 
+ 792      392E3320 
+ 792      32303135 
+ 792      30333033 
+ 793 0055 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 793      20726576 
+ 793      6973696F 
+ 793      6E203232 
+ 793      31323230 
+ 794 0088 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 794      66756E63 
+ 794      74696F6E 
+ 794      2D736563 
+ 794      74696F6E 
+ 795              	.LASF22:
+ 796 00b0 63617365 		.ascii	"case4count\000"
+ 796      34636F75 
+ 796      6E7400
+ 797              	.LASF27:
+ 798 00bb 64697374 		.ascii	"distance\000"
+ 798      616E6365 
+ 798      00
+ 799              	.LASF14:
+ 800 00c4 666C6F61 		.ascii	"float\000"
+ 800      7400
+ 801              	.LASF1:
+ 802 00ca 756E7369 		.ascii	"unsigned char\000"
+ 802      676E6564 
+ 802      20636861 
+ 802      7200
+ 803              	.LASF13:
+ 804 00d8 696E7431 		.ascii	"int16\000"
+ 804      3600
+ 805              	.LASF5:
+ 806 00de 6C6F6E67 		.ascii	"long unsigned int\000"
+ 806      20756E73 
+ 806      69676E65 
+ 806      6420696E 
+ 806      7400
+ 807              	.LASF3:
+ 808 00f0 73686F72 		.ascii	"short unsigned int\000"
+ 808      7420756E 
+ 808      7369676E 
+ 808      65642069 
+ 808      6E7400
+ 809              	.LASF32:
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 19
+
+
+ 810 0103 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 810      52784275 
+ 810      66666572 
+ 810      00
+ 811              	.LASF15:
+ 812 0110 646F7562 		.ascii	"double\000"
+ 812      6C6500
+ 813              	.LASF19:
+ 814 0117 63617365 		.ascii	"case1count\000"
+ 814      31636F75 
+ 814      6E7400
+ 815              	.LASF31:
+ 816 0122 6D61696E 		.ascii	"main\000"
+ 816      00
+ 817              	.LASF12:
+ 818 0127 75696E74 		.ascii	"uint16\000"
+ 818      313600
+ 819              	.LASF8:
+ 820 012e 756E7369 		.ascii	"unsigned int\000"
+ 820      676E6564 
+ 820      20696E74 
+ 820      00
+ 821              	.LASF7:
+ 822 013b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 822      206C6F6E 
+ 822      6720756E 
+ 822      7369676E 
+ 822      65642069 
+ 823              	.LASF30:
+ 824 0152 433A5C55 		.ascii	"C:\\Users\\Aaron Wubshet\\Google Drive\\1 College\\"
+ 824      73657273 
+ 824      5C416172 
+ 824      6F6E2057 
+ 824      75627368 
+ 825 0180 3220536F 		.ascii	"2 Sophomore Year\\3 SPRING\\6.115\\Final Project PS"
+ 825      70686F6D 
+ 825      6F726520 
+ 825      59656172 
+ 825      5C332053 
+ 826 01b0 6F432057 		.ascii	"oC Workspace\\Final Project\\External_LCD_Display.c"
+ 826      6F726B73 
+ 826      70616365 
+ 826      5C46696E 
+ 826      616C2050 
+ 827 01e1 7964736E 		.ascii	"ydsn\000"
+ 827      00
+ 828              	.LASF20:
+ 829 01e6 63617365 		.ascii	"case2count\000"
+ 829      32636F75 
+ 829      6E7400
+ 830              	.LASF10:
+ 831 01f1 696E7433 		.ascii	"int32_t\000"
+ 831      325F7400 
+ 832              	.LASF17:
+ 833 01f9 73697A65 		.ascii	"sizetype\000"
+ 833      74797065 
+ 833      00
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cc1AvX4c.s 			page 20
+
+
+ 834              	.LASF6:
+ 835 0202 6C6F6E67 		.ascii	"long long int\000"
+ 835      206C6F6E 
+ 835      6720696E 
+ 835      7400
+ 836              	.LASF29:
+ 837 0210 6D61696E 		.ascii	"main.c\000"
+ 837      2E6300
+ 838              	.LASF16:
+ 839 0217 63686172 		.ascii	"char\000"
+ 839      00
+ 840              	.LASF2:
+ 841 021c 73686F72 		.ascii	"short int\000"
+ 841      7420696E 
+ 841      7400
+ 842              	.LASF11:
+ 843 0226 75696E74 		.ascii	"uint8\000"
+ 843      3800
+ 844              	.LASF21:
+ 845 022c 63617365 		.ascii	"case3count\000"
+ 845      33636F75 
+ 845      6E7400
+ 846              	.LASF4:
+ 847 0237 6C6F6E67 		.ascii	"long int\000"
+ 847      20696E74 
+ 847      00
+ 848              	.LASF18:
+ 849 0240 6C6F6E67 		.ascii	"long double\000"
+ 849      20646F75 
+ 849      626C6500 
+ 850              	.LASF0:
+ 851 024c 7369676E 		.ascii	"signed char\000"
+ 851      65642063 
+ 851      68617200 
+ 852              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

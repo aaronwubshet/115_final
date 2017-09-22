@@ -1,0 +1,1439 @@
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC1:
+  20 0000 0A0D2A2A 		.ascii	"\012\015*******************************************"
+  20      2A2A2A2A 
+  20      2A2A2A2A 
+  20      2A2A2A2A 
+  20      2A2A2A2A 
+  21 002d 2A2A2A2A 		.ascii	"*****************\000"
+  21      2A2A2A2A 
+  21      2A2A2A2A 
+  21      2A2A2A2A 
+  21      2A00
+  22 003f 00       		.align	2
+  23              	.LC3:
+  24 0040 0A0D2A2A 		.ascii	"\012\015***************** BLE UART example project "
+  24      2A2A2A2A 
+  24      2A2A2A2A 
+  24      2A2A2A2A 
+  24      2A2A2A20 
+  25 006d 2A2A2A2A 		.ascii	"*****************\000"
+  25      2A2A2A2A 
+  25      2A2A2A2A 
+  25      2A2A2A2A 
+  25      2A00
+  26 007f 00       		.align	2
+  27              	.LC5:
+  28 0080 0A0D2A2A 		.ascii	"\012\015*******************************************"
+  28      2A2A2A2A 
+  28      2A2A2A2A 
+  28      2A2A2A2A 
+  28      2A2A2A2A 
+  29 00ad 2A2A2A2A 		.ascii	"*****************\012\015\000"
+  29      2A2A2A2A 
+  29      2A2A2A2A 
+  29      2A2A2A2A 
+  29      2A0A0D00 
+  30 00c1 000000   		.align	2
+  31              	.LC7:
+  32 00c4 0A0D4465 		.ascii	"\012\015Device role \011: PERIPHERAL\000"
+  32      76696365 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 2
+
+
+  32      20726F6C 
+  32      6520093A 
+  32      20504552 
+  33              		.align	2
+  34              	.LC9:
+  35 00e0 0A0D4C6F 		.ascii	"\012\015Low Power Mode \011: ENABLED\000"
+  35      7720506F 
+  35      77657220 
+  35      4D6F6465 
+  35      20093A20 
+  36              		.align	2
+  37              	.LC11:
+  38 00fc 0A0D466C 		.ascii	"\012\015Flow Control \011: ENABLED\000"
+  38      6F772043 
+  38      6F6E7472 
+  38      6F6C2009 
+  38      3A20454E 
+  39 0116 0000     		.align	2
+  40              	.LC13:
+  41 0118 0A0D0909 		.ascii	"\012\015\011\011CyBle stack initilization FAILED!!!"
+  41      4379426C 
+  41      65207374 
+  41      61636B20 
+  41      696E6974 
+  42 013f 200A0D20 		.ascii	" \012\015 \000"
+  42      00
+  43              		.section	.text.main,"ax",%progbits
+  44              		.align	2
+  45              		.global	main
+  46              		.code	16
+  47              		.thumb_func
+  48              		.type	main, %function
+  49              	main:
+  50              	.LFB37:
+  51              		.file 1 "main.c"
+   1:main.c        **** /*******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 1.0
+   5:main.c        **** *
+   6:main.c        **** * Description:
+   7:main.c        **** *  BLE example project that works as a BLE to UART bridge, using 
+   8:main.c        **** *  Cypress's BLE component APIs and application layer callback. 
+   9:main.c        **** *  This project demostrates a custom service usage for BLE to UART  
+  10:main.c        **** *  bridge in a PERIPHERAL role.
+  11:main.c        **** *
+  12:main.c        **** * References:
+  13:main.c        **** *  BLUETOOTH SPECIFICATION Version 4.1
+  14:main.c        **** *
+  15:main.c        **** * Hardware Dependency:
+  16:main.c        **** *  (1) CY8CKIT-042 BLE
+  17:main.c        **** *  (2) An external UART transciever (if flow control is needed) 
+  18:main.c        **** *
+  19:main.c        **** ********************************************************************************
+  20:main.c        **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+  21:main.c        **** * You may use this file only in accordance with the license, terms, conditions,
+  22:main.c        **** * disclaimers, and limitations in the end user license agreement accompanying
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 3
+
+
+  23:main.c        **** * the software package with which this file was provided.
+  24:main.c        **** *******************************************************************************/
+  25:main.c        **** 
+  26:main.c        **** #include "main.h"
+  27:main.c        **** 
+  28:main.c        **** int main()
+  29:main.c        **** {
+  52              		.loc 1 29 0
+  53              		.cfi_startproc
+  54 0000 90B5     		push	{r4, r7, lr}
+  55              		.cfi_def_cfa_offset 12
+  56              		.cfi_offset 4, -12
+  57              		.cfi_offset 7, -8
+  58              		.cfi_offset 14, -4
+  59 0002 83B0     		sub	sp, sp, #12
+  60              		.cfi_def_cfa_offset 24
+  61 0004 00AF     		add	r7, sp, #0
+  62              		.cfi_def_cfa_register 7
+  30:main.c        ****     #ifdef LOW_POWER_MODE    
+  31:main.c        ****         CYBLE_LP_MODE_T         lpMode;
+  32:main.c        ****         CYBLE_BLESS_STATE_T     blessState;
+  33:main.c        ****     #endif
+  34:main.c        ****     
+  35:main.c        ****     CYBLE_API_RESULT_T      bleApiResult;
+  36:main.c        ****     
+  37:main.c        ****     CyGlobalIntEnable;
+  63              		.loc 1 37 0
+  64              	@ 37 "main.c" 1
+  65 0006 62B6     		CPSIE   i
+  66              	@ 0 "" 2
+  38:main.c        ****     
+  39:main.c        ****     /* Start UART and BLE component and display project information */
+  40:main.c        ****     UART_Start();   
+  67              		.loc 1 40 0
+  68              		.code	16
+  69 0008 FFF7FEFF 		bl	UART_Start
+  41:main.c        ****     bleApiResult = CyBle_Start(AppCallBack); 
+  70              		.loc 1 41 0
+  71 000c BC1D     		add	r4, r7, #6
+  72 000e 404B     		ldr	r3, .L15
+  73 0010 181C     		mov	r0, r3
+  74 0012 FFF7FEFF 		bl	CyBle_Start
+  75 0016 031C     		mov	r3, r0
+  76 0018 2380     		strh	r3, [r4]
+  42:main.c        ****     
+  43:main.c        ****     if(bleApiResult == CYBLE_ERROR_OK)
+  77              		.loc 1 43 0
+  78 001a BB1D     		add	r3, r7, #6
+  79 001c 1B88     		ldrh	r3, [r3]
+  80 001e 002B     		cmp	r3, #0
+  81 0020 1AD1     		bne	.L2
+  44:main.c        ****     {
+  45:main.c        ****         #ifdef PRINT_MESSAGE_LOG
+  46:main.c        ****             UART_UartPutString("\n\r************************************************************");
+  82              		.loc 1 46 0
+  83 0022 3C4B     		ldr	r3, .L15+4
+  84 0024 181C     		mov	r0, r3
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 4
+
+
+  85 0026 FFF7FEFF 		bl	UART_UartPutString
+  47:main.c        ****             UART_UartPutString("\n\r***************** BLE UART example project *****************");
+  86              		.loc 1 47 0
+  87 002a 3B4B     		ldr	r3, .L15+8
+  88 002c 181C     		mov	r0, r3
+  89 002e FFF7FEFF 		bl	UART_UartPutString
+  48:main.c        ****             UART_UartPutString("\n\r************************************************************\n\
+  90              		.loc 1 48 0
+  91 0032 3A4B     		ldr	r3, .L15+12
+  92 0034 181C     		mov	r0, r3
+  93 0036 FFF7FEFF 		bl	UART_UartPutString
+  49:main.c        ****             UART_UartPutString("\n\rDevice role \t: PERIPHERAL");
+  94              		.loc 1 49 0
+  95 003a 394B     		ldr	r3, .L15+16
+  96 003c 181C     		mov	r0, r3
+  97 003e FFF7FEFF 		bl	UART_UartPutString
+  50:main.c        ****             
+  51:main.c        ****             #ifdef LOW_POWER_MODE
+  52:main.c        ****                 UART_UartPutString("\n\rLow Power Mode \t: ENABLED");
+  98              		.loc 1 52 0
+  99 0042 384B     		ldr	r3, .L15+20
+ 100 0044 181C     		mov	r0, r3
+ 101 0046 FFF7FEFF 		bl	UART_UartPutString
+  53:main.c        ****             #else
+  54:main.c        ****                 UART_UartPutString("\n\rLow Power Mode \t: DISABLED");
+  55:main.c        ****             #endif
+  56:main.c        ****             
+  57:main.c        ****             #ifdef FLOW_CONTROL
+  58:main.c        ****                 UART_UartPutString("\n\rFlow Control \t: ENABLED");  
+ 102              		.loc 1 58 0
+ 103 004a 374B     		ldr	r3, .L15+24
+ 104 004c 181C     		mov	r0, r3
+ 105 004e FFF7FEFF 		bl	UART_UartPutString
+  59:main.c        ****             #else
+  60:main.c        ****                 UART_UartPutString("\n\rFlow Control \t: DISABLED");
+  61:main.c        ****             #endif
+  62:main.c        ****             
+  63:main.c        ****         #endif
+  64:main.c        ****     }
+  65:main.c        ****     else
+  66:main.c        ****     {
+  67:main.c        ****         #ifdef PRINT_MESSAGE_LOG   
+  68:main.c        ****             UART_UartPutString("\n\r\t\tCyBle stack initilization FAILED!!! \n\r ");
+  69:main.c        ****         #endif
+  70:main.c        ****         
+  71:main.c        ****         /* Enter infinite loop */
+  72:main.c        ****         while(1);
+  73:main.c        ****     }
+  74:main.c        ****     
+  75:main.c        ****     CyBle_ProcessEvents();
+ 106              		.loc 1 75 0
+ 107 0052 FFF7FEFF 		bl	CyBle_ProcessEvents
+ 108 0056 04E0     		b	.L14
+ 109              	.L2:
+  68:main.c        ****         #endif
+ 110              		.loc 1 68 0
+ 111 0058 344B     		ldr	r3, .L15+28
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 5
+
+
+ 112 005a 181C     		mov	r0, r3
+ 113 005c FFF7FEFF 		bl	UART_UartPutString
+ 114              	.L4:
+  72:main.c        ****     }
+ 115              		.loc 1 72 0 discriminator 1
+ 116 0060 FEE7     		b	.L4
+ 117              	.L14:
+  76:main.c        ****     
+  77:main.c        ****     /***************************************************************************
+  78:main.c        ****     * Main polling loop
+  79:main.c        ****     ***************************************************************************/
+  80:main.c        ****     while(1)
+  81:main.c        ****     {              
+  82:main.c        ****         #ifdef LOW_POWER_MODE
+  83:main.c        ****             
+  84:main.c        ****             if((CyBle_GetState() != CYBLE_STATE_INITIALIZING) && (CyBle_GetState() != CYBLE_STATE_D
+ 118              		.loc 1 84 0
+ 119 0062 334B     		ldr	r3, .L15+32
+ 120 0064 1B78     		ldrb	r3, [r3]
+ 121 0066 012B     		cmp	r3, #1
+ 122 0068 4DD0     		beq	.L5
+ 123              		.loc 1 84 0 is_stmt 0 discriminator 1
+ 124 006a 314B     		ldr	r3, .L15+32
+ 125 006c 1B78     		ldrb	r3, [r3]
+ 126 006e 042B     		cmp	r3, #4
+ 127 0070 49D0     		beq	.L5
+  85:main.c        ****             {
+  86:main.c        ****                 /* Enter DeepSleep mode between connection intervals */
+  87:main.c        ****                 
+  88:main.c        ****                 lpMode = CyBle_EnterLPM(CYBLE_BLESS_DEEPSLEEP);
+ 128              		.loc 1 88 0 is_stmt 1
+ 129 0072 7C1D     		add	r4, r7, #5
+ 130 0074 0320     		mov	r0, #3
+ 131 0076 FFF7FEFF 		bl	CyBle_EnterLPM
+ 132 007a 031C     		mov	r3, r0
+ 133 007c 2370     		strb	r3, [r4]
+  89:main.c        ****                 CyGlobalIntDisable;
+ 134              		.loc 1 89 0
+ 135              	@ 89 "main.c" 1
+ 136 007e 72B6     		CPSID   i
+ 137              	@ 0 "" 2
+  90:main.c        ****                 blessState = CyBle_GetBleSsState();
+ 138              		.loc 1 90 0
+ 139              		.code	16
+ 140 0080 3C1D     		add	r4, r7, #4
+ 141 0082 FFF7FEFF 		bl	CyBle_GetBleSsState
+ 142 0086 031C     		mov	r3, r0
+ 143 0088 2370     		strb	r3, [r4]
+  91:main.c        **** 
+  92:main.c        ****                 if(lpMode == CYBLE_BLESS_DEEPSLEEP) 
+ 144              		.loc 1 92 0
+ 145 008a 7B1D     		add	r3, r7, #5
+ 146 008c 1B78     		ldrb	r3, [r3]
+ 147 008e 032B     		cmp	r3, #3
+ 148 0090 1DD1     		bne	.L6
+  93:main.c        ****                 {   
+  94:main.c        ****                     if((blessState == CYBLE_BLESS_STATE_ECO_ON || blessState == CYBLE_BLESS_STATE_D
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 6
+
+
+ 149              		.loc 1 94 0
+ 150 0092 3B1D     		add	r3, r7, #4
+ 151 0094 1B78     		ldrb	r3, [r3]
+ 152 0096 042B     		cmp	r3, #4
+ 153 0098 03D0     		beq	.L7
+ 154              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 155 009a 3B1D     		add	r3, r7, #4
+ 156 009c 1B78     		ldrb	r3, [r3]
+ 157 009e 062B     		cmp	r3, #6
+ 158 00a0 2ED1     		bne	.L11
+ 159              	.L7:
+  95:main.c        ****                             (UART_SpiUartGetTxBufferSize() + UART_GET_TX_FIFO_SR_VALID) == 0u)
+ 160              		.loc 1 95 0 is_stmt 1
+ 161 00a2 FFF7FEFF 		bl	UART_SpiUartGetTxBufferSize
+ 162 00a6 011C     		mov	r1, r0
+ 163 00a8 224B     		ldr	r3, .L15+36
+ 164 00aa 1A68     		ldr	r2, [r3]
+ 165 00ac 8023     		mov	r3, #128
+ 166 00ae 1B02     		lsl	r3, r3, #8
+ 167 00b0 1340     		and	r3, r2
+ 168 00b2 01D0     		beq	.L9
+ 169              		.loc 1 95 0 is_stmt 0 discriminator 1
+ 170 00b4 0123     		mov	r3, #1
+ 171 00b6 00E0     		b	.L10
+ 172              	.L9:
+ 173              		.loc 1 95 0 discriminator 2
+ 174 00b8 0023     		mov	r3, #0
+ 175              	.L10:
+ 176              		.loc 1 95 0 discriminator 4
+ 177 00ba CB18     		add	r3, r1, r3
+  94:main.c        ****                             (UART_SpiUartGetTxBufferSize() + UART_GET_TX_FIFO_SR_VALID) == 0u)
+ 178              		.loc 1 94 0 is_stmt 1 discriminator 4
+ 179 00bc 002B     		cmp	r3, #0
+ 180 00be 1FD1     		bne	.L11
+  96:main.c        ****                     {
+  97:main.c        ****                         #ifdef FLOW_CONTROL
+  98:main.c        ****                             EnableUartRxInt();
+ 181              		.loc 1 98 0
+ 182 00c0 FFF7FEFF 		bl	EnableUartRxInt
+  99:main.c        ****                         #endif
+ 100:main.c        ****                         
+ 101:main.c        ****                         CySysPmSleep();
+ 183              		.loc 1 101 0
+ 184 00c4 FFF7FEFF 		bl	CySysPmSleep
+ 102:main.c        ****                         
+ 103:main.c        ****                         #ifdef FLOW_CONTROL
+ 104:main.c        ****                             DisableUartRxInt();
+ 185              		.loc 1 104 0
+ 186 00c8 FFF7FEFF 		bl	DisableUartRxInt
+ 187 00cc 18E0     		b	.L11
+ 188              	.L6:
+ 105:main.c        ****                         #endif
+ 106:main.c        ****                     }
+ 107:main.c        ****                 }
+ 108:main.c        ****                 else
+ 109:main.c        ****                 {
+ 110:main.c        ****                     if((blessState != CYBLE_BLESS_STATE_EVENT_CLOSE) && \
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 7
+
+
+ 189              		.loc 1 110 0
+ 190 00ce 3B1D     		add	r3, r7, #4
+ 191 00d0 1B78     		ldrb	r3, [r3]
+ 192 00d2 022B     		cmp	r3, #2
+ 193 00d4 14D0     		beq	.L11
+ 111:main.c        ****                             (UART_SpiUartGetTxBufferSize() + UART_GET_TX_FIFO_SR_VALID) == 0u)
+ 194              		.loc 1 111 0
+ 195 00d6 FFF7FEFF 		bl	UART_SpiUartGetTxBufferSize
+ 196 00da 011C     		mov	r1, r0
+ 197 00dc 154B     		ldr	r3, .L15+36
+ 198 00de 1A68     		ldr	r2, [r3]
+ 199 00e0 8023     		mov	r3, #128
+ 200 00e2 1B02     		lsl	r3, r3, #8
+ 201 00e4 1340     		and	r3, r2
+ 202 00e6 01D0     		beq	.L12
+ 203              		.loc 1 111 0 is_stmt 0 discriminator 1
+ 204 00e8 0123     		mov	r3, #1
+ 205 00ea 00E0     		b	.L13
+ 206              	.L12:
+ 207              		.loc 1 111 0 discriminator 2
+ 208 00ec 0023     		mov	r3, #0
+ 209              	.L13:
+ 210              		.loc 1 111 0 discriminator 4
+ 211 00ee CB18     		add	r3, r1, r3
+ 110:main.c        ****                             (UART_SpiUartGetTxBufferSize() + UART_GET_TX_FIFO_SR_VALID) == 0u)
+ 212              		.loc 1 110 0 is_stmt 1 discriminator 4
+ 213 00f0 002B     		cmp	r3, #0
+ 214 00f2 05D1     		bne	.L11
+ 112:main.c        ****                     {
+ 113:main.c        ****                         #ifdef FLOW_CONTROL
+ 114:main.c        ****                             EnableUartRxInt();
+ 215              		.loc 1 114 0
+ 216 00f4 FFF7FEFF 		bl	EnableUartRxInt
+ 115:main.c        ****                         #endif
+ 116:main.c        ****                         
+ 117:main.c        ****                         CySysPmSleep();
+ 217              		.loc 1 117 0
+ 218 00f8 FFF7FEFF 		bl	CySysPmSleep
+ 118:main.c        ****                         
+ 119:main.c        ****                         #ifdef FLOW_CONTROL
+ 120:main.c        ****                             DisableUartRxInt();
+ 219              		.loc 1 120 0
+ 220 00fc FFF7FEFF 		bl	DisableUartRxInt
+ 221              	.L11:
+ 121:main.c        ****                         #endif
+ 122:main.c        ****                     }
+ 123:main.c        ****                 }
+ 124:main.c        ****                 CyGlobalIntEnable;
+ 222              		.loc 1 124 0
+ 223              	@ 124 "main.c" 1
+ 224 0100 62B6     		CPSIE   i
+ 225              	@ 0 "" 2
+ 125:main.c        ****                 
+ 126:main.c        ****                 /* Handle advertising led blinking */
+ 127:main.c        ****                 HandleLeds();
+ 226              		.loc 1 127 0
+ 227              		.code	16
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 8
+
+
+ 228 0102 FFF7FEFF 		bl	HandleLeds
+ 229              	.L5:
+ 128:main.c        ****             }
+ 129:main.c        ****         #else
+ 130:main.c        ****             HandleLeds();
+ 131:main.c        ****         #endif
+ 132:main.c        ****         
+ 133:main.c        ****         /*******************************************************************
+ 134:main.c        ****         *  Process all pending BLE events in the stack
+ 135:main.c        ****         *******************************************************************/       
+ 136:main.c        ****         HandleBleProcessing();
+ 230              		.loc 1 136 0
+ 231 0106 FFF7FEFF 		bl	HandleBleProcessing
+ 137:main.c        ****         CyBle_ProcessEvents();
+ 232              		.loc 1 137 0
+ 233 010a FFF7FEFF 		bl	CyBle_ProcessEvents
+ 138:main.c        ****     }
+ 234              		.loc 1 138 0
+ 235 010e A8E7     		b	.L14
+ 236              	.L16:
+ 237              		.align	2
+ 238              	.L15:
+ 239 0110 00000000 		.word	AppCallBack
+ 240 0114 00000000 		.word	.LC1
+ 241 0118 40000000 		.word	.LC3
+ 242 011c 80000000 		.word	.LC5
+ 243 0120 C4000000 		.word	.LC7
+ 244 0124 E0000000 		.word	.LC9
+ 245 0128 FC000000 		.word	.LC11
+ 246 012c 18010000 		.word	.LC13
+ 247 0130 00000000 		.word	cyBle_state
+ 248 0134 08022440 		.word	1076101640
+ 249              		.cfi_endproc
+ 250              	.LFE37:
+ 251              		.size	main, .-main
+ 252              		.text
+ 253              	.Letext0:
+ 254              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 255              		.file 3 "Generated_Source\\PSoC4/BLE_Stack.h"
+ 256              		.file 4 "Generated_Source\\PSoC4/BLE_eventHandler.h"
+ 257              		.section	.debug_info,"",%progbits
+ 258              	.Ldebug_info0:
+ 259 0000 84020000 		.4byte	0x284
+ 260 0004 0400     		.2byte	0x4
+ 261 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 262 000a 04       		.byte	0x4
+ 263 000b 01       		.uleb128 0x1
+ 264 000c A3040000 		.4byte	.LASF73
+ 265 0010 01       		.byte	0x1
+ 266 0011 ED050000 		.4byte	.LASF74
+ 267 0015 CC000000 		.4byte	.LASF75
+ 268 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 269 001d 00000000 		.4byte	0
+ 270 0021 00000000 		.4byte	.Ldebug_line0
+ 271 0025 02       		.uleb128 0x2
+ 272 0026 01       		.byte	0x1
+ 273 0027 06       		.byte	0x6
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 9
+
+
+ 274 0028 98030000 		.4byte	.LASF0
+ 275 002c 02       		.uleb128 0x2
+ 276 002d 01       		.byte	0x1
+ 277 002e 08       		.byte	0x8
+ 278 002f 5E030000 		.4byte	.LASF1
+ 279 0033 02       		.uleb128 0x2
+ 280 0034 02       		.byte	0x2
+ 281 0035 05       		.byte	0x5
+ 282 0036 C2000000 		.4byte	.LASF2
+ 283 003a 02       		.uleb128 0x2
+ 284 003b 02       		.byte	0x2
+ 285 003c 07       		.byte	0x7
+ 286 003d 4D050000 		.4byte	.LASF3
+ 287 0041 02       		.uleb128 0x2
+ 288 0042 04       		.byte	0x4
+ 289 0043 05       		.byte	0x5
+ 290 0044 DC020000 		.4byte	.LASF4
+ 291 0048 02       		.uleb128 0x2
+ 292 0049 04       		.byte	0x4
+ 293 004a 07       		.byte	0x7
+ 294 004b F4050000 		.4byte	.LASF5
+ 295 004f 02       		.uleb128 0x2
+ 296 0050 08       		.byte	0x8
+ 297 0051 05       		.byte	0x5
+ 298 0052 AE020000 		.4byte	.LASF6
+ 299 0056 02       		.uleb128 0x2
+ 300 0057 08       		.byte	0x8
+ 301 0058 07       		.byte	0x7
+ 302 0059 A4030000 		.4byte	.LASF7
+ 303 005d 03       		.uleb128 0x3
+ 304 005e 04       		.byte	0x4
+ 305 005f 05       		.byte	0x5
+ 306 0060 696E7400 		.ascii	"int\000"
+ 307 0064 02       		.uleb128 0x2
+ 308 0065 04       		.byte	0x4
+ 309 0066 07       		.byte	0x7
+ 310 0067 E7030000 		.4byte	.LASF8
+ 311 006b 04       		.uleb128 0x4
+ 312 006c E6050000 		.4byte	.LASF12
+ 313 0070 02       		.byte	0x2
+ 314 0071 BB01     		.2byte	0x1bb
+ 315 0073 48000000 		.4byte	0x48
+ 316 0077 02       		.uleb128 0x2
+ 317 0078 04       		.byte	0x4
+ 318 0079 04       		.byte	0x4
+ 319 007a A8020000 		.4byte	.LASF9
+ 320 007e 02       		.uleb128 0x2
+ 321 007f 08       		.byte	0x8
+ 322 0080 04       		.byte	0x4
+ 323 0081 06060000 		.4byte	.LASF10
+ 324 0085 02       		.uleb128 0x2
+ 325 0086 01       		.byte	0x1
+ 326 0087 08       		.byte	0x8
+ 327 0088 87040000 		.4byte	.LASF11
+ 328 008c 04       		.uleb128 0x4
+ 329 008d 89070000 		.4byte	.LASF13
+ 330 0091 02       		.byte	0x2
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 10
+
+
+ 331 0092 6502     		.2byte	0x265
+ 332 0094 98000000 		.4byte	0x98
+ 333 0098 05       		.uleb128 0x5
+ 334 0099 6B000000 		.4byte	0x6b
+ 335 009d 02       		.uleb128 0x2
+ 336 009e 04       		.byte	0x4
+ 337 009f 07       		.byte	0x7
+ 338 00a0 1F010000 		.4byte	.LASF14
+ 339 00a4 06       		.uleb128 0x6
+ 340 00a5 02       		.byte	0x2
+ 341 00a6 03       		.byte	0x3
+ 342 00a7 0204     		.2byte	0x402
+ 343 00a9 7B010000 		.4byte	0x17b
+ 344 00ad 07       		.uleb128 0x7
+ 345 00ae 28010000 		.4byte	.LASF15
+ 346 00b2 00       		.sleb128 0
+ 347 00b3 07       		.uleb128 0x7
+ 348 00b4 C8010000 		.4byte	.LASF16
+ 349 00b8 01       		.sleb128 1
+ 350 00b9 07       		.uleb128 0x7
+ 351 00ba 04020000 		.4byte	.LASF17
+ 352 00be 02       		.sleb128 2
+ 353 00bf 07       		.uleb128 0x7
+ 354 00c0 60050000 		.4byte	.LASF18
+ 355 00c4 03       		.sleb128 3
+ 356 00c5 07       		.uleb128 0x7
+ 357 00c6 85020000 		.4byte	.LASF19
+ 358 00ca 04       		.sleb128 4
+ 359 00cb 07       		.uleb128 0x7
+ 360 00cc E6010000 		.4byte	.LASF20
+ 361 00d0 05       		.sleb128 5
+ 362 00d1 07       		.uleb128 0x7
+ 363 00d2 52020000 		.4byte	.LASF21
+ 364 00d6 06       		.sleb128 6
+ 365 00d7 07       		.uleb128 0x7
+ 366 00d8 41030000 		.4byte	.LASF22
+ 367 00dc 07       		.sleb128 7
+ 368 00dd 07       		.uleb128 0x7
+ 369 00de F5020000 		.4byte	.LASF23
+ 370 00e2 08       		.sleb128 8
+ 371 00e3 07       		.uleb128 0x7
+ 372 00e4 D2030000 		.4byte	.LASF24
+ 373 00e8 09       		.sleb128 9
+ 374 00e9 07       		.uleb128 0x7
+ 375 00ea 68000000 		.4byte	.LASF25
+ 376 00ee 0A       		.sleb128 10
+ 377 00ef 07       		.uleb128 0x7
+ 378 00f0 BC020000 		.4byte	.LASF26
+ 379 00f4 0B       		.sleb128 11
+ 380 00f5 07       		.uleb128 0x7
+ 381 00f6 BB030000 		.4byte	.LASF27
+ 382 00fa 0C       		.sleb128 12
+ 383 00fb 07       		.uleb128 0x7
+ 384 00fc F4030000 		.4byte	.LASF28
+ 385 0100 0D       		.sleb128 13
+ 386 0101 07       		.uleb128 0x7
+ 387 0102 3F000000 		.4byte	.LASF29
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 11
+
+
+ 388 0106 0E       		.sleb128 14
+ 389 0107 07       		.uleb128 0x7
+ 390 0108 1A000000 		.4byte	.LASF30
+ 391 010c 0F       		.sleb128 15
+ 392 010d 07       		.uleb128 0x7
+ 393 010e 42070000 		.4byte	.LASF31
+ 394 0112 10       		.sleb128 16
+ 395 0113 07       		.uleb128 0x7
+ 396 0114 9E000000 		.4byte	.LASF32
+ 397 0118 11       		.sleb128 17
+ 398 0119 07       		.uleb128 0x7
+ 399 011a 48060000 		.4byte	.LASF33
+ 400 011e 12       		.sleb128 18
+ 401 011f 07       		.uleb128 0x7
+ 402 0120 20060000 		.4byte	.LASF34
+ 403 0124 13       		.sleb128 19
+ 404 0125 07       		.uleb128 0x7
+ 405 0126 F6060000 		.4byte	.LASF35
+ 406 012a 27       		.sleb128 39
+ 407 012b 07       		.uleb128 0x7
+ 408 012c 37010000 		.4byte	.LASF36
+ 409 0130 28       		.sleb128 40
+ 410 0131 07       		.uleb128 0x7
+ 411 0132 98010000 		.4byte	.LASF37
+ 412 0136 29       		.sleb128 41
+ 413 0137 07       		.uleb128 0x7
+ 414 0138 6B060000 		.4byte	.LASF38
+ 415 013c 2A       		.sleb128 42
+ 416 013d 07       		.uleb128 0x7
+ 417 013e 9B050000 		.4byte	.LASF39
+ 418 0142 2B       		.sleb128 43
+ 419 0143 07       		.uleb128 0x7
+ 420 0144 6C030000 		.4byte	.LASF40
+ 421 0148 2C       		.sleb128 44
+ 422 0149 07       		.uleb128 0x7
+ 423 014a 31050000 		.4byte	.LASF41
+ 424 014e FE01     		.sleb128 254
+ 425 0150 07       		.uleb128 0x7
+ 426 0151 18070000 		.4byte	.LASF42
+ 427 0155 FF01     		.sleb128 255
+ 428 0157 07       		.uleb128 0x7
+ 429 0158 C4060000 		.4byte	.LASF43
+ 430 015c 8002     		.sleb128 256
+ 431 015e 07       		.uleb128 0x7
+ 432 015f 70070000 		.4byte	.LASF44
+ 433 0163 8102     		.sleb128 257
+ 434 0165 07       		.uleb128 0x7
+ 435 0166 52040000 		.4byte	.LASF45
+ 436 016a 8202     		.sleb128 258
+ 437 016c 07       		.uleb128 0x7
+ 438 016d 28070000 		.4byte	.LASF46
+ 439 0171 8302     		.sleb128 259
+ 440 0173 07       		.uleb128 0x7
+ 441 0174 8C040000 		.4byte	.LASF47
+ 442 0178 8402     		.sleb128 260
+ 443 017a 00       		.byte	0
+ 444 017b 04       		.uleb128 0x4
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 12
+
+
+ 445 017c 22020000 		.4byte	.LASF48
+ 446 0180 03       		.byte	0x3
+ 447 0181 7104     		.2byte	0x471
+ 448 0183 A4000000 		.4byte	0xa4
+ 449 0187 06       		.uleb128 0x6
+ 450 0188 01       		.byte	0x1
+ 451 0189 03       		.byte	0x3
+ 452 018a 7504     		.2byte	0x475
+ 453 018c B0010000 		.4byte	0x1b0
+ 454 0190 07       		.uleb128 0x7
+ 455 0191 0D060000 		.4byte	.LASF49
+ 456 0195 01       		.sleb128 1
+ 457 0196 07       		.uleb128 0x7
+ 458 0197 75040000 		.4byte	.LASF50
+ 459 019b 02       		.sleb128 2
+ 460 019c 07       		.uleb128 0x7
+ 461 019d 2B030000 		.4byte	.LASF51
+ 462 01a1 03       		.sleb128 3
+ 463 01a2 07       		.uleb128 0x7
+ 464 01a3 9C070000 		.4byte	.LASF52
+ 465 01a7 04       		.sleb128 4
+ 466 01a8 07       		.uleb128 0x7
+ 467 01a9 88060000 		.4byte	.LASF53
+ 468 01ad FF01     		.sleb128 255
+ 469 01af 00       		.byte	0
+ 470 01b0 04       		.uleb128 0x4
+ 471 01b1 E5020000 		.4byte	.LASF54
+ 472 01b5 03       		.byte	0x3
+ 473 01b6 9104     		.2byte	0x491
+ 474 01b8 87010000 		.4byte	0x187
+ 475 01bc 06       		.uleb128 0x6
+ 476 01bd 01       		.byte	0x1
+ 477 01be 03       		.byte	0x3
+ 478 01bf 9504     		.2byte	0x495
+ 479 01c1 F7010000 		.4byte	0x1f7
+ 480 01c5 07       		.uleb128 0x7
+ 481 01c6 DD060000 		.4byte	.LASF55
+ 482 01ca 01       		.sleb128 1
+ 483 01cb 07       		.uleb128 0x7
+ 484 01cc 61010000 		.4byte	.LASF56
+ 485 01d0 02       		.sleb128 2
+ 486 01d1 07       		.uleb128 0x7
+ 487 01d2 13030000 		.4byte	.LASF57
+ 488 01d6 03       		.sleb128 3
+ 489 01d7 07       		.uleb128 0x7
+ 490 01d8 7F010000 		.4byte	.LASF58
+ 491 01dc 04       		.sleb128 4
+ 492 01dd 07       		.uleb128 0x7
+ 493 01de 35020000 		.4byte	.LASF59
+ 494 01e2 05       		.sleb128 5
+ 495 01e3 07       		.uleb128 0x7
+ 496 01e4 9C060000 		.4byte	.LASF60
+ 497 01e8 06       		.sleb128 6
+ 498 01e9 07       		.uleb128 0x7
+ 499 01ea 82000000 		.4byte	.LASF61
+ 500 01ee 07       		.sleb128 7
+ 501 01ef 07       		.uleb128 0x7
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 13
+
+
+ 502 01f0 00000000 		.4byte	.LASF62
+ 503 01f4 FF01     		.sleb128 255
+ 504 01f6 00       		.byte	0
+ 505 01f7 04       		.uleb128 0x4
+ 506 01f8 84030000 		.4byte	.LASF63
+ 507 01fc 03       		.byte	0x3
+ 508 01fd A604     		.2byte	0x4a6
+ 509 01ff BC010000 		.4byte	0x1bc
+ 510 0203 06       		.uleb128 0x6
+ 511 0204 01       		.byte	0x1
+ 512 0205 04       		.byte	0x4
+ 513 0206 5008     		.2byte	0x850
+ 514 0208 2B020000 		.4byte	0x22b
+ 515 020c 07       		.uleb128 0x7
+ 516 020d B4010000 		.4byte	.LASF64
+ 517 0211 00       		.sleb128 0
+ 518 0212 07       		.uleb128 0x7
+ 519 0213 6C020000 		.4byte	.LASF65
+ 520 0217 01       		.sleb128 1
+ 521 0218 07       		.uleb128 0x7
+ 522 0219 85050000 		.4byte	.LASF66
+ 523 021d 02       		.sleb128 2
+ 524 021e 07       		.uleb128 0x7
+ 525 021f CE050000 		.4byte	.LASF67
+ 526 0223 03       		.sleb128 3
+ 527 0224 07       		.uleb128 0x7
+ 528 0225 20040000 		.4byte	.LASF68
+ 529 0229 04       		.sleb128 4
+ 530 022a 00       		.byte	0
+ 531 022b 04       		.uleb128 0x4
+ 532 022c 39040000 		.4byte	.LASF69
+ 533 0230 04       		.byte	0x4
+ 534 0231 5E08     		.2byte	0x85e
+ 535 0233 03020000 		.4byte	0x203
+ 536 0237 08       		.uleb128 0x8
+ 537 0238 5C010000 		.4byte	.LASF76
+ 538 023c 01       		.byte	0x1
+ 539 023d 1C       		.byte	0x1c
+ 540 023e 5D000000 		.4byte	0x5d
+ 541 0242 00000000 		.4byte	.LFB37
+ 542 0246 38010000 		.4byte	.LFE37-.LFB37
+ 543 024a 01       		.uleb128 0x1
+ 544 024b 9C       		.byte	0x9c
+ 545 024c 7B020000 		.4byte	0x27b
+ 546 0250 09       		.uleb128 0x9
+ 547 0251 19040000 		.4byte	.LASF70
+ 548 0255 01       		.byte	0x1
+ 549 0256 1F       		.byte	0x1f
+ 550 0257 B0010000 		.4byte	0x1b0
+ 551 025b 02       		.uleb128 0x2
+ 552 025c 91       		.byte	0x91
+ 553 025d 6D       		.sleb128 -19
+ 554 025e 09       		.uleb128 0x9
+ 555 025f 47040000 		.4byte	.LASF71
+ 556 0263 01       		.byte	0x1
+ 557 0264 20       		.byte	0x20
+ 558 0265 F7010000 		.4byte	0x1f7
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 14
+
+
+ 559 0269 02       		.uleb128 0x2
+ 560 026a 91       		.byte	0x91
+ 561 026b 6C       		.sleb128 -20
+ 562 026c 09       		.uleb128 0x9
+ 563 026d 8F070000 		.4byte	.LASF72
+ 564 0271 01       		.byte	0x1
+ 565 0272 23       		.byte	0x23
+ 566 0273 7B010000 		.4byte	0x17b
+ 567 0277 02       		.uleb128 0x2
+ 568 0278 91       		.byte	0x91
+ 569 0279 6E       		.sleb128 -18
+ 570 027a 00       		.byte	0
+ 571 027b 0A       		.uleb128 0xa
+ 572 027c B8060000 		.4byte	.LASF77
+ 573 0280 04       		.byte	0x4
+ 574 0281 A90A     		.2byte	0xaa9
+ 575 0283 2B020000 		.4byte	0x22b
+ 576 0287 00       		.byte	0
+ 577              		.section	.debug_abbrev,"",%progbits
+ 578              	.Ldebug_abbrev0:
+ 579 0000 01       		.uleb128 0x1
+ 580 0001 11       		.uleb128 0x11
+ 581 0002 01       		.byte	0x1
+ 582 0003 25       		.uleb128 0x25
+ 583 0004 0E       		.uleb128 0xe
+ 584 0005 13       		.uleb128 0x13
+ 585 0006 0B       		.uleb128 0xb
+ 586 0007 03       		.uleb128 0x3
+ 587 0008 0E       		.uleb128 0xe
+ 588 0009 1B       		.uleb128 0x1b
+ 589 000a 0E       		.uleb128 0xe
+ 590 000b 55       		.uleb128 0x55
+ 591 000c 17       		.uleb128 0x17
+ 592 000d 11       		.uleb128 0x11
+ 593 000e 01       		.uleb128 0x1
+ 594 000f 10       		.uleb128 0x10
+ 595 0010 17       		.uleb128 0x17
+ 596 0011 00       		.byte	0
+ 597 0012 00       		.byte	0
+ 598 0013 02       		.uleb128 0x2
+ 599 0014 24       		.uleb128 0x24
+ 600 0015 00       		.byte	0
+ 601 0016 0B       		.uleb128 0xb
+ 602 0017 0B       		.uleb128 0xb
+ 603 0018 3E       		.uleb128 0x3e
+ 604 0019 0B       		.uleb128 0xb
+ 605 001a 03       		.uleb128 0x3
+ 606 001b 0E       		.uleb128 0xe
+ 607 001c 00       		.byte	0
+ 608 001d 00       		.byte	0
+ 609 001e 03       		.uleb128 0x3
+ 610 001f 24       		.uleb128 0x24
+ 611 0020 00       		.byte	0
+ 612 0021 0B       		.uleb128 0xb
+ 613 0022 0B       		.uleb128 0xb
+ 614 0023 3E       		.uleb128 0x3e
+ 615 0024 0B       		.uleb128 0xb
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 15
+
+
+ 616 0025 03       		.uleb128 0x3
+ 617 0026 08       		.uleb128 0x8
+ 618 0027 00       		.byte	0
+ 619 0028 00       		.byte	0
+ 620 0029 04       		.uleb128 0x4
+ 621 002a 16       		.uleb128 0x16
+ 622 002b 00       		.byte	0
+ 623 002c 03       		.uleb128 0x3
+ 624 002d 0E       		.uleb128 0xe
+ 625 002e 3A       		.uleb128 0x3a
+ 626 002f 0B       		.uleb128 0xb
+ 627 0030 3B       		.uleb128 0x3b
+ 628 0031 05       		.uleb128 0x5
+ 629 0032 49       		.uleb128 0x49
+ 630 0033 13       		.uleb128 0x13
+ 631 0034 00       		.byte	0
+ 632 0035 00       		.byte	0
+ 633 0036 05       		.uleb128 0x5
+ 634 0037 35       		.uleb128 0x35
+ 635 0038 00       		.byte	0
+ 636 0039 49       		.uleb128 0x49
+ 637 003a 13       		.uleb128 0x13
+ 638 003b 00       		.byte	0
+ 639 003c 00       		.byte	0
+ 640 003d 06       		.uleb128 0x6
+ 641 003e 04       		.uleb128 0x4
+ 642 003f 01       		.byte	0x1
+ 643 0040 0B       		.uleb128 0xb
+ 644 0041 0B       		.uleb128 0xb
+ 645 0042 3A       		.uleb128 0x3a
+ 646 0043 0B       		.uleb128 0xb
+ 647 0044 3B       		.uleb128 0x3b
+ 648 0045 05       		.uleb128 0x5
+ 649 0046 01       		.uleb128 0x1
+ 650 0047 13       		.uleb128 0x13
+ 651 0048 00       		.byte	0
+ 652 0049 00       		.byte	0
+ 653 004a 07       		.uleb128 0x7
+ 654 004b 28       		.uleb128 0x28
+ 655 004c 00       		.byte	0
+ 656 004d 03       		.uleb128 0x3
+ 657 004e 0E       		.uleb128 0xe
+ 658 004f 1C       		.uleb128 0x1c
+ 659 0050 0D       		.uleb128 0xd
+ 660 0051 00       		.byte	0
+ 661 0052 00       		.byte	0
+ 662 0053 08       		.uleb128 0x8
+ 663 0054 2E       		.uleb128 0x2e
+ 664 0055 01       		.byte	0x1
+ 665 0056 3F       		.uleb128 0x3f
+ 666 0057 19       		.uleb128 0x19
+ 667 0058 03       		.uleb128 0x3
+ 668 0059 0E       		.uleb128 0xe
+ 669 005a 3A       		.uleb128 0x3a
+ 670 005b 0B       		.uleb128 0xb
+ 671 005c 3B       		.uleb128 0x3b
+ 672 005d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 16
+
+
+ 673 005e 49       		.uleb128 0x49
+ 674 005f 13       		.uleb128 0x13
+ 675 0060 11       		.uleb128 0x11
+ 676 0061 01       		.uleb128 0x1
+ 677 0062 12       		.uleb128 0x12
+ 678 0063 06       		.uleb128 0x6
+ 679 0064 40       		.uleb128 0x40
+ 680 0065 18       		.uleb128 0x18
+ 681 0066 9642     		.uleb128 0x2116
+ 682 0068 19       		.uleb128 0x19
+ 683 0069 01       		.uleb128 0x1
+ 684 006a 13       		.uleb128 0x13
+ 685 006b 00       		.byte	0
+ 686 006c 00       		.byte	0
+ 687 006d 09       		.uleb128 0x9
+ 688 006e 34       		.uleb128 0x34
+ 689 006f 00       		.byte	0
+ 690 0070 03       		.uleb128 0x3
+ 691 0071 0E       		.uleb128 0xe
+ 692 0072 3A       		.uleb128 0x3a
+ 693 0073 0B       		.uleb128 0xb
+ 694 0074 3B       		.uleb128 0x3b
+ 695 0075 0B       		.uleb128 0xb
+ 696 0076 49       		.uleb128 0x49
+ 697 0077 13       		.uleb128 0x13
+ 698 0078 02       		.uleb128 0x2
+ 699 0079 18       		.uleb128 0x18
+ 700 007a 00       		.byte	0
+ 701 007b 00       		.byte	0
+ 702 007c 0A       		.uleb128 0xa
+ 703 007d 34       		.uleb128 0x34
+ 704 007e 00       		.byte	0
+ 705 007f 03       		.uleb128 0x3
+ 706 0080 0E       		.uleb128 0xe
+ 707 0081 3A       		.uleb128 0x3a
+ 708 0082 0B       		.uleb128 0xb
+ 709 0083 3B       		.uleb128 0x3b
+ 710 0084 05       		.uleb128 0x5
+ 711 0085 49       		.uleb128 0x49
+ 712 0086 13       		.uleb128 0x13
+ 713 0087 3F       		.uleb128 0x3f
+ 714 0088 19       		.uleb128 0x19
+ 715 0089 3C       		.uleb128 0x3c
+ 716 008a 19       		.uleb128 0x19
+ 717 008b 00       		.byte	0
+ 718 008c 00       		.byte	0
+ 719 008d 00       		.byte	0
+ 720              		.section	.debug_aranges,"",%progbits
+ 721 0000 1C000000 		.4byte	0x1c
+ 722 0004 0200     		.2byte	0x2
+ 723 0006 00000000 		.4byte	.Ldebug_info0
+ 724 000a 04       		.byte	0x4
+ 725 000b 00       		.byte	0
+ 726 000c 0000     		.2byte	0
+ 727 000e 0000     		.2byte	0
+ 728 0010 00000000 		.4byte	.LFB37
+ 729 0014 38010000 		.4byte	.LFE37-.LFB37
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 17
+
+
+ 730 0018 00000000 		.4byte	0
+ 731 001c 00000000 		.4byte	0
+ 732              		.section	.debug_ranges,"",%progbits
+ 733              	.Ldebug_ranges0:
+ 734 0000 00000000 		.4byte	.LFB37
+ 735 0004 38010000 		.4byte	.LFE37
+ 736 0008 00000000 		.4byte	0
+ 737 000c 00000000 		.4byte	0
+ 738              		.section	.debug_line,"",%progbits
+ 739              	.Ldebug_line0:
+ 740 0000 E2000000 		.section	.debug_str,"MS",%progbits,1
+ 740      02006600 
+ 740      00000201 
+ 740      FB0E0D00 
+ 740      01010101 
+ 741              	.LASF62:
+ 742 0000 4359424C 		.ascii	"CYBLE_BLESS_STATE_INVALID\000"
+ 742      455F424C 
+ 742      4553535F 
+ 742      53544154 
+ 742      455F494E 
+ 743              	.LASF30:
+ 744 001a 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_REGISTERED\000"
+ 744      455F4552 
+ 744      524F525F 
+ 744      4C324341 
+ 744      505F5053 
+ 745              	.LASF29:
+ 746 003f 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_ALREADY_REGISTERED\000"
+ 746      455F4552 
+ 746      524F525F 
+ 746      4C324341 
+ 746      505F5053 
+ 747              	.LASF25:
+ 748 0068 4359424C 		.ascii	"CYBLE_ERROR_TX_POWER_READ\000"
+ 748      455F4552 
+ 748      524F525F 
+ 748      54585F50 
+ 748      4F574552 
+ 749              	.LASF61:
+ 750 0082 4359424C 		.ascii	"CYBLE_BLESS_STATE_HIBERNATE\000"
+ 750      455F424C 
+ 750      4553535F 
+ 750      53544154 
+ 750      455F4849 
+ 751              	.LASF32:
+ 752 009e 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CHANNEL_NOT_FOUND\000"
+ 752      455F4552 
+ 752      524F525F 
+ 752      4C324341 
+ 752      505F4348 
+ 753              	.LASF2:
+ 754 00c2 73686F72 		.ascii	"short int\000"
+ 754      7420696E 
+ 754      7400
+ 755              	.LASF75:
+ 756 00cc 433A5C55 		.ascii	"C:\\Users\\Aaron Wubshet\\Desktop\\UART_to_BLE_peri"
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 18
+
+
+ 756      73657273 
+ 756      5C416172 
+ 756      6F6E2057 
+ 756      75627368 
+ 757 00fb 70686572 		.ascii	"pheral\\UART_to_BLE_peripheral.cydsn\000"
+ 757      616C5C55 
+ 757      4152545F 
+ 757      746F5F42 
+ 757      4C455F70 
+ 758              	.LASF14:
+ 759 011f 73697A65 		.ascii	"sizetype\000"
+ 759      74797065 
+ 759      00
+ 760              	.LASF15:
+ 761 0128 4359424C 		.ascii	"CYBLE_ERROR_OK\000"
+ 761      455F4552 
+ 761      524F525F 
+ 761      4F4B00
+ 762              	.LASF36:
+ 763 0137 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE_NOT_PERMITED\000"
+ 763      455F4552 
+ 763      524F525F 
+ 763      464C4153 
+ 763      485F5752 
+ 764              	.LASF76:
+ 765 015c 6D61696E 		.ascii	"main\000"
+ 765      00
+ 766              	.LASF56:
+ 767 0161 4359424C 		.ascii	"CYBLE_BLESS_STATE_EVENT_CLOSE\000"
+ 767      455F424C 
+ 767      4553535F 
+ 767      53544154 
+ 767      455F4556 
+ 768              	.LASF58:
+ 769 017f 4359424C 		.ascii	"CYBLE_BLESS_STATE_ECO_ON\000"
+ 769      455F424C 
+ 769      4553535F 
+ 769      53544154 
+ 769      455F4543 
+ 770              	.LASF37:
+ 771 0198 4359424C 		.ascii	"CYBLE_ERROR_MIC_AUTH_FAILED\000"
+ 771      455F4552 
+ 771      524F525F 
+ 771      4D49435F 
+ 771      41555448 
+ 772              	.LASF64:
+ 773 01b4 4359424C 		.ascii	"CYBLE_STATE_STOPPED\000"
+ 773      455F5354 
+ 773      4154455F 
+ 773      53544F50 
+ 773      50454400 
+ 774              	.LASF16:
+ 775 01c8 4359424C 		.ascii	"CYBLE_ERROR_INVALID_PARAMETER\000"
+ 775      455F4552 
+ 775      524F525F 
+ 775      494E5641 
+ 775      4C49445F 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 19
+
+
+ 776              	.LASF20:
+ 777 01e6 4359424C 		.ascii	"CYBLE_ERROR_OOB_NOT_AVAILABLE\000"
+ 777      455F4552 
+ 777      524F525F 
+ 777      4F4F425F 
+ 777      4E4F545F 
+ 778              	.LASF17:
+ 779 0204 4359424C 		.ascii	"CYBLE_ERROR_INVALID_OPERATION\000"
+ 779      455F4552 
+ 779      524F525F 
+ 779      494E5641 
+ 779      4C49445F 
+ 780              	.LASF48:
+ 781 0222 4359424C 		.ascii	"CYBLE_API_RESULT_T\000"
+ 781      455F4150 
+ 781      495F5245 
+ 781      53554C54 
+ 781      5F5400
+ 782              	.LASF59:
+ 783 0235 4359424C 		.ascii	"CYBLE_BLESS_STATE_ECO_STABLE\000"
+ 783      455F424C 
+ 783      4553535F 
+ 783      53544154 
+ 783      455F4543 
+ 784              	.LASF21:
+ 785 0252 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
+ 785      455F4552 
+ 785      524F525F 
+ 785      4E4F5F43 
+ 785      4F4E4E45 
+ 786              	.LASF65:
+ 787 026c 4359424C 		.ascii	"CYBLE_STATE_INITIALIZING\000"
+ 787      455F5354 
+ 787      4154455F 
+ 787      494E4954 
+ 787      49414C49 
+ 788              	.LASF19:
+ 789 0285 4359424C 		.ascii	"CYBLE_ERROR_INSUFFICIENT_RESOURCES\000"
+ 789      455F4552 
+ 789      524F525F 
+ 789      494E5355 
+ 789      46464943 
+ 790              	.LASF9:
+ 791 02a8 666C6F61 		.ascii	"float\000"
+ 791      7400
+ 792              	.LASF6:
+ 793 02ae 6C6F6E67 		.ascii	"long long int\000"
+ 793      206C6F6E 
+ 793      6720696E 
+ 793      7400
+ 794              	.LASF26:
+ 795 02bc 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
+ 795      455F4552 
+ 795      524F525F 
+ 795      42545F4F 
+ 795      4E5F4E4F 
+ 796              	.LASF4:
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 20
+
+
+ 797 02dc 6C6F6E67 		.ascii	"long int\000"
+ 797      20696E74 
+ 797      00
+ 798              	.LASF54:
+ 799 02e5 4359424C 		.ascii	"CYBLE_LP_MODE_T\000"
+ 799      455F4C50 
+ 799      5F4D4F44 
+ 799      455F5400 
+ 800              	.LASF23:
+ 801 02f5 4359424C 		.ascii	"CYBLE_ERROR_REPEATED_ATTEMPTS\000"
+ 801      455F4552 
+ 801      524F525F 
+ 801      52455045 
+ 801      41544544 
+ 802              	.LASF57:
+ 803 0313 4359424C 		.ascii	"CYBLE_BLESS_STATE_SLEEP\000"
+ 803      455F424C 
+ 803      4553535F 
+ 803      53544154 
+ 803      455F534C 
+ 804              	.LASF51:
+ 805 032b 4359424C 		.ascii	"CYBLE_BLESS_DEEPSLEEP\000"
+ 805      455F424C 
+ 805      4553535F 
+ 805      44454550 
+ 805      534C4545 
+ 806              	.LASF22:
+ 807 0341 4359424C 		.ascii	"CYBLE_ERROR_NO_DEVICE_ENTITY\000"
+ 807      455F4552 
+ 807      524F525F 
+ 807      4E4F5F44 
+ 807      45564943 
+ 808              	.LASF1:
+ 809 035e 756E7369 		.ascii	"unsigned char\000"
+ 809      676E6564 
+ 809      20636861 
+ 809      7200
+ 810              	.LASF40:
+ 811 036c 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE\000"
+ 811      455F4552 
+ 811      524F525F 
+ 811      464C4153 
+ 811      485F5752 
+ 812              	.LASF63:
+ 813 0384 4359424C 		.ascii	"CYBLE_BLESS_STATE_T\000"
+ 813      455F424C 
+ 813      4553535F 
+ 813      53544154 
+ 813      455F5400 
+ 814              	.LASF0:
+ 815 0398 7369676E 		.ascii	"signed char\000"
+ 815      65642063 
+ 815      68617200 
+ 816              	.LASF7:
+ 817 03a4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 817      206C6F6E 
+ 817      6720756E 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 21
+
+
+ 817      7369676E 
+ 817      65642069 
+ 818              	.LASF27:
+ 819 03bb 4359424C 		.ascii	"CYBLE_ERROR_SEC_FAILED\000"
+ 819      455F4552 
+ 819      524F525F 
+ 819      5345435F 
+ 819      4641494C 
+ 820              	.LASF24:
+ 821 03d2 4359424C 		.ascii	"CYBLE_ERROR_GAP_ROLE\000"
+ 821      455F4552 
+ 821      524F525F 
+ 821      4741505F 
+ 821      524F4C45 
+ 822              	.LASF8:
+ 823 03e7 756E7369 		.ascii	"unsigned int\000"
+ 823      676E6564 
+ 823      20696E74 
+ 823      00
+ 824              	.LASF28:
+ 825 03f4 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_WRONG_ENCODING\000"
+ 825      455F4552 
+ 825      524F525F 
+ 825      4C324341 
+ 825      505F5053 
+ 826              	.LASF70:
+ 827 0419 6C704D6F 		.ascii	"lpMode\000"
+ 827      646500
+ 828              	.LASF68:
+ 829 0420 4359424C 		.ascii	"CYBLE_STATE_DISCONNECTED\000"
+ 829      455F5354 
+ 829      4154455F 
+ 829      44495343 
+ 829      4F4E4E45 
+ 830              	.LASF69:
+ 831 0439 4359424C 		.ascii	"CYBLE_STATE_T\000"
+ 831      455F5354 
+ 831      4154455F 
+ 831      5400
+ 832              	.LASF71:
+ 833 0447 626C6573 		.ascii	"blessState\000"
+ 833      73537461 
+ 833      746500
+ 834              	.LASF45:
+ 835 0452 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
+ 835      455F4552 
+ 835      524F525F 
+ 835      43484152 
+ 835      5F49535F 
+ 836              	.LASF50:
+ 837 0475 4359424C 		.ascii	"CYBLE_BLESS_SLEEP\000"
+ 837      455F424C 
+ 837      4553535F 
+ 837      534C4545 
+ 837      5000
+ 838              	.LASF11:
+ 839 0487 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 22
+
+
+ 839      00
+ 840              	.LASF47:
+ 841 048c 4359424C 		.ascii	"CYBLE_ERROR_STACK_BUSY\000"
+ 841      455F4552 
+ 841      524F525F 
+ 841      53544143 
+ 841      4B5F4255 
+ 842              	.LASF73:
+ 843 04a3 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 843      4320342E 
+ 843      392E3320 
+ 843      32303135 
+ 843      30333033 
+ 844 04d6 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 844      20726576 
+ 844      6973696F 
+ 844      6E203232 
+ 844      31323230 
+ 845 0509 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 845      66756E63 
+ 845      74696F6E 
+ 845      2D736563 
+ 845      74696F6E 
+ 846              	.LASF41:
+ 847 0531 4359424C 		.ascii	"CYBLE_ERROR_CONTROLLER_BUSY\000"
+ 847      455F4552 
+ 847      524F525F 
+ 847      434F4E54 
+ 847      524F4C4C 
+ 848              	.LASF3:
+ 849 054d 73686F72 		.ascii	"short unsigned int\000"
+ 849      7420756E 
+ 849      7369676E 
+ 849      65642069 
+ 849      6E7400
+ 850              	.LASF18:
+ 851 0560 4359424C 		.ascii	"CYBLE_ERROR_MEMORY_ALLOCATION_FAILED\000"
+ 851      455F4552 
+ 851      524F525F 
+ 851      4D454D4F 
+ 851      52595F41 
+ 852              	.LASF66:
+ 853 0585 4359424C 		.ascii	"CYBLE_STATE_CONNECTED\000"
+ 853      455F5354 
+ 853      4154455F 
+ 853      434F4E4E 
+ 853      45435445 
+ 854              	.LASF39:
+ 855 059b 4359424C 		.ascii	"CYBLE_ERROR_UNSUPPORTED_FEATURE_OR_PARAMETER_VALUE\000"
+ 855      455F4552 
+ 855      524F525F 
+ 855      554E5355 
+ 855      50504F52 
+ 856              	.LASF67:
+ 857 05ce 4359424C 		.ascii	"CYBLE_STATE_ADVERTISING\000"
+ 857      455F5354 
+ 857      4154455F 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 23
+
+
+ 857      41445645 
+ 857      52544953 
+ 858              	.LASF12:
+ 859 05e6 75696E74 		.ascii	"uint32\000"
+ 859      333200
+ 860              	.LASF74:
+ 861 05ed 6D61696E 		.ascii	"main.c\000"
+ 861      2E6300
+ 862              	.LASF5:
+ 863 05f4 6C6F6E67 		.ascii	"long unsigned int\000"
+ 863      20756E73 
+ 863      69676E65 
+ 863      6420696E 
+ 863      7400
+ 864              	.LASF10:
+ 865 0606 646F7562 		.ascii	"double\000"
+ 865      6C6500
+ 866              	.LASF49:
+ 867 060d 4359424C 		.ascii	"CYBLE_BLESS_ACTIVE\000"
+ 867      455F424C 
+ 867      4553535F 
+ 867      41435449 
+ 867      564500
+ 868              	.LASF34:
+ 869 0620 4359424C 		.ascii	"CYBLE_ERROR_GATT_DB_INVALID_ATTR_HANDLE\000"
+ 869      455F4552 
+ 869      524F525F 
+ 869      47415454 
+ 869      5F44425F 
+ 870              	.LASF33:
+ 871 0648 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_IN_RANGE\000"
+ 871      455F4552 
+ 871      524F525F 
+ 871      4C324341 
+ 871      505F5053 
+ 872              	.LASF38:
+ 873 066b 4359424C 		.ascii	"CYBLE_ERROR_HARDWARE_FAILURE\000"
+ 873      455F4552 
+ 873      524F525F 
+ 873      48415244 
+ 873      57415245 
+ 874              	.LASF53:
+ 875 0688 4359424C 		.ascii	"CYBLE_BLESS_INVALID\000"
+ 875      455F424C 
+ 875      4553535F 
+ 875      494E5641 
+ 875      4C494400 
+ 876              	.LASF60:
+ 877 069c 4359424C 		.ascii	"CYBLE_BLESS_STATE_DEEPSLEEP\000"
+ 877      455F424C 
+ 877      4553535F 
+ 877      53544154 
+ 877      455F4445 
+ 878              	.LASF77:
+ 879 06b8 6379426C 		.ascii	"cyBle_state\000"
+ 879      655F7374 
+ 879      61746500 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\ccm6eP31.s 			page 24
+
+
+ 880              	.LASF43:
+ 881 06c4 4359424C 		.ascii	"CYBLE_ERROR_NTF_DISABLED\000"
+ 881      455F4552 
+ 881      524F525F 
+ 881      4E54465F 
+ 881      44495341 
+ 882              	.LASF55:
+ 883 06dd 4359424C 		.ascii	"CYBLE_BLESS_STATE_ACTIVE\000"
+ 883      455F424C 
+ 883      4553535F 
+ 883      53544154 
+ 883      455F4143 
+ 884              	.LASF35:
+ 885 06f6 4359424C 		.ascii	"CYBLE_ERROR_DEVICE_ALREADY_EXISTS\000"
+ 885      455F4552 
+ 885      524F525F 
+ 885      44455649 
+ 885      43455F41 
+ 886              	.LASF42:
+ 887 0718 4359424C 		.ascii	"CYBLE_ERROR_MAX\000"
+ 887      455F4552 
+ 887      524F525F 
+ 887      4D415800 
+ 888              	.LASF46:
+ 889 0728 4359424C 		.ascii	"CYBLE_ERROR_INVALID_STATE\000"
+ 889      455F4552 
+ 889      524F525F 
+ 889      494E5641 
+ 889      4C49445F 
+ 890              	.LASF31:
+ 891 0742 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
+ 891      455F4552 
+ 891      524F525F 
+ 891      4C324341 
+ 891      505F434F 
+ 892              	.LASF44:
+ 893 0770 4359424C 		.ascii	"CYBLE_ERROR_IND_DISABLED\000"
+ 893      455F4552 
+ 893      524F525F 
+ 893      494E445F 
+ 893      44495341 
+ 894              	.LASF13:
+ 895 0789 72656733 		.ascii	"reg32\000"
+ 895      3200
+ 896              	.LASF72:
+ 897 078f 626C6541 		.ascii	"bleApiResult\000"
+ 897      70695265 
+ 897      73756C74 
+ 897      00
+ 898              	.LASF52:
+ 899 079c 4359424C 		.ascii	"CYBLE_BLESS_HIBERNATE\000"
+ 899      455F424C 
+ 899      4553535F 
+ 899      48494245 
+ 899      524E4154 
+ 900              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

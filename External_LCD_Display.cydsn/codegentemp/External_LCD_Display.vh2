@@ -1,0 +1,3004 @@
+--
+--	Conversion of External_LCD_Display.v to vh2:
+--
+--	Cypress Semiconductor - WARP Version 6.3 IR 41
+--	Thu May 18 15:19:09 2017
+--
+
+USE cypress.cypress.all;
+USE cypress.rtlpkg.all;
+ENTITY top_RTL IS
+ATTRIBUTE part_name of top_RTL:TYPE IS "cpsoc3";
+END top_RTL;
+--------------------------------------------------------
+ARCHITECTURE R_T_L OF top_RTL IS
+SIGNAL Net_539 : bit;
+SIGNAL Net_540 : bit;
+SIGNAL tmpOE__SineWave_net_0 : bit;
+SIGNAL zero : bit;
+SIGNAL tmpFB_0__SineWave_net_0 : bit;
+TERMINAL Net_663 : bit;
+SIGNAL tmpIO_0__SineWave_net_0 : bit;
+TERMINAL tmpSIOVREF__SineWave_net_0 : bit;
+SIGNAL one : bit;
+SIGNAL tmpINTERRUPT_0__SineWave_net_0 : bit;
+SIGNAL tmpOE__Song2Trigger_net_0 : bit;
+SIGNAL tmpFB_0__Song2Trigger_net_0 : bit;
+SIGNAL Net_1183 : bit;
+TERMINAL tmpSIOVREF__Song2Trigger_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Song2Trigger_net_0 : bit;
+SIGNAL tmpOE__Song1Trigger_net_0 : bit;
+SIGNAL tmpFB_0__Song1Trigger_net_0 : bit;
+SIGNAL Net_1184 : bit;
+TERMINAL tmpSIOVREF__Song1Trigger_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Song1Trigger_net_0 : bit;
+TERMINAL \SineWaveGen:Net_211\ : bit;
+TERMINAL \SineWaveGen:Net_189\ : bit;
+TERMINAL \SineWaveGen:Net_256\ : bit;
+TERMINAL \SineWaveGen:Net_190\ : bit;
+TERMINAL \SineWaveGen:Net_254\ : bit;
+SIGNAL \SineWaveGen:Net_183\ : bit;
+SIGNAL Net_1147 : bit;
+SIGNAL \SineWaveGen:Net_107\ : bit;
+SIGNAL Net_1148 : bit;
+SIGNAL \SineWaveGen:demux:tmp__demux_0_reg\ : bit;
+SIGNAL \SineWaveGen:Net_134\ : bit;
+SIGNAL \SineWaveGen:Net_336\ : bit;
+SIGNAL \SineWaveGen:demux:tmp__demux_1_reg\ : bit;
+SIGNAL \SineWaveGen:VDAC8:Net_83\ : bit;
+SIGNAL \SineWaveGen:VDAC8:Net_81\ : bit;
+SIGNAL \SineWaveGen:VDAC8:Net_82\ : bit;
+TERMINAL \SineWaveGen:VDAC8:Net_77\ : bit;
+TERMINAL \SineWaveGen:BuffAmp:Net_29\ : bit;
+TERMINAL \SineWaveGen:Net_247\ : bit;
+TERMINAL Net_661 : bit;
+SIGNAL \SineWaveGen:Net_280\ : bit;
+SIGNAL \SineWaveGen:Net_80\ : bit;
+SIGNAL \SineWaveGen:Net_279\ : bit;
+SIGNAL \SineWaveGen:cydff_1\ : bit;
+SIGNAL tmpOE__Song4Trigger_net_0 : bit;
+SIGNAL tmpFB_0__Song4Trigger_net_0 : bit;
+SIGNAL Net_1185 : bit;
+TERMINAL tmpSIOVREF__Song4Trigger_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Song4Trigger_net_0 : bit;
+SIGNAL tmpOE__Song3Trigger_net_0 : bit;
+SIGNAL tmpFB_0__Song3Trigger_net_0 : bit;
+SIGNAL Net_1186 : bit;
+TERMINAL tmpSIOVREF__Song3Trigger_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Song3Trigger_net_0 : bit;
+SIGNAL \LCD_Char_1:tmpOE__LCDPort_net_6\ : bit;
+SIGNAL \LCD_Char_1:tmpOE__LCDPort_net_5\ : bit;
+SIGNAL \LCD_Char_1:tmpOE__LCDPort_net_4\ : bit;
+SIGNAL \LCD_Char_1:tmpOE__LCDPort_net_3\ : bit;
+SIGNAL \LCD_Char_1:tmpOE__LCDPort_net_2\ : bit;
+SIGNAL \LCD_Char_1:tmpOE__LCDPort_net_1\ : bit;
+SIGNAL \LCD_Char_1:tmpOE__LCDPort_net_0\ : bit;
+SIGNAL \LCD_Char_1:tmpFB_6__LCDPort_net_6\ : bit;
+SIGNAL \LCD_Char_1:tmpFB_6__LCDPort_net_5\ : bit;
+SIGNAL \LCD_Char_1:tmpFB_6__LCDPort_net_4\ : bit;
+SIGNAL \LCD_Char_1:tmpFB_6__LCDPort_net_3\ : bit;
+SIGNAL \LCD_Char_1:tmpFB_6__LCDPort_net_2\ : bit;
+SIGNAL \LCD_Char_1:tmpFB_6__LCDPort_net_1\ : bit;
+SIGNAL \LCD_Char_1:tmpFB_6__LCDPort_net_0\ : bit;
+SIGNAL \LCD_Char_1:tmpIO_6__LCDPort_net_6\ : bit;
+SIGNAL \LCD_Char_1:tmpIO_6__LCDPort_net_5\ : bit;
+SIGNAL \LCD_Char_1:tmpIO_6__LCDPort_net_4\ : bit;
+SIGNAL \LCD_Char_1:tmpIO_6__LCDPort_net_3\ : bit;
+SIGNAL \LCD_Char_1:tmpIO_6__LCDPort_net_2\ : bit;
+SIGNAL \LCD_Char_1:tmpIO_6__LCDPort_net_1\ : bit;
+SIGNAL \LCD_Char_1:tmpIO_6__LCDPort_net_0\ : bit;
+TERMINAL \LCD_Char_1:tmpSIOVREF__LCDPort_net_0\ : bit;
+SIGNAL \LCD_Char_1:tmpINTERRUPT_0__LCDPort_net_0\ : bit;
+SIGNAL \VDAC8_1:Net_83\ : bit;
+SIGNAL \VDAC8_1:Net_81\ : bit;
+SIGNAL \VDAC8_1:Net_82\ : bit;
+TERMINAL Net_697 : bit;
+TERMINAL \VDAC8_1:Net_77\ : bit;
+SIGNAL tmpOE__ADC_Positive_Input_net_0 : bit;
+SIGNAL tmpFB_0__ADC_Positive_Input_net_0 : bit;
+TERMINAL Net_685 : bit;
+SIGNAL tmpIO_0__ADC_Positive_Input_net_0 : bit;
+TERMINAL tmpSIOVREF__ADC_Positive_Input_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__ADC_Positive_Input_net_0 : bit;
+TERMINAL \ADC:Net_244\ : bit;
+TERMINAL \ADC:Net_690\ : bit;
+TERMINAL \ADC:Net_35\ : bit;
+TERMINAL \ADC:Net_34\ : bit;
+TERMINAL \ADC:Net_677\ : bit;
+TERMINAL \ADC:Net_20\ : bit;
+SIGNAL \ADC:Net_488\ : bit;
+TERMINAL \ADC:Net_520\ : bit;
+SIGNAL \ADC:Net_481\ : bit;
+SIGNAL \ADC:Net_482\ : bit;
+SIGNAL \ADC:mod_reset\ : bit;
+SIGNAL \ADC:Net_93\ : bit;
+TERMINAL \ADC:Net_573\ : bit;
+TERMINAL \ADC:Net_41\ : bit;
+TERMINAL \ADC:Net_109\ : bit;
+SIGNAL \ADC:aclock\ : bit;
+SIGNAL \ADC:mod_dat_3\ : bit;
+SIGNAL \ADC:mod_dat_2\ : bit;
+SIGNAL \ADC:mod_dat_1\ : bit;
+SIGNAL \ADC:mod_dat_0\ : bit;
+SIGNAL \ADC:Net_245_7\ : bit;
+SIGNAL \ADC:Net_245_6\ : bit;
+SIGNAL \ADC:Net_245_5\ : bit;
+SIGNAL \ADC:Net_245_4\ : bit;
+SIGNAL \ADC:Net_245_3\ : bit;
+SIGNAL \ADC:Net_245_2\ : bit;
+SIGNAL \ADC:Net_245_1\ : bit;
+SIGNAL \ADC:Net_245_0\ : bit;
+TERMINAL \ADC:Net_352\ : bit;
+TERMINAL \ADC:Net_257\ : bit;
+TERMINAL \ADC:Net_249\ : bit;
+SIGNAL Net_688 : bit;
+SIGNAL \ADC:Net_250\ : bit;
+SIGNAL \ADC:Net_252\ : bit;
+SIGNAL \ADC:soc\ : bit;
+SIGNAL \ADC:Net_268\ : bit;
+SIGNAL \ADC:Net_270\ : bit;
+TERMINAL \PGA:Net_17\ : bit;
+SIGNAL \PGA:Net_37\ : bit;
+SIGNAL \PGA:Net_40\ : bit;
+SIGNAL \PGA:Net_38\ : bit;
+SIGNAL \PGA:Net_39\ : bit;
+SIGNAL \PGA:Net_41\ : bit;
+TERMINAL \PGA:Net_75\ : bit;
+SIGNAL tmpOE__SensorValue2_net_0 : bit;
+SIGNAL Net_1193 : bit;
+SIGNAL tmpFB_0__SensorValue2_net_0 : bit;
+SIGNAL tmpIO_0__SensorValue2_net_0 : bit;
+TERMINAL tmpSIOVREF__SensorValue2_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__SensorValue2_net_0 : bit;
+SIGNAL tmpOE__SensorValue4_net_0 : bit;
+SIGNAL Net_1195 : bit;
+SIGNAL tmpFB_0__SensorValue4_net_0 : bit;
+SIGNAL tmpIO_0__SensorValue4_net_0 : bit;
+TERMINAL tmpSIOVREF__SensorValue4_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__SensorValue4_net_0 : bit;
+SIGNAL tmpOE__Sensor_Interrupt_net_0 : bit;
+SIGNAL Net_1178 : bit;
+SIGNAL tmpFB_0__Sensor_Interrupt_net_0 : bit;
+SIGNAL tmpIO_0__Sensor_Interrupt_net_0 : bit;
+TERMINAL tmpSIOVREF__Sensor_Interrupt_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Sensor_Interrupt_net_0 : bit;
+SIGNAL tmpOE__SensorValue5_net_0 : bit;
+SIGNAL Net_1196 : bit;
+SIGNAL tmpFB_0__SensorValue5_net_0 : bit;
+SIGNAL tmpIO_0__SensorValue5_net_0 : bit;
+TERMINAL tmpSIOVREF__SensorValue5_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__SensorValue5_net_0 : bit;
+SIGNAL tmpOE__SensorValue3_net_0 : bit;
+SIGNAL Net_1194 : bit;
+SIGNAL tmpFB_0__SensorValue3_net_0 : bit;
+SIGNAL tmpIO_0__SensorValue3_net_0 : bit;
+TERMINAL tmpSIOVREF__SensorValue3_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__SensorValue3_net_0 : bit;
+SIGNAL tmpOE__Sensor5_net_0 : bit;
+SIGNAL tmpFB_0__Sensor5_net_0 : bit;
+TERMINAL Net_1262 : bit;
+SIGNAL tmpIO_0__Sensor5_net_0 : bit;
+TERMINAL tmpSIOVREF__Sensor5_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Sensor5_net_0 : bit;
+SIGNAL tmpOE__Sensor4_net_0 : bit;
+SIGNAL tmpFB_0__Sensor4_net_0 : bit;
+TERMINAL Net_1260 : bit;
+SIGNAL tmpIO_0__Sensor4_net_0 : bit;
+TERMINAL tmpSIOVREF__Sensor4_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Sensor4_net_0 : bit;
+SIGNAL tmpOE__Sensor3_net_0 : bit;
+SIGNAL tmpFB_0__Sensor3_net_0 : bit;
+TERMINAL Net_1259 : bit;
+SIGNAL tmpIO_0__Sensor3_net_0 : bit;
+TERMINAL tmpSIOVREF__Sensor3_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Sensor3_net_0 : bit;
+SIGNAL tmpOE__Sensor2_net_0 : bit;
+SIGNAL tmpFB_0__Sensor2_net_0 : bit;
+TERMINAL Net_1257 : bit;
+SIGNAL tmpIO_0__Sensor2_net_0 : bit;
+TERMINAL tmpSIOVREF__Sensor2_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Sensor2_net_0 : bit;
+SIGNAL \SensorScan:clk\ : bit;
+SIGNAL \SensorScan:Net_3474\ : bit;
+TERMINAL \SensorScan:Net_5517\ : bit;
+TERMINAL \SensorScan:V_single\ : bit;
+SIGNAL \SensorScan:bScanComp:clk_ctrl\ : bit;
+SIGNAL \SensorScan:bScanComp:ctrl_enable\ : bit;
+SIGNAL \SensorScan:bScanComp:clk_int\ : bit;
+SIGNAL \SensorScan:bScanComp:control_7\ : bit;
+SIGNAL \SensorScan:bScanComp:control_6\ : bit;
+SIGNAL \SensorScan:bScanComp:control_5\ : bit;
+SIGNAL \SensorScan:bScanComp:control_4\ : bit;
+SIGNAL \SensorScan:bScanComp:control_3\ : bit;
+SIGNAL \SensorScan:bScanComp:control_2\ : bit;
+SIGNAL \SensorScan:bScanComp:control_1\ : bit;
+SIGNAL \SensorScan:bScanComp:control_0\ : bit;
+SIGNAL \SensorScan:bScanComp:status_out0_7\ : bit;
+SIGNAL \SensorScan:bScanComp:status_out0_6\ : bit;
+SIGNAL \SensorScan:bScanComp:status_out0_5\ : bit;
+SIGNAL \SensorScan:bScanComp:status_out0_4\ : bit;
+SIGNAL \SensorScan:bScanComp:status_out0_3\ : bit;
+SIGNAL \SensorScan:bScanComp:status_out0_2\ : bit;
+SIGNAL \SensorScan:bScanComp:status_out0_1\ : bit;
+SIGNAL \SensorScan:bScanComp:status_out0_0\ : bit;
+SIGNAL \SensorScan:bScanComp:status_reset\ : bit;
+SIGNAL \SensorScan:bScanComp:status_int0_6\ : bit;
+SIGNAL \SensorScan:bScanComp:status_int0_5\ : bit;
+SIGNAL \SensorScan:bScanComp:status_int0_4\ : bit;
+SIGNAL \SensorScan:bScanComp:status_int0_3\ : bit;
+SIGNAL \SensorScan:bScanComp:status_int0_2\ : bit;
+SIGNAL \SensorScan:bScanComp:status_int0_1\ : bit;
+SIGNAL \SensorScan:bScanComp:status_int0_0\ : bit;
+SIGNAL \SensorScan:bScanComp:irq_out_0\ : bit;
+SIGNAL \SensorScan:bScanComp:enable_int\ : bit;
+ATTRIBUTE soft of \SensorScan:bScanComp:enable_int\:SIGNAL IS '1';
+SIGNAL \SensorScan:bScanComp:count_6\ : bit;
+SIGNAL \SensorScan:bScanComp:count_5\ : bit;
+SIGNAL \SensorScan:bScanComp:count_4\ : bit;
+SIGNAL \SensorScan:bScanComp:count_3\ : bit;
+SIGNAL \SensorScan:bScanComp:count_2\ : bit;
+SIGNAL \SensorScan:bScanComp:count_1\ : bit;
+SIGNAL \SensorScan:bScanComp:count_0\ : bit;
+SIGNAL \SensorScan:bScanComp:tc_o\ : bit;
+SIGNAL \SensorScan:bScanComp:delay_form\ : bit;
+SIGNAL \SensorScan:bScanComp:det_reg\ : bit;
+SIGNAL \SensorScan:bScanComp:eos_latch\ : bit;
+SIGNAL \SensorScan:bScanComp:tc3\ : bit;
+SIGNAL \SensorScan:bScanComp:tc0\ : bit;
+SIGNAL \SensorScan:bScanComp:tc1\ : bit;
+SIGNAL \SensorScan:bScanComp:tc2\ : bit;
+SIGNAL \SensorScan:bScanComp:drq_reg\ : bit;
+SIGNAL \SensorScan:bScanComp:count_reg_2\ : bit;
+SIGNAL \SensorScan:bScanComp:counter_value_2\ : bit;
+SIGNAL \SensorScan:bScanComp:count_reg_1\ : bit;
+SIGNAL \SensorScan:bScanComp:counter_value_1\ : bit;
+SIGNAL \SensorScan:bScanComp:count_reg_0\ : bit;
+SIGNAL \SensorScan:bScanComp:counter_value_0\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_4\ : bit;
+SIGNAL \SensorScan:Net_5511\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_3\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_2\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_1\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_0\ : bit;
+SIGNAL \SensorScan:ch_63\ : bit;
+SIGNAL \SensorScan:ch_62\ : bit;
+SIGNAL \SensorScan:ch_61\ : bit;
+SIGNAL \SensorScan:ch_60\ : bit;
+SIGNAL \SensorScan:ch_59\ : bit;
+SIGNAL \SensorScan:ch_58\ : bit;
+SIGNAL \SensorScan:ch_57\ : bit;
+SIGNAL \SensorScan:ch_56\ : bit;
+SIGNAL \SensorScan:ch_55\ : bit;
+SIGNAL \SensorScan:ch_54\ : bit;
+SIGNAL \SensorScan:ch_53\ : bit;
+SIGNAL \SensorScan:ch_52\ : bit;
+SIGNAL \SensorScan:ch_51\ : bit;
+SIGNAL \SensorScan:ch_50\ : bit;
+SIGNAL \SensorScan:ch_49\ : bit;
+SIGNAL \SensorScan:ch_48\ : bit;
+SIGNAL \SensorScan:ch_47\ : bit;
+SIGNAL \SensorScan:ch_46\ : bit;
+SIGNAL \SensorScan:ch_45\ : bit;
+SIGNAL \SensorScan:ch_44\ : bit;
+SIGNAL \SensorScan:ch_43\ : bit;
+SIGNAL \SensorScan:ch_42\ : bit;
+SIGNAL \SensorScan:ch_41\ : bit;
+SIGNAL \SensorScan:ch_40\ : bit;
+SIGNAL \SensorScan:ch_39\ : bit;
+SIGNAL \SensorScan:ch_38\ : bit;
+SIGNAL \SensorScan:ch_37\ : bit;
+SIGNAL \SensorScan:ch_36\ : bit;
+SIGNAL \SensorScan:ch_35\ : bit;
+SIGNAL \SensorScan:ch_34\ : bit;
+SIGNAL \SensorScan:ch_33\ : bit;
+SIGNAL \SensorScan:ch_32\ : bit;
+SIGNAL \SensorScan:ch_31\ : bit;
+SIGNAL \SensorScan:ch_30\ : bit;
+SIGNAL \SensorScan:ch_29\ : bit;
+SIGNAL \SensorScan:ch_28\ : bit;
+SIGNAL \SensorScan:ch_27\ : bit;
+SIGNAL \SensorScan:ch_26\ : bit;
+SIGNAL \SensorScan:ch_25\ : bit;
+SIGNAL \SensorScan:ch_24\ : bit;
+SIGNAL \SensorScan:ch_23\ : bit;
+SIGNAL \SensorScan:ch_22\ : bit;
+SIGNAL \SensorScan:ch_21\ : bit;
+SIGNAL \SensorScan:ch_20\ : bit;
+SIGNAL \SensorScan:ch_19\ : bit;
+SIGNAL \SensorScan:ch_18\ : bit;
+SIGNAL \SensorScan:ch_17\ : bit;
+SIGNAL \SensorScan:ch_16\ : bit;
+SIGNAL \SensorScan:ch_15\ : bit;
+SIGNAL \SensorScan:ch_14\ : bit;
+SIGNAL \SensorScan:ch_13\ : bit;
+SIGNAL \SensorScan:ch_12\ : bit;
+SIGNAL \SensorScan:ch_11\ : bit;
+SIGNAL \SensorScan:ch_10\ : bit;
+SIGNAL \SensorScan:ch_9\ : bit;
+SIGNAL \SensorScan:ch_8\ : bit;
+SIGNAL \SensorScan:ch_7\ : bit;
+SIGNAL \SensorScan:ch_6\ : bit;
+SIGNAL \SensorScan:ch_5\ : bit;
+SIGNAL \SensorScan:ch_4\ : bit;
+SIGNAL \SensorScan:ch_3\ : bit;
+SIGNAL \SensorScan:ch_2\ : bit;
+SIGNAL \SensorScan:ch_1\ : bit;
+SIGNAL \SensorScan:ch_0\ : bit;
+SIGNAL \SensorScan:ch_addr_5\ : bit;
+SIGNAL \SensorScan:ch_addr_4\ : bit;
+SIGNAL \SensorScan:ch_addr_3\ : bit;
+SIGNAL \SensorScan:ch_addr_2\ : bit;
+SIGNAL \SensorScan:ch_addr_1\ : bit;
+SIGNAL \SensorScan:ch_addr_0\ : bit;
+SIGNAL Net_1192 : bit;
+SIGNAL \SensorScan:Net_8227\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_4\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_3\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_2\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_1\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_0\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_0\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_1\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_2\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_3\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_4\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_5\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_6\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_7\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_8\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_9\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_10\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_11\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_12\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_13\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_14\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_15\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_16\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_17\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_18\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_19\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_20\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_21\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_22\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_23\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_24\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_25\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_26\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_27\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_28\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_29\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_30\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_31\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_32\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_33\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_34\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_35\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_36\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_37\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_38\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_39\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_40\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_41\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_42\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_43\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_44\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_45\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_46\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_47\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_48\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_49\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_50\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_51\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_52\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_53\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_54\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_55\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_56\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_57\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_58\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_59\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_60\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_61\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_62\ : bit;
+SIGNAL \SensorScan:bScanComp:edge_detect_63\ : bit;
+SIGNAL \SensorScan:Net_777\ : bit;
+SIGNAL \SensorScan:Net_776\ : bit;
+TERMINAL \SensorScan:Net_6163\ : bit;
+SIGNAL \SensorScan:Comp:clock\ : bit;
+SIGNAL \SensorScan:Comp:Net_1\ : bit;
+SIGNAL \SensorScan:Comp:Net_9\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_enable\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ : bit;
+ATTRIBUTE soft of \SensorScan:ScanCompAMuxSingle_Decoder_is_active\:SIGNAL IS '1';
+SIGNAL \SensorScan:cmp_vv_vv_MODGEN_1\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_0\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_1\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_2\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_3\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_4\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_5\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_6\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_7\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_8\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_9\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_10\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_11\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_12\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_13\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_14\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_15\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_16\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_17\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_18\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_19\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_20\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_21\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_22\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_23\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_24\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_25\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_26\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_27\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_28\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_29\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_30\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_31\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_32\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_33\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_34\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_35\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_36\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_37\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_38\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_39\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_40\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_41\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_42\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_43\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_44\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_45\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_46\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_47\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_48\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_49\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_50\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_51\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_52\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_53\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_54\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_55\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_56\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_57\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_58\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_59\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_60\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_61\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_62\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_63\ : bit;
+TERMINAL Net_1376 : bit;
+TERMINAL Net_1375 : bit;
+TERMINAL Net_1373 : bit;
+TERMINAL Net_1371 : bit;
+TERMINAL Net_1370 : bit;
+TERMINAL Net_1368 : bit;
+TERMINAL Net_1366 : bit;
+TERMINAL Net_1365 : bit;
+TERMINAL Net_1363 : bit;
+TERMINAL Net_1361 : bit;
+TERMINAL Net_1360 : bit;
+TERMINAL Net_1358 : bit;
+TERMINAL Net_1356 : bit;
+TERMINAL Net_1355 : bit;
+TERMINAL Net_1353 : bit;
+TERMINAL Net_1351 : bit;
+TERMINAL Net_1334 : bit;
+TERMINAL Net_1332 : bit;
+TERMINAL Net_1330 : bit;
+TERMINAL Net_1329 : bit;
+TERMINAL Net_1327 : bit;
+TERMINAL Net_1325 : bit;
+TERMINAL Net_1324 : bit;
+TERMINAL Net_1322 : bit;
+TERMINAL Net_1320 : bit;
+TERMINAL Net_1319 : bit;
+TERMINAL Net_1317 : bit;
+TERMINAL Net_1315 : bit;
+TERMINAL Net_1314 : bit;
+TERMINAL Net_1312 : bit;
+TERMINAL Net_1310 : bit;
+TERMINAL Net_1309 : bit;
+TERMINAL Net_1307 : bit;
+TERMINAL Net_1305 : bit;
+TERMINAL Net_1304 : bit;
+TERMINAL Net_1302 : bit;
+TERMINAL Net_1300 : bit;
+TERMINAL Net_1299 : bit;
+TERMINAL Net_1297 : bit;
+TERMINAL Net_1295 : bit;
+TERMINAL Net_1294 : bit;
+TERMINAL Net_1292 : bit;
+TERMINAL Net_1290 : bit;
+TERMINAL Net_1289 : bit;
+TERMINAL Net_1287 : bit;
+TERMINAL Net_1285 : bit;
+TERMINAL Net_1284 : bit;
+TERMINAL Net_1282 : bit;
+TERMINAL Net_1280 : bit;
+TERMINAL Net_1279 : bit;
+TERMINAL Net_1277 : bit;
+TERMINAL Net_1275 : bit;
+TERMINAL Net_1274 : bit;
+TERMINAL Net_1272 : bit;
+TERMINAL Net_1270 : bit;
+TERMINAL Net_1269 : bit;
+TERMINAL Net_1267 : bit;
+TERMINAL Net_1265 : bit;
+TERMINAL Net_1264 : bit;
+TERMINAL Net_1189 : bit;
+SIGNAL Net_1190 : bit;
+SIGNAL Net_1197 : bit;
+SIGNAL Net_1198 : bit;
+SIGNAL Net_1199 : bit;
+SIGNAL Net_1200 : bit;
+SIGNAL Net_1201 : bit;
+SIGNAL Net_1202 : bit;
+SIGNAL Net_1203 : bit;
+SIGNAL Net_1204 : bit;
+SIGNAL Net_1205 : bit;
+SIGNAL Net_1206 : bit;
+SIGNAL Net_1207 : bit;
+SIGNAL Net_1208 : bit;
+SIGNAL Net_1209 : bit;
+SIGNAL Net_1210 : bit;
+SIGNAL Net_1211 : bit;
+SIGNAL Net_1212 : bit;
+SIGNAL Net_1213 : bit;
+SIGNAL Net_1214 : bit;
+SIGNAL Net_1215 : bit;
+SIGNAL Net_1216 : bit;
+SIGNAL Net_1217 : bit;
+SIGNAL Net_1218 : bit;
+SIGNAL Net_1219 : bit;
+SIGNAL Net_1220 : bit;
+SIGNAL Net_1221 : bit;
+SIGNAL Net_1222 : bit;
+SIGNAL Net_1223 : bit;
+SIGNAL Net_1224 : bit;
+SIGNAL Net_1225 : bit;
+SIGNAL Net_1226 : bit;
+SIGNAL Net_1227 : bit;
+SIGNAL Net_1228 : bit;
+SIGNAL Net_1229 : bit;
+SIGNAL Net_1230 : bit;
+SIGNAL Net_1231 : bit;
+SIGNAL Net_1232 : bit;
+SIGNAL Net_1233 : bit;
+SIGNAL Net_1234 : bit;
+SIGNAL Net_1235 : bit;
+SIGNAL Net_1236 : bit;
+SIGNAL Net_1237 : bit;
+SIGNAL Net_1238 : bit;
+SIGNAL Net_1239 : bit;
+SIGNAL Net_1240 : bit;
+SIGNAL Net_1241 : bit;
+SIGNAL Net_1242 : bit;
+SIGNAL Net_1243 : bit;
+SIGNAL Net_1244 : bit;
+SIGNAL Net_1245 : bit;
+SIGNAL Net_1246 : bit;
+SIGNAL Net_1247 : bit;
+SIGNAL Net_1248 : bit;
+SIGNAL Net_1249 : bit;
+SIGNAL Net_1250 : bit;
+SIGNAL Net_1251 : bit;
+SIGNAL Net_1252 : bit;
+SIGNAL Net_1253 : bit;
+SIGNAL Net_1254 : bit;
+SIGNAL Net_1255 : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newa_5\ : bit;
+SIGNAL \SensorScan:MODIN1_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newa_4\ : bit;
+SIGNAL \SensorScan:MODIN1_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newa_3\ : bit;
+SIGNAL \SensorScan:MODIN1_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newa_2\ : bit;
+SIGNAL \SensorScan:MODIN1_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newa_1\ : bit;
+SIGNAL \SensorScan:MODIN1_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newa_0\ : bit;
+SIGNAL \SensorScan:MODIN1_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newb_5\ : bit;
+SIGNAL \SensorScan:MODIN2_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newb_4\ : bit;
+SIGNAL \SensorScan:MODIN2_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newb_3\ : bit;
+SIGNAL \SensorScan:MODIN2_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newb_2\ : bit;
+SIGNAL \SensorScan:MODIN2_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newb_1\ : bit;
+SIGNAL \SensorScan:MODIN2_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:newb_0\ : bit;
+SIGNAL \SensorScan:MODIN2_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:dataa_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:dataa_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:dataa_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:dataa_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:dataa_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:dataa_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:datab_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:datab_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:datab_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:datab_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:datab_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:datab_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:a_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:a_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:a_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:a_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:a_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:a_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:b_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:b_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:b_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:b_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:b_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:b_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:xnor_array_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:xnor_array_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:xnor_array_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:xnor_array_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:xnor_array_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:xnor_array_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:aeqb_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:eq_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:eq_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:eq_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:eq_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:eq_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:eq_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:eqi_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:aeqb_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:albi_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:agbi_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:lt_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:gt_3\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:lt_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:gt_4\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:lt_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:gt_5\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:lti_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:gti_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:albi_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:agbi_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:lt_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:gt_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:lt_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:gt_1\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:lt_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:gt_2\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:lti_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:gti_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:albi_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:gx:u0:agbi_0\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:xeq\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:xneq\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:xlt\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:xlte\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:xgt\ : bit;
+SIGNAL \SensorScan:MODULE_1:g1:a0:xgte\ : bit;
+SIGNAL \SensorScan:MODULE_1:lt\ : bit;
+ATTRIBUTE port_state_att of \SensorScan:MODULE_1:lt\:SIGNAL IS 2;
+SIGNAL \SensorScan:MODULE_1:gt\ : bit;
+ATTRIBUTE port_state_att of \SensorScan:MODULE_1:gt\:SIGNAL IS 2;
+SIGNAL \SensorScan:MODULE_1:gte\ : bit;
+ATTRIBUTE port_state_att of \SensorScan:MODULE_1:gte\:SIGNAL IS 2;
+SIGNAL \SensorScan:MODULE_1:lte\ : bit;
+ATTRIBUTE port_state_att of \SensorScan:MODULE_1:lte\:SIGNAL IS 2;
+SIGNAL \SensorScan:MODULE_1:neq\ : bit;
+ATTRIBUTE port_state_att of \SensorScan:MODULE_1:neq\:SIGNAL IS 2;
+SIGNAL tmpOE__SensorValue1_net_0 : bit;
+SIGNAL tmpFB_0__SensorValue1_net_0 : bit;
+SIGNAL tmpIO_0__SensorValue1_net_0 : bit;
+TERMINAL tmpSIOVREF__SensorValue1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__SensorValue1_net_0 : bit;
+SIGNAL tmpOE__Sensor1_net_0 : bit;
+SIGNAL tmpFB_0__Sensor1_net_0 : bit;
+SIGNAL tmpIO_0__Sensor1_net_0 : bit;
+TERMINAL tmpSIOVREF__Sensor1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Sensor1_net_0 : bit;
+SIGNAL \SineWaveGen:cydff_1\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:delay_form\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:det_reg\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:eos_latch\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:tc3\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:tc0\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:tc1\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:tc2\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:drq_reg\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:count_reg_2\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:count_reg_1\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:count_reg_0\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_4\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_3\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_2\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_1\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_0\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_0\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_1\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_2\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_3\\D\ : bit;
+SIGNAL \SensorScan:bScanComp:ch_out_reg_4\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_0\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_1\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_2\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_3\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_4\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_5\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_6\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_7\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_8\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_9\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_10\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_11\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_12\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_13\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_14\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_15\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_16\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_17\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_18\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_19\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_20\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_21\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_22\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_23\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_24\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_25\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_26\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_27\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_28\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_29\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_30\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_31\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_32\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_33\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_34\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_35\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_36\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_37\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_38\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_39\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_40\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_41\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_42\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_43\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_44\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_45\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_46\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_47\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_48\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_49\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_50\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_51\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_52\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_53\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_54\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_55\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_56\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_57\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_58\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_59\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_60\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_61\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_62\\D\ : bit;
+SIGNAL \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_63\\D\ : bit;
+BEGIN
+
+Net_539 <=  ('0') ;
+
+tmpOE__SineWave_net_0 <=  ('1') ;
+
+\SineWaveGen:Net_183\ <= ((not \SineWaveGen:Net_134\ and Net_540));
+
+\SineWaveGen:Net_107\ <= ((Net_540 and \SineWaveGen:Net_134\));
+
+\SensorScan:bScanComp:delay_form\\D\ <= (not \SensorScan:bScanComp:delay_form\);
+
+\SensorScan:bScanComp:eos_latch\\D\ <= (\SensorScan:bScanComp:tc3\
+	OR \SensorScan:bScanComp:eos_latch\);
+
+\SensorScan:bScanComp:count_reg_2\\D\ <= ((\SensorScan:bScanComp:enable_int\ and \SensorScan:ch_addr_2\)
+	OR (not \SensorScan:bScanComp:enable_int\ and \SensorScan:bScanComp:count_reg_2\));
+
+\SensorScan:bScanComp:count_reg_1\\D\ <= ((\SensorScan:bScanComp:enable_int\ and \SensorScan:ch_addr_1\)
+	OR (not \SensorScan:bScanComp:enable_int\ and \SensorScan:bScanComp:count_reg_1\));
+
+\SensorScan:bScanComp:count_reg_0\\D\ <= ((\SensorScan:bScanComp:enable_int\ and \SensorScan:ch_addr_0\)
+	OR (not \SensorScan:bScanComp:enable_int\ and \SensorScan:bScanComp:count_reg_0\));
+
+\SensorScan:bScanComp:ch_out_4\\D\ <= ((not \SensorScan:bScanComp:count_reg_1\ and not \SensorScan:bScanComp:count_reg_0\ and \SensorScan:bScanComp:enable_int\ and \SensorScan:bScanComp:count_reg_2\ and \SensorScan:Net_5511\)
+	OR (Net_1196 and \SensorScan:bScanComp:count_reg_0\)
+	OR (Net_1196 and \SensorScan:bScanComp:count_reg_1\)
+	OR (not \SensorScan:bScanComp:count_reg_2\ and Net_1196)
+	OR (not \SensorScan:bScanComp:enable_int\ and Net_1196));
+
+\SensorScan:bScanComp:ch_out_3\\D\ <= ((not \SensorScan:bScanComp:count_reg_2\ and \SensorScan:bScanComp:enable_int\ and \SensorScan:bScanComp:count_reg_1\ and \SensorScan:bScanComp:count_reg_0\ and \SensorScan:Net_5511\)
+	OR (not \SensorScan:bScanComp:count_reg_0\ and Net_1195)
+	OR (not \SensorScan:bScanComp:count_reg_1\ and Net_1195)
+	OR (Net_1195 and \SensorScan:bScanComp:count_reg_2\)
+	OR (not \SensorScan:bScanComp:enable_int\ and Net_1195));
+
+\SensorScan:bScanComp:ch_out_2\\D\ <= ((not \SensorScan:bScanComp:count_reg_2\ and not \SensorScan:bScanComp:count_reg_0\ and \SensorScan:bScanComp:enable_int\ and \SensorScan:bScanComp:count_reg_1\ and \SensorScan:Net_5511\)
+	OR (Net_1194 and \SensorScan:bScanComp:count_reg_0\)
+	OR (not \SensorScan:bScanComp:count_reg_1\ and Net_1194)
+	OR (Net_1194 and \SensorScan:bScanComp:count_reg_2\)
+	OR (not \SensorScan:bScanComp:enable_int\ and Net_1194));
+
+\SensorScan:bScanComp:ch_out_1\\D\ <= ((not \SensorScan:bScanComp:count_reg_2\ and not \SensorScan:bScanComp:count_reg_1\ and \SensorScan:bScanComp:enable_int\ and \SensorScan:bScanComp:count_reg_0\ and \SensorScan:Net_5511\)
+	OR (not \SensorScan:bScanComp:count_reg_0\ and Net_1193)
+	OR (Net_1193 and \SensorScan:bScanComp:count_reg_1\)
+	OR (Net_1193 and \SensorScan:bScanComp:count_reg_2\)
+	OR (not \SensorScan:bScanComp:enable_int\ and Net_1193));
+
+\SensorScan:bScanComp:ch_out_0\\D\ <= ((not \SensorScan:bScanComp:count_reg_2\ and not \SensorScan:bScanComp:count_reg_1\ and not \SensorScan:bScanComp:count_reg_0\ and \SensorScan:bScanComp:enable_int\ and \SensorScan:Net_5511\)
+	OR (\SensorScan:bScanComp:count_reg_0\ and Net_1190)
+	OR (\SensorScan:bScanComp:count_reg_1\ and Net_1190)
+	OR (\SensorScan:bScanComp:count_reg_2\ and Net_1190)
+	OR (not \SensorScan:bScanComp:enable_int\ and Net_1190));
+
+\SensorScan:bScanComp:enable_int\ <= ((not \SensorScan:bScanComp:det_reg\ and \SensorScan:bScanComp:delay_form\));
+
+\SensorScan:bScanComp:status_reset\ <= (not \SensorScan:bScanComp:eos_latch\);
+
+\SensorScan:bScanComp:status_int0_4\ <= ((not \SensorScan:bScanComp:ch_out_reg_4\ and Net_1196)
+	OR (not Net_1196 and \SensorScan:bScanComp:ch_out_reg_4\));
+
+\SensorScan:bScanComp:status_int0_3\ <= ((not \SensorScan:bScanComp:ch_out_reg_3\ and Net_1195)
+	OR (not Net_1195 and \SensorScan:bScanComp:ch_out_reg_3\));
+
+\SensorScan:bScanComp:status_int0_2\ <= ((not \SensorScan:bScanComp:ch_out_reg_2\ and Net_1194)
+	OR (not Net_1194 and \SensorScan:bScanComp:ch_out_reg_2\));
+
+\SensorScan:bScanComp:status_int0_1\ <= ((not \SensorScan:bScanComp:ch_out_reg_1\ and Net_1193)
+	OR (not Net_1193 and \SensorScan:bScanComp:ch_out_reg_1\));
+
+\SensorScan:bScanComp:status_int0_0\ <= ((not \SensorScan:bScanComp:ch_out_reg_0\ and Net_1190)
+	OR (not Net_1190 and \SensorScan:bScanComp:ch_out_reg_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_is_active\ <= ((not \SensorScan:ch_addr_2\ and not \SensorScan:ch_addr_1\ and not \SensorScan:ch_addr_0\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\)
+	OR (not \SensorScan:ch_addr_1\ and not \SensorScan:ch_addr_0\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ch_addr_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\)
+	OR (not \SensorScan:ch_addr_2\ and not \SensorScan:ch_addr_0\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ch_addr_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\)
+	OR (not \SensorScan:ch_addr_0\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ch_addr_2\ and \SensorScan:ch_addr_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\)
+	OR (not \SensorScan:ch_addr_2\ and not \SensorScan:ch_addr_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ch_addr_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\)
+	OR (not \SensorScan:ch_addr_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ch_addr_2\ and \SensorScan:ch_addr_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\)
+	OR (not \SensorScan:ch_addr_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ch_addr_1\ and \SensorScan:ch_addr_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\)
+	OR (not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ch_addr_2\ and \SensorScan:ch_addr_1\ and \SensorScan:ch_addr_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_0\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_1\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_2\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_3\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_4\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_5\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_6\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_7\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_8\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_9\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_10\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_11\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_12\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_13\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_14\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_15\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_16\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_17\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_18\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_19\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_20\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_21\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_22\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_23\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_24\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_25\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_26\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_27\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_28\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_29\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_30\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_31\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_32\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_33\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_34\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_35\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_36\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_37\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_38\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_39\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_40\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_41\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_42\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_43\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_44\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_45\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_46\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_47\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_48\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_49\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_50\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_51\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_52\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_53\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_54\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_55\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_56\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_57\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_58\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_59\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_60\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_61\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_62\\D\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\));
+
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_63\\D\ <= ((\SensorScan:ScanCompAMuxSingle_Decoder_is_active\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\));
+
+\SensorScan:MODULE_1:g1:a0:gx:u0:lt_5\ <= (\SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\
+	OR \SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\
+	OR \SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\);
+
+\SensorScan:MODULE_1:g1:a0:gx:u0:lt_2\ <= ((not \SensorScan:ch_addr_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\)
+	OR (not \SensorScan:ch_addr_2\ and not \SensorScan:ch_addr_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\)
+	OR (not \SensorScan:ch_addr_1\ and not \SensorScan:ch_addr_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\)
+	OR (not \SensorScan:ch_addr_2\ and not \SensorScan:ch_addr_1\ and not \SensorScan:ch_addr_0\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\)
+	OR (not \SensorScan:ch_addr_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\)
+	OR (not \SensorScan:ch_addr_2\ and not \SensorScan:ch_addr_1\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\)
+	OR (not \SensorScan:ch_addr_2\ and \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\));
+
+\SensorScan:MODULE_1:g1:a0:gx:u0:gt_2\ <= ((not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ch_addr_0\)
+	OR (not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ch_addr_2\ and \SensorScan:ch_addr_0\)
+	OR (not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ch_addr_1\ and \SensorScan:ch_addr_0\)
+	OR (not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\ and \SensorScan:ch_addr_2\ and \SensorScan:ch_addr_1\ and \SensorScan:ch_addr_0\)
+	OR (not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ch_addr_1\)
+	OR (not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\ and \SensorScan:ch_addr_2\ and \SensorScan:ch_addr_1\)
+	OR (not \SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\ and \SensorScan:ch_addr_2\));
+
+SineWaveClock:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"d9c64ec5-0721-4c69-a9f0-a4ae422dbc86",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"4000000000",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_540,
+		dig_domain_out=>open);
+SineWave:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"77715107-f8d5-47e5-a629-0fb83101ac6b",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__SineWave_net_0),
+		analog=>Net_663,
+		io=>(tmpIO_0__SineWave_net_0),
+		siovref=>(tmpSIOVREF__SineWave_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__SineWave_net_0);
+Song2Trigger:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"c7112de1-379d-43d4-af50-495b1d71881a",
+		drive_mode=>"001",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"0",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"B",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Song2Trigger_net_0),
+		analog=>(open),
+		io=>Net_1183,
+		siovref=>(tmpSIOVREF__Song2Trigger_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Song2Trigger_net_0);
+Song1Trigger:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
+		drive_mode=>"001",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"0",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"B",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Song1Trigger_net_0),
+		analog=>(open),
+		io=>Net_1184,
+		siovref=>(tmpSIOVREF__Song1Trigger_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Song1Trigger_net_0);
+\SineWaveGen:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\SineWaveGen:Net_211\);
+\SineWaveGen:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\SineWaveGen:Net_189\,
+		signal2=>\SineWaveGen:Net_256\);
+\SineWaveGen:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\SineWaveGen:Net_190\,
+		signal2=>\SineWaveGen:Net_211\);
+\SineWaveGen:cy_analog_noconnect_2\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\SineWaveGen:Net_254\);
+\SineWaveGen:Wave1_DMA\:cy_dma_v1_0
+	GENERIC MAP(drq_type=>"10",
+		num_tds=>0)
+	PORT MAP(drq=>\SineWaveGen:Net_183\,
+		trq=>Net_539,
+		nrq=>Net_1147);
+\SineWaveGen:Wave2_DMA\:cy_dma_v1_0
+	GENERIC MAP(drq_type=>"10",
+		num_tds=>0)
+	PORT MAP(drq=>\SineWaveGen:Net_107\,
+		trq=>Net_539,
+		nrq=>Net_1148);
+\SineWaveGen:VDAC8:viDAC8\:cy_psoc3_vidac8_v1_0
+	GENERIC MAP(cy_registers=>"",
+		reg_data=>'0',
+		is_all_if_any=>'0')
+	PORT MAP(reset=>Net_539,
+		idir=>Net_539,
+		ioff=>Net_539,
+		data=>(Net_539, Net_539, Net_539, Net_539,
+			Net_539, Net_539, Net_539, Net_539),
+		strobe=>Net_540,
+		strobe_udb=>Net_540,
+		vout=>\SineWaveGen:Net_189\,
+		iout=>\SineWaveGen:VDAC8:Net_77\);
+\SineWaveGen:VDAC8:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\SineWaveGen:VDAC8:Net_77\);
+\SineWaveGen:BuffAmp:ABuf\:cy_psoc3_abuf_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vplus=>\SineWaveGen:Net_256\,
+		vminus=>\SineWaveGen:BuffAmp:Net_29\,
+		vout=>\SineWaveGen:Net_247\);
+\SineWaveGen:BuffAmp:abuf_negInput_mux_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\SineWaveGen:BuffAmp:Net_29\,
+		signal2=>\SineWaveGen:Net_247\);
+\SineWaveGen:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>Net_661,
+		signal2=>\SineWaveGen:Net_247\);
+Song4Trigger:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"c7a5b014-6128-4d60-9835-08d9a21dc372",
+		drive_mode=>"001",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"0",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"B",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Song4Trigger_net_0),
+		analog=>(open),
+		io=>Net_1185,
+		siovref=>(tmpSIOVREF__Song4Trigger_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Song4Trigger_net_0);
+Song3Trigger:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"76ddbfb8-d368-43e0-98de-8faab2ef946c",
+		drive_mode=>"001",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"0",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"B",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Song3Trigger_net_0),
+		analog=>(open),
+		io=>Net_1186,
+		siovref=>(tmpSIOVREF__Song3Trigger_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Song3Trigger_net_0);
+\LCD_Char_1:LCDPort\:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"b1912798-7c8f-474f-b804-73d3f6cea2c2/ed092b9b-d398-4703-be89-cebf998501f6",
+		drive_mode=>"110110110110110110110",
+		ibuf_enabled=>"1111111",
+		init_dr_st=>"0000000",
+		input_sync=>"1111111",
+		input_clk_en=>'0',
+		input_sync_mode=>"0000000",
+		intr_mode=>"00000000000000",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>",,,,,,",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0000000",
+		output_sync=>"0000000",
+		output_clk_en=>'0',
+		output_mode=>"0000000",
+		output_reset=>'0',
+		output_clock_mode=>"0000000",
+		oe_sync=>"0000000",
+		oe_conn=>"0000000",
+		oe_reset=>'0',
+		pin_aliases=>",,,,,,",
+		pin_mode=>"OOOOOOO",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1111111",
+		sio_ibuf=>"00000000",
+		sio_info=>"00000000000000",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0000000",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10101010101010",
+		width=>7,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0000000",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0000000",
+		ovt_slew_control=>"00000000000000",
+		ovt_hyst_trim=>"0000000",
+		input_buffer_sel=>"00000000000000")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0, tmpOE__SineWave_net_0, tmpOE__SineWave_net_0, tmpOE__SineWave_net_0,
+			tmpOE__SineWave_net_0, tmpOE__SineWave_net_0, tmpOE__SineWave_net_0),
+		y=>(Net_539, Net_539, Net_539, Net_539,
+			Net_539, Net_539, Net_539),
+		fb=>(\LCD_Char_1:tmpFB_6__LCDPort_net_6\, \LCD_Char_1:tmpFB_6__LCDPort_net_5\, \LCD_Char_1:tmpFB_6__LCDPort_net_4\, \LCD_Char_1:tmpFB_6__LCDPort_net_3\,
+			\LCD_Char_1:tmpFB_6__LCDPort_net_2\, \LCD_Char_1:tmpFB_6__LCDPort_net_1\, \LCD_Char_1:tmpFB_6__LCDPort_net_0\),
+		analog=>(open, open, open, open,
+			open, open, open),
+		io=>(\LCD_Char_1:tmpIO_6__LCDPort_net_6\, \LCD_Char_1:tmpIO_6__LCDPort_net_5\, \LCD_Char_1:tmpIO_6__LCDPort_net_4\, \LCD_Char_1:tmpIO_6__LCDPort_net_3\,
+			\LCD_Char_1:tmpIO_6__LCDPort_net_2\, \LCD_Char_1:tmpIO_6__LCDPort_net_1\, \LCD_Char_1:tmpIO_6__LCDPort_net_0\),
+		siovref=>(\LCD_Char_1:tmpSIOVREF__LCDPort_net_0\),
+		annotation=>(open, open, open, open,
+			open, open, open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>\LCD_Char_1:tmpINTERRUPT_0__LCDPort_net_0\);
+\VDAC8_1:viDAC8\:cy_psoc3_vidac8_v1_0
+	GENERIC MAP(cy_registers=>"",
+		reg_data=>'0',
+		is_all_if_any=>'0')
+	PORT MAP(reset=>Net_539,
+		idir=>Net_539,
+		ioff=>Net_539,
+		data=>(Net_539, Net_539, Net_539, Net_539,
+			Net_539, Net_539, Net_539, Net_539),
+		strobe=>Net_539,
+		strobe_udb=>Net_539,
+		vout=>Net_697,
+		iout=>\VDAC8_1:Net_77\);
+\VDAC8_1:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\VDAC8_1:Net_77\);
+ADC_Positive_Input:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"90511d17-bdc7-4fc4-bce4-bc76d9968db3",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__ADC_Positive_Input_net_0),
+		analog=>Net_685,
+		io=>(tmpIO_0__ADC_Positive_Input_net_0),
+		siovref=>(tmpSIOVREF__ADC_Positive_Input_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__ADC_Positive_Input_net_0);
+\ADC:vRef_2\:cy_vref_v1_0
+	GENERIC MAP(guid=>"15B3DB15-B7B3-4d62-A2DF-25EA392A7161",
+		name=>"Vssa (GND)",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\ADC:Net_244\);
+\ADC:cy_analog_virtualmux_6_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_690\,
+		signal2=>\ADC:Net_35\);
+\ADC:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC:Net_34\);
+\ADC:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_677\,
+		signal2=>\ADC:Net_34\);
+\ADC:AMux\:cy_psoc3_amux_v1_0
+	GENERIC MAP(cy_registers=>"",
+		muxin_width=>2,
+		hw_control=>'0',
+		one_active=>'0',
+		init_mux_sel=>"00",
+		api_type=>0,
+		connect_mode=>1)
+	PORT MAP(muxin=>(\ADC:Net_690\, \ADC:Net_244\),
+		hw_ctrl_en=>(others => Net_539),
+		vout=>\ADC:Net_20\);
+\ADC:DSM\:cy_psoc3_ds_mod_v4_0
+	GENERIC MAP(cy_registers=>"",
+		resolution=>12)
+	PORT MAP(aclock=>\ADC:Net_488\,
+		vplus=>Net_685,
+		vminus=>\ADC:Net_520\,
+		modbit=>Net_539,
+		reset_udb=>Net_539,
+		reset_dec=>\ADC:mod_reset\,
+		clk_udb=>Net_539,
+		extclk_cp_udb=>\ADC:Net_93\,
+		ext_pin_1=>\ADC:Net_573\,
+		ext_pin_2=>\ADC:Net_41\,
+		ext_vssa=>\ADC:Net_109\,
+		qtz_ref=>\ADC:Net_677\,
+		dec_clock=>\ADC:aclock\,
+		mod_dat=>(\ADC:mod_dat_3\, \ADC:mod_dat_2\, \ADC:mod_dat_1\, \ADC:mod_dat_0\),
+		dout_udb=>(\ADC:Net_245_7\, \ADC:Net_245_6\, \ADC:Net_245_5\, \ADC:Net_245_4\,
+			\ADC:Net_245_3\, \ADC:Net_245_2\, \ADC:Net_245_1\, \ADC:Net_245_0\));
+\ADC:cy_analog_noconnect_5\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC:Net_352\);
+\ADC:cy_analog_virtualmux_5_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_109\,
+		signal2=>\ADC:Net_352\);
+\ADC:Ext_CP_Clk\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"32d3f325-f96c-4620-8a75-7e66613695b2/b7604721-db56-4477-98c2-8fae77869066",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>1,
+		period=>"0",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\ADC:Net_93\,
+		dig_domain_out=>open);
+\ADC:cy_analog_noconnect_3\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC:Net_257\);
+\ADC:cy_analog_noconnect_2\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC:Net_249\);
+\ADC:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_41\,
+		signal2=>\ADC:Net_257\);
+\ADC:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_573\,
+		signal2=>\ADC:Net_249\);
+\ADC:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_520\,
+		signal2=>\ADC:Net_20\);
+\ADC:IRQ\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_688);
+\ADC:theACLK\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"32d3f325-f96c-4620-8a75-7e66613695b2/edd15f43-b66b-457b-be3a-5342345270c8",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>0,
+		period=>"1908396946.56489",
+		is_direct=>'0',
+		is_digital=>'0')
+	PORT MAP(clock_out=>\ADC:Net_488\,
+		dig_domain_out=>open);
+\ADC:DEC\:cy_psoc3_decimator_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(aclock=>\ADC:aclock\,
+		mod_dat=>(\ADC:mod_dat_3\, \ADC:mod_dat_2\, \ADC:mod_dat_1\, \ADC:mod_dat_0\),
+		ext_start=>tmpOE__SineWave_net_0,
+		mod_reset=>\ADC:mod_reset\,
+		interrupt=>Net_688);
+\PGA:SC\:cy_psoc3_scblock_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vref=>\PGA:Net_17\,
+		vin=>Net_661,
+		aclk=>Net_539,
+		bst_clk=>Net_539,
+		clk_udb=>Net_539,
+		dyn_cntl=>Net_539,
+		modout_sync=>\PGA:Net_41\,
+		vout=>Net_663);
+\PGA:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\PGA:Net_17\,
+		signal2=>\PGA:Net_75\);
+\PGA:cy_analog_noconnect_2\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\PGA:Net_75\);
+SensorValue2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"73e43ec7-89db-4130-9728-8b03ae93336e",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>Net_1193,
+		fb=>(tmpFB_0__SensorValue2_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__SensorValue2_net_0),
+		siovref=>(tmpSIOVREF__SensorValue2_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__SensorValue2_net_0);
+SensorValue4:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"ba9b4f86-0986-44ba-a3df-c35783e95a9a",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>Net_1195,
+		fb=>(tmpFB_0__SensorValue4_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__SensorValue4_net_0),
+		siovref=>(tmpSIOVREF__SensorValue4_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__SensorValue4_net_0);
+Sensor_Interrupt:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>Net_1178,
+		fb=>(tmpFB_0__Sensor_Interrupt_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Sensor_Interrupt_net_0),
+		siovref=>(tmpSIOVREF__Sensor_Interrupt_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Sensor_Interrupt_net_0);
+SensorValue5:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"820e4c4f-67c4-4e53-abae-cfb0309c3355",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>Net_1196,
+		fb=>(tmpFB_0__SensorValue5_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__SensorValue5_net_0),
+		siovref=>(tmpSIOVREF__SensorValue5_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__SensorValue5_net_0);
+SensorValue3:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"e027cdcc-e16c-40f9-a44e-83cfea02ada3",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>Net_1194,
+		fb=>(tmpFB_0__SensorValue3_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__SensorValue3_net_0),
+		siovref=>(tmpSIOVREF__SensorValue3_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__SensorValue3_net_0);
+Sensor5:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"9ada4291-4048-473c-90df-7655a3329554",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Sensor5_net_0),
+		analog=>Net_1262,
+		io=>(tmpIO_0__Sensor5_net_0),
+		siovref=>(tmpSIOVREF__Sensor5_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Sensor5_net_0);
+Sensor4:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"d91baebc-2206-4ae4-a06c-1b9cee01cab6",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Sensor4_net_0),
+		analog=>Net_1260,
+		io=>(tmpIO_0__Sensor4_net_0),
+		siovref=>(tmpSIOVREF__Sensor4_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Sensor4_net_0);
+Sensor3:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"434438af-4166-4c10-b0f5-a2ab466ca16a",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Sensor3_net_0),
+		analog=>Net_1259,
+		io=>(tmpIO_0__Sensor3_net_0),
+		siovref=>(tmpSIOVREF__Sensor3_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Sensor3_net_0);
+Sensor2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"be15b11f-1c8c-4d8f-a596-8ec2fb6525ba",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Sensor2_net_0),
+		analog=>Net_1257,
+		io=>(tmpIO_0__Sensor2_net_0),
+		siovref=>(tmpSIOVREF__Sensor2_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Sensor2_net_0);
+\SensorScan:Clock_int\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"44cb4c3c-f111-43eb-aa5b-931e3bd5539d/3830ea91-5340-4147-9ad7-597e825b22a7",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"166666666666.667",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\SensorScan:clk\,
+		dig_domain_out=>open);
+\SensorScan:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\SensorScan:Net_5517\,
+		signal2=>\SensorScan:V_single\);
+\SensorScan:bScanComp:ClkCtrl\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>\SensorScan:clk\,
+		enable=>tmpOE__SineWave_net_0,
+		clock_out=>\SensorScan:bScanComp:clk_ctrl\);
+\SensorScan:bScanComp:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>\SensorScan:clk\,
+		enable=>\SensorScan:bScanComp:ctrl_enable\,
+		clock_out=>\SensorScan:bScanComp:clk_int\);
+\SensorScan:bScanComp:CtrlCnt\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"00000011",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>Net_539,
+		clock=>\SensorScan:bScanComp:clk_ctrl\,
+		control=>(\SensorScan:bScanComp:control_7\, \SensorScan:bScanComp:control_6\, \SensorScan:bScanComp:control_5\, \SensorScan:bScanComp:control_4\,
+			\SensorScan:bScanComp:control_3\, \SensorScan:bScanComp:control_2\, \SensorScan:bScanComp:control_1\, \SensorScan:bScanComp:ctrl_enable\));
+\SensorScan:bScanComp:St0_OutReg0\:cy_psoc3_status
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"00000000")
+	PORT MAP(reset=>Net_539,
+		clock=>\SensorScan:bScanComp:clk_int\,
+		status=>(Net_539, Net_539, Net_539, Net_1196,
+			Net_1195, Net_1194, Net_1193, Net_1190));
+\SensorScan:bScanComp:St0_IntReg0\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"1111111",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>\SensorScan:bScanComp:status_reset\,
+		clock=>\SensorScan:bScanComp:clk_int\,
+		status=>(Net_539, Net_539, \SensorScan:bScanComp:status_int0_4\, \SensorScan:bScanComp:status_int0_3\,
+			\SensorScan:bScanComp:status_int0_2\, \SensorScan:bScanComp:status_int0_1\, \SensorScan:bScanComp:status_int0_0\),
+		interrupt=>Net_1178);
+\SensorScan:bScanComp:ChannelCounter\:cy_psoc3_count7
+	GENERIC MAP(cy_period=>"0000100",
+		cy_init_value=>"0000000",
+		cy_route_ld=>'0',
+		cy_route_en=>'1',
+		cy_alt_mode=>'1')
+	PORT MAP(clock=>\SensorScan:bScanComp:clk_int\,
+		reset=>Net_539,
+		load=>Net_539,
+		enable=>\SensorScan:bScanComp:enable_int\,
+		count=>(\SensorScan:bScanComp:count_6\, \SensorScan:bScanComp:count_5\, \SensorScan:bScanComp:count_4\, \SensorScan:bScanComp:count_3\,
+			\SensorScan:ch_addr_2\, \SensorScan:ch_addr_1\, \SensorScan:ch_addr_0\),
+		tc=>\SensorScan:bScanComp:tc_o\);
+\SensorScan:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\SensorScan:Net_6163\,
+		signal2=>Net_697);
+\SensorScan:Comp:ctComp\:cy_psoc3_ctcomp_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vplus=>\SensorScan:Net_5517\,
+		vminus=>\SensorScan:Net_6163\,
+		clock=>Net_539,
+		clk_udb=>Net_539,
+		cmpout=>\SensorScan:Net_5511\);
+\SensorScan:ScanCompAMuxSingle\:cy_psoc3_amux_v1_0
+	GENERIC MAP(cy_registers=>"",
+		muxin_width=>64,
+		hw_control=>'1',
+		one_active=>'1',
+		init_mux_sel=>"0000000000000000000000000000000000000000000000000000000000000000",
+		api_type=>2,
+		connect_mode=>1)
+	PORT MAP(muxin=>(Net_1376, Net_1375, Net_1373, Net_1371,
+			Net_1370, Net_1368, Net_1366, Net_1365,
+			Net_1363, Net_1361, Net_1360, Net_1358,
+			Net_1356, Net_1355, Net_1353, Net_1351,
+			Net_1334, Net_1332, Net_1330, Net_1329,
+			Net_1327, Net_1325, Net_1324, Net_1322,
+			Net_1320, Net_1319, Net_1317, Net_1315,
+			Net_1314, Net_1312, Net_1310, Net_1309,
+			Net_1307, Net_1305, Net_1304, Net_1302,
+			Net_1300, Net_1299, Net_1297, Net_1295,
+			Net_1294, Net_1292, Net_1290, Net_1289,
+			Net_1287, Net_1285, Net_1284, Net_1282,
+			Net_1280, Net_1279, Net_1277, Net_1275,
+			Net_1274, Net_1272, Net_1270, Net_1269,
+			Net_1267, Net_1265, Net_1264, Net_1262,
+			Net_1260, Net_1259, Net_1257, Net_1189),
+		hw_ctrl_en=>(\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_63\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_62\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_61\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_60\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_59\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_58\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_57\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_56\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_55\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_54\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_53\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_52\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_51\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_50\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_49\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_48\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_47\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_46\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_45\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_44\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_43\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_42\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_41\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_40\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_39\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_38\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_37\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_36\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_35\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_34\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_33\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_32\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_31\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_30\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_29\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_28\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_27\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_26\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_25\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_24\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_23\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_22\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_21\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_20\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_19\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_18\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_17\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_16\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_15\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_14\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_13\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_12\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_11\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_10\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_9\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_8\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_7\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_6\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_5\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_4\,
+			\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_3\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_2\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_1\, \SensorScan:ScanCompAMuxSingle_Decoder_one_hot_0\),
+		vout=>\SensorScan:V_single\);
+\SensorScan:MODULE_1:g1:a0:gx:u0:gne(1):c4:c6:u1\:cy_buf
+	PORT MAP(x=>\SensorScan:MODULE_1:g1:a0:gx:u0:lt_5\,
+		y=>\SensorScan:MODULE_1:g1:a0:gx:u0:lti_1\);
+\SensorScan:MODULE_1:g1:a0:gx:u0:gne(1):c4:c6:u2\:cy_buf
+	PORT MAP(x=>Net_539,
+		y=>\SensorScan:MODULE_1:g1:a0:gx:u0:gti_1\);
+\SensorScan:MODULE_1:g1:a0:gx:u0:gne(0):c3:u1\:cy_buf
+	PORT MAP(x=>\SensorScan:MODULE_1:g1:a0:gx:u0:lt_2\,
+		y=>\SensorScan:MODULE_1:g1:a0:gx:u0:lti_0\);
+\SensorScan:MODULE_1:g1:a0:gx:u0:gne(0):c3:u2\:cy_buf
+	PORT MAP(x=>\SensorScan:MODULE_1:g1:a0:gx:u0:gt_2\,
+		y=>\SensorScan:MODULE_1:g1:a0:gx:u0:gti_0\);
+SensorValue1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"51c8157d-7dbe-488f-876c-462b4eecbdbc",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>Net_1190,
+		fb=>(tmpFB_0__SensorValue1_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__SensorValue1_net_0),
+		siovref=>(tmpSIOVREF__SensorValue1_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__SensorValue1_net_0);
+Sensor1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"a6825cd6-806a-4d1c-ba04-d83f77ef91ab",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__SineWave_net_0),
+		y=>(Net_539),
+		fb=>(tmpFB_0__Sensor1_net_0),
+		analog=>Net_1189,
+		io=>(tmpIO_0__Sensor1_net_0),
+		siovref=>(tmpSIOVREF__Sensor1_net_0),
+		annotation=>(open),
+		in_clock=>Net_539,
+		in_clock_en=>tmpOE__SineWave_net_0,
+		in_reset=>Net_539,
+		out_clock=>Net_539,
+		out_clock_en=>tmpOE__SineWave_net_0,
+		out_reset=>Net_539,
+		interrupt=>tmpINTERRUPT_0__Sensor1_net_0);
+\SineWaveGen:cydff_1\:cy_dff
+	PORT MAP(d=>Net_539,
+		clk=>Net_540,
+		q=>\SineWaveGen:Net_134\);
+\SensorScan:bScanComp:delay_form\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:delay_form\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:delay_form\);
+\SensorScan:bScanComp:det_reg\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:delay_form\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:det_reg\);
+\SensorScan:bScanComp:eos_latch\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:eos_latch\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:eos_latch\);
+\SensorScan:bScanComp:tc3\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:tc2\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:tc3\);
+\SensorScan:bScanComp:tc0\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:tc_o\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:tc0\);
+\SensorScan:bScanComp:tc1\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:tc0\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:tc1\);
+\SensorScan:bScanComp:tc2\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:tc1\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:tc2\);
+\SensorScan:bScanComp:drq_reg\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:enable_int\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:drq_reg\);
+\SensorScan:bScanComp:count_reg_2\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:count_reg_2\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:count_reg_2\);
+\SensorScan:bScanComp:count_reg_1\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:count_reg_1\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:count_reg_1\);
+\SensorScan:bScanComp:count_reg_0\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:count_reg_0\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:count_reg_0\);
+\SensorScan:bScanComp:ch_out_4\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:ch_out_4\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>Net_1196);
+\SensorScan:bScanComp:ch_out_3\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:ch_out_3\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>Net_1195);
+\SensorScan:bScanComp:ch_out_2\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:ch_out_2\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>Net_1194);
+\SensorScan:bScanComp:ch_out_1\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:ch_out_1\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>Net_1193);
+\SensorScan:bScanComp:ch_out_0\:cy_dff
+	PORT MAP(d=>\SensorScan:bScanComp:ch_out_0\\D\,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>Net_1190);
+\SensorScan:bScanComp:ch_out_reg_0\:cy_dff
+	PORT MAP(d=>Net_1190,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:ch_out_reg_0\);
+\SensorScan:bScanComp:ch_out_reg_1\:cy_dff
+	PORT MAP(d=>Net_1193,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:ch_out_reg_1\);
+\SensorScan:bScanComp:ch_out_reg_2\:cy_dff
+	PORT MAP(d=>Net_1194,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:ch_out_reg_2\);
+\SensorScan:bScanComp:ch_out_reg_3\:cy_dff
+	PORT MAP(d=>Net_1195,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:ch_out_reg_3\);
+\SensorScan:bScanComp:ch_out_reg_4\:cy_dff
+	PORT MAP(d=>Net_1196,
+		clk=>\SensorScan:bScanComp:clk_int\,
+		q=>\SensorScan:bScanComp:ch_out_reg_4\);
+\SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\:cy_dff
+	PORT MAP(d=>Net_539,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_old_id_5\);
+\SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\:cy_dff
+	PORT MAP(d=>Net_539,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_old_id_4\);
+\SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\:cy_dff
+	PORT MAP(d=>Net_539,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_old_id_3\);
+\SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\:cy_dff
+	PORT MAP(d=>\SensorScan:ch_addr_2\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_old_id_2\);
+\SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\:cy_dff
+	PORT MAP(d=>\SensorScan:ch_addr_1\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_old_id_1\);
+\SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\:cy_dff
+	PORT MAP(d=>\SensorScan:ch_addr_0\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_old_id_0\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_0\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_0\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_0\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_1\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_1\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_1\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_2\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_2\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_2\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_3\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_3\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_3\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_4\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_4\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_4\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_5\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_5\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_5\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_6\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_6\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_6\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_7\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_7\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_7\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_8\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_8\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_8\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_9\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_9\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_9\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_10\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_10\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_10\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_11\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_11\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_11\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_12\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_12\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_12\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_13\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_13\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_13\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_14\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_14\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_14\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_15\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_15\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_15\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_16\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_16\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_16\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_17\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_17\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_17\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_18\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_18\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_18\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_19\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_19\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_19\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_20\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_20\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_20\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_21\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_21\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_21\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_22\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_22\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_22\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_23\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_23\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_23\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_24\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_24\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_24\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_25\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_25\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_25\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_26\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_26\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_26\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_27\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_27\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_27\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_28\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_28\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_28\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_29\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_29\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_29\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_30\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_30\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_30\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_31\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_31\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_31\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_32\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_32\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_32\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_33\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_33\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_33\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_34\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_34\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_34\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_35\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_35\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_35\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_36\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_36\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_36\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_37\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_37\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_37\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_38\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_38\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_38\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_39\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_39\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_39\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_40\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_40\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_40\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_41\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_41\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_41\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_42\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_42\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_42\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_43\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_43\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_43\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_44\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_44\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_44\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_45\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_45\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_45\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_46\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_46\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_46\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_47\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_47\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_47\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_48\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_48\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_48\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_49\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_49\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_49\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_50\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_50\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_50\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_51\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_51\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_51\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_52\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_52\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_52\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_53\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_53\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_53\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_54\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_54\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_54\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_55\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_55\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_55\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_56\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_56\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_56\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_57\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_57\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_57\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_58\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_58\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_58\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_59\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_59\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_59\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_60\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_60\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_60\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_61\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_61\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_61\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_62\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_62\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_62\);
+\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_63\:cy_dff
+	PORT MAP(d=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_63\\D\,
+		clk=>\SensorScan:clk\,
+		q=>\SensorScan:ScanCompAMuxSingle_Decoder_one_hot_63\);
+
+END R_T_L;

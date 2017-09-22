@@ -1,0 +1,1259 @@
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"SongCount.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SongCount_SetDriveMode,"ax",%progbits
+  18              		.align	2
+  19              		.global	SongCount_SetDriveMode
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	SongCount_SetDriveMode, %function
+  23              	SongCount_SetDriveMode:
+  24              	.LFB0:
+  25              		.file 1 "Generated_Source\\PSoC4\\SongCount.c"
+   1:Generated_Source\PSoC4/SongCount.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/SongCount.c **** * File Name: SongCount.c  
+   3:Generated_Source\PSoC4/SongCount.c **** * Version 2.20
+   4:Generated_Source\PSoC4/SongCount.c **** *
+   5:Generated_Source\PSoC4/SongCount.c **** * Description:
+   6:Generated_Source\PSoC4/SongCount.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC4/SongCount.c **** *
+   8:Generated_Source\PSoC4/SongCount.c **** ********************************************************************************
+   9:Generated_Source\PSoC4/SongCount.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC4/SongCount.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  11:Generated_Source\PSoC4/SongCount.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  12:Generated_Source\PSoC4/SongCount.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC4/SongCount.c **** *******************************************************************************/
+  14:Generated_Source\PSoC4/SongCount.c **** 
+  15:Generated_Source\PSoC4/SongCount.c **** #include "cytypes.h"
+  16:Generated_Source\PSoC4/SongCount.c **** #include "SongCount.h"
+  17:Generated_Source\PSoC4/SongCount.c **** 
+  18:Generated_Source\PSoC4/SongCount.c **** 
+  19:Generated_Source\PSoC4/SongCount.c **** #if defined(SongCount__PC)
+  20:Generated_Source\PSoC4/SongCount.c ****     #define SongCount_SetP4PinDriveMode(shift, mode)  \
+  21:Generated_Source\PSoC4/SongCount.c ****     do { \
+  22:Generated_Source\PSoC4/SongCount.c ****         SongCount_PC =   (SongCount_PC & \
+  23:Generated_Source\PSoC4/SongCount.c ****                                 (uint32)(~(uint32)(SongCount_DRIVE_MODE_IND_MASK << \
+  24:Generated_Source\PSoC4/SongCount.c ****                                 (SongCount_DRIVE_MODE_BITS * (shift))))) | \
+  25:Generated_Source\PSoC4/SongCount.c ****                                 (uint32)((uint32)(mode) << \
+  26:Generated_Source\PSoC4/SongCount.c ****                                 (SongCount_DRIVE_MODE_BITS * (shift))); \
+  27:Generated_Source\PSoC4/SongCount.c ****     } while (0)
+  28:Generated_Source\PSoC4/SongCount.c **** #else
+  29:Generated_Source\PSoC4/SongCount.c ****     #if (CY_PSOC4_4200L)
+  30:Generated_Source\PSoC4/SongCount.c ****         #define SongCount_SetP4PinDriveMode(shift, mode)  \
+  31:Generated_Source\PSoC4/SongCount.c ****         do { \
+  32:Generated_Source\PSoC4/SongCount.c ****             SongCount_USBIO_CTRL_REG = (SongCount_USBIO_CTRL_REG & \
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 2
+
+
+  33:Generated_Source\PSoC4/SongCount.c ****                                     (uint32)(~(uint32)(SongCount_DRIVE_MODE_IND_MASK << \
+  34:Generated_Source\PSoC4/SongCount.c ****                                     (SongCount_DRIVE_MODE_BITS * (shift))))) | \
+  35:Generated_Source\PSoC4/SongCount.c ****                                     (uint32)((uint32)(mode) << \
+  36:Generated_Source\PSoC4/SongCount.c ****                                     (SongCount_DRIVE_MODE_BITS * (shift))); \
+  37:Generated_Source\PSoC4/SongCount.c ****         } while (0)
+  38:Generated_Source\PSoC4/SongCount.c ****     #endif
+  39:Generated_Source\PSoC4/SongCount.c **** #endif
+  40:Generated_Source\PSoC4/SongCount.c ****   
+  41:Generated_Source\PSoC4/SongCount.c **** 
+  42:Generated_Source\PSoC4/SongCount.c **** #if defined(SongCount__PC) || (CY_PSOC4_4200L) 
+  43:Generated_Source\PSoC4/SongCount.c ****     /*******************************************************************************
+  44:Generated_Source\PSoC4/SongCount.c ****     * Function Name: SongCount_SetDriveMode
+  45:Generated_Source\PSoC4/SongCount.c ****     ****************************************************************************//**
+  46:Generated_Source\PSoC4/SongCount.c ****     *
+  47:Generated_Source\PSoC4/SongCount.c ****     * \brief Sets the drive mode for each of the Pins component's pins.
+  48:Generated_Source\PSoC4/SongCount.c ****     * 
+  49:Generated_Source\PSoC4/SongCount.c ****     * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  50:Generated_Source\PSoC4/SongCount.c ****     * Per-Pin APIs if you wish to control individual pin's drive modes.
+  51:Generated_Source\PSoC4/SongCount.c ****     *
+  52:Generated_Source\PSoC4/SongCount.c ****     * <b>Note</b> USBIOs have limited drive functionality. Refer to the Drive Mode
+  53:Generated_Source\PSoC4/SongCount.c ****     * parameter for more information.
+  54:Generated_Source\PSoC4/SongCount.c ****     *
+  55:Generated_Source\PSoC4/SongCount.c ****     * \param mode
+  56:Generated_Source\PSoC4/SongCount.c ****     *  Mode for the selected signals. Valid options are documented in 
+  57:Generated_Source\PSoC4/SongCount.c ****     *  \ref driveMode.
+  58:Generated_Source\PSoC4/SongCount.c ****     *
+  59:Generated_Source\PSoC4/SongCount.c ****     * \return
+  60:Generated_Source\PSoC4/SongCount.c ****     *  None
+  61:Generated_Source\PSoC4/SongCount.c ****     *
+  62:Generated_Source\PSoC4/SongCount.c ****     * \sideeffect
+  63:Generated_Source\PSoC4/SongCount.c ****     *  If you use read-modify-write operations that are not atomic, the ISR can
+  64:Generated_Source\PSoC4/SongCount.c ****     *  cause corruption of this function. An ISR that interrupts this function 
+  65:Generated_Source\PSoC4/SongCount.c ****     *  and performs writes to the Pins component Drive Mode registers can cause 
+  66:Generated_Source\PSoC4/SongCount.c ****     *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  67:Generated_Source\PSoC4/SongCount.c ****     *  APIs (primary method) or disable interrupts around this function.
+  68:Generated_Source\PSoC4/SongCount.c ****     *
+  69:Generated_Source\PSoC4/SongCount.c ****     * \funcusage
+  70:Generated_Source\PSoC4/SongCount.c ****     *  \snippet SongCount_SUT.c usage_SongCount_SetDriveMode
+  71:Generated_Source\PSoC4/SongCount.c ****     *******************************************************************************/
+  72:Generated_Source\PSoC4/SongCount.c ****     void SongCount_SetDriveMode(uint8 mode)
+  73:Generated_Source\PSoC4/SongCount.c ****     {
+  26              		.loc 1 73 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 82B0     		sub	sp, sp, #8
+  33              		.cfi_def_cfa_offset 16
+  34 0004 00AF     		add	r7, sp, #0
+  35              		.cfi_def_cfa_register 7
+  36 0006 021C     		mov	r2, r0
+  37 0008 FB1D     		add	r3, r7, #7
+  38 000a 1A70     		strb	r2, [r3]
+  74:Generated_Source\PSoC4/SongCount.c **** 		SongCount_SetP4PinDriveMode(SongCount__0__SHIFT, mode);
+  39              		.loc 1 74 0
+  40 000c 294B     		ldr	r3, .L2
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 3
+
+
+  41 000e 294A     		ldr	r2, .L2
+  42 0010 1268     		ldr	r2, [r2]
+  43 0012 0721     		mov	r1, #7
+  44 0014 8A43     		bic	r2, r1
+  45 0016 111C     		mov	r1, r2
+  46 0018 FA1D     		add	r2, r7, #7
+  47 001a 1278     		ldrb	r2, [r2]
+  48 001c 0A43     		orr	r2, r1
+  49 001e 1A60     		str	r2, [r3]
+  75:Generated_Source\PSoC4/SongCount.c **** 		SongCount_SetP4PinDriveMode(SongCount__1__SHIFT, mode);
+  50              		.loc 1 75 0
+  51 0020 244B     		ldr	r3, .L2
+  52 0022 244A     		ldr	r2, .L2
+  53 0024 1268     		ldr	r2, [r2]
+  54 0026 3821     		mov	r1, #56
+  55 0028 8A43     		bic	r2, r1
+  56 002a 111C     		mov	r1, r2
+  57 002c FA1D     		add	r2, r7, #7
+  58 002e 1278     		ldrb	r2, [r2]
+  59 0030 D200     		lsl	r2, r2, #3
+  60 0032 0A43     		orr	r2, r1
+  61 0034 1A60     		str	r2, [r3]
+  76:Generated_Source\PSoC4/SongCount.c **** 		SongCount_SetP4PinDriveMode(SongCount__2__SHIFT, mode);
+  62              		.loc 1 76 0
+  63 0036 1F4B     		ldr	r3, .L2
+  64 0038 1E4A     		ldr	r2, .L2
+  65 003a 1268     		ldr	r2, [r2]
+  66 003c 1E49     		ldr	r1, .L2+4
+  67 003e 1140     		and	r1, r2
+  68 0040 FA1D     		add	r2, r7, #7
+  69 0042 1278     		ldrb	r2, [r2]
+  70 0044 9201     		lsl	r2, r2, #6
+  71 0046 0A43     		orr	r2, r1
+  72 0048 1A60     		str	r2, [r3]
+  77:Generated_Source\PSoC4/SongCount.c **** 		SongCount_SetP4PinDriveMode(SongCount__3__SHIFT, mode);
+  73              		.loc 1 77 0
+  74 004a 1A4B     		ldr	r3, .L2
+  75 004c 194A     		ldr	r2, .L2
+  76 004e 1268     		ldr	r2, [r2]
+  77 0050 1A49     		ldr	r1, .L2+8
+  78 0052 1140     		and	r1, r2
+  79 0054 FA1D     		add	r2, r7, #7
+  80 0056 1278     		ldrb	r2, [r2]
+  81 0058 5202     		lsl	r2, r2, #9
+  82 005a 0A43     		orr	r2, r1
+  83 005c 1A60     		str	r2, [r3]
+  78:Generated_Source\PSoC4/SongCount.c **** 		SongCount_SetP4PinDriveMode(SongCount__4__SHIFT, mode);
+  84              		.loc 1 78 0
+  85 005e 154B     		ldr	r3, .L2
+  86 0060 144A     		ldr	r2, .L2
+  87 0062 1268     		ldr	r2, [r2]
+  88 0064 1649     		ldr	r1, .L2+12
+  89 0066 1140     		and	r1, r2
+  90 0068 FA1D     		add	r2, r7, #7
+  91 006a 1278     		ldrb	r2, [r2]
+  92 006c 1203     		lsl	r2, r2, #12
+  93 006e 0A43     		orr	r2, r1
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 4
+
+
+  94 0070 1A60     		str	r2, [r3]
+  79:Generated_Source\PSoC4/SongCount.c **** 		SongCount_SetP4PinDriveMode(SongCount__5__SHIFT, mode);
+  95              		.loc 1 79 0
+  96 0072 104B     		ldr	r3, .L2
+  97 0074 0F4A     		ldr	r2, .L2
+  98 0076 1268     		ldr	r2, [r2]
+  99 0078 1249     		ldr	r1, .L2+16
+ 100 007a 1140     		and	r1, r2
+ 101 007c FA1D     		add	r2, r7, #7
+ 102 007e 1278     		ldrb	r2, [r2]
+ 103 0080 D203     		lsl	r2, r2, #15
+ 104 0082 0A43     		orr	r2, r1
+ 105 0084 1A60     		str	r2, [r3]
+  80:Generated_Source\PSoC4/SongCount.c **** 		SongCount_SetP4PinDriveMode(SongCount__6__SHIFT, mode);
+ 106              		.loc 1 80 0
+ 107 0086 0B4B     		ldr	r3, .L2
+ 108 0088 0A4A     		ldr	r2, .L2
+ 109 008a 1268     		ldr	r2, [r2]
+ 110 008c 0E49     		ldr	r1, .L2+20
+ 111 008e 1140     		and	r1, r2
+ 112 0090 FA1D     		add	r2, r7, #7
+ 113 0092 1278     		ldrb	r2, [r2]
+ 114 0094 9204     		lsl	r2, r2, #18
+ 115 0096 0A43     		orr	r2, r1
+ 116 0098 1A60     		str	r2, [r3]
+  81:Generated_Source\PSoC4/SongCount.c **** 		SongCount_SetP4PinDriveMode(SongCount__7__SHIFT, mode);
+ 117              		.loc 1 81 0
+ 118 009a 064B     		ldr	r3, .L2
+ 119 009c 054A     		ldr	r2, .L2
+ 120 009e 1268     		ldr	r2, [r2]
+ 121 00a0 0A49     		ldr	r1, .L2+24
+ 122 00a2 1140     		and	r1, r2
+ 123 00a4 FA1D     		add	r2, r7, #7
+ 124 00a6 1278     		ldrb	r2, [r2]
+ 125 00a8 5205     		lsl	r2, r2, #21
+ 126 00aa 0A43     		orr	r2, r1
+ 127 00ac 1A60     		str	r2, [r3]
+  82:Generated_Source\PSoC4/SongCount.c ****     }
+ 128              		.loc 1 82 0
+ 129 00ae BD46     		mov	sp, r7
+ 130 00b0 02B0     		add	sp, sp, #8
+ 131              		@ sp needed
+ 132 00b2 80BD     		pop	{r7, pc}
+ 133              	.L3:
+ 134              		.align	2
+ 135              	.L2:
+ 136 00b4 08030440 		.word	1074004744
+ 137 00b8 3FFEFFFF 		.word	-449
+ 138 00bc FFF1FFFF 		.word	-3585
+ 139 00c0 FF8FFFFF 		.word	-28673
+ 140 00c4 FF7FFCFF 		.word	-229377
+ 141 00c8 FFFFE3FF 		.word	-1835009
+ 142 00cc FFFF1FFF 		.word	-14680065
+ 143              		.cfi_endproc
+ 144              	.LFE0:
+ 145              		.size	SongCount_SetDriveMode, .-SongCount_SetDriveMode
+ 146              		.section	.text.SongCount_Write,"ax",%progbits
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 5
+
+
+ 147              		.align	2
+ 148              		.global	SongCount_Write
+ 149              		.code	16
+ 150              		.thumb_func
+ 151              		.type	SongCount_Write, %function
+ 152              	SongCount_Write:
+ 153              	.LFB1:
+  83:Generated_Source\PSoC4/SongCount.c **** #endif
+  84:Generated_Source\PSoC4/SongCount.c **** 
+  85:Generated_Source\PSoC4/SongCount.c **** 
+  86:Generated_Source\PSoC4/SongCount.c **** /*******************************************************************************
+  87:Generated_Source\PSoC4/SongCount.c **** * Function Name: SongCount_Write
+  88:Generated_Source\PSoC4/SongCount.c **** ****************************************************************************//**
+  89:Generated_Source\PSoC4/SongCount.c **** *
+  90:Generated_Source\PSoC4/SongCount.c **** * \brief Writes the value to the physical port (data output register), masking
+  91:Generated_Source\PSoC4/SongCount.c **** *  and shifting the bits appropriately. 
+  92:Generated_Source\PSoC4/SongCount.c **** *
+  93:Generated_Source\PSoC4/SongCount.c **** * The data output register controls the signal applied to the physical pin in 
+  94:Generated_Source\PSoC4/SongCount.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  95:Generated_Source\PSoC4/SongCount.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  96:Generated_Source\PSoC4/SongCount.c **** * bit banding).
+  97:Generated_Source\PSoC4/SongCount.c **** *
+  98:Generated_Source\PSoC4/SongCount.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  99:Generated_Source\PSoC4/SongCount.c **** * as it is driven by the hardware signal attached to it.
+ 100:Generated_Source\PSoC4/SongCount.c **** *
+ 101:Generated_Source\PSoC4/SongCount.c **** * \param value
+ 102:Generated_Source\PSoC4/SongCount.c **** *  Value to write to the component instance.
+ 103:Generated_Source\PSoC4/SongCount.c **** *
+ 104:Generated_Source\PSoC4/SongCount.c **** * \return 
+ 105:Generated_Source\PSoC4/SongCount.c **** *  None 
+ 106:Generated_Source\PSoC4/SongCount.c **** *
+ 107:Generated_Source\PSoC4/SongCount.c **** * \sideeffect
+ 108:Generated_Source\PSoC4/SongCount.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+ 109:Generated_Source\PSoC4/SongCount.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+ 110:Generated_Source\PSoC4/SongCount.c **** *  interrupts this function and performs writes to the Pins component data 
+ 111:Generated_Source\PSoC4/SongCount.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+ 112:Generated_Source\PSoC4/SongCount.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+ 113:Generated_Source\PSoC4/SongCount.c **** *  this function.
+ 114:Generated_Source\PSoC4/SongCount.c **** *
+ 115:Generated_Source\PSoC4/SongCount.c **** * \funcusage
+ 116:Generated_Source\PSoC4/SongCount.c **** *  \snippet SongCount_SUT.c usage_SongCount_Write
+ 117:Generated_Source\PSoC4/SongCount.c **** *******************************************************************************/
+ 118:Generated_Source\PSoC4/SongCount.c **** void SongCount_Write(uint8 value)
+ 119:Generated_Source\PSoC4/SongCount.c **** {
+ 154              		.loc 1 119 0
+ 155              		.cfi_startproc
+ 156 0000 80B5     		push	{r7, lr}
+ 157              		.cfi_def_cfa_offset 8
+ 158              		.cfi_offset 7, -8
+ 159              		.cfi_offset 14, -4
+ 160 0002 84B0     		sub	sp, sp, #16
+ 161              		.cfi_def_cfa_offset 24
+ 162 0004 00AF     		add	r7, sp, #0
+ 163              		.cfi_def_cfa_register 7
+ 164 0006 021C     		mov	r2, r0
+ 165 0008 FB1D     		add	r3, r7, #7
+ 166 000a 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 6
+
+
+ 120:Generated_Source\PSoC4/SongCount.c ****     uint8 drVal = (uint8)(SongCount_DR & (uint8)(~SongCount_MASK));
+ 167              		.loc 1 120 0
+ 168 000c 0B4B     		ldr	r3, .L5
+ 169 000e 1B68     		ldr	r3, [r3]
+ 170 0010 0F23     		mov	r3, #15
+ 171 0012 FB18     		add	r3, r7, r3
+ 172 0014 0022     		mov	r2, #0
+ 173 0016 1A70     		strb	r2, [r3]
+ 121:Generated_Source\PSoC4/SongCount.c ****     drVal = (drVal | ((uint8)(value << SongCount_SHIFT) & SongCount_MASK));
+ 174              		.loc 1 121 0
+ 175 0018 0F23     		mov	r3, #15
+ 176 001a FB18     		add	r3, r7, r3
+ 177 001c 0F22     		mov	r2, #15
+ 178 001e B918     		add	r1, r7, r2
+ 179 0020 FA1D     		add	r2, r7, #7
+ 180 0022 0978     		ldrb	r1, [r1]
+ 181 0024 1278     		ldrb	r2, [r2]
+ 182 0026 0A43     		orr	r2, r1
+ 183 0028 1A70     		strb	r2, [r3]
+ 122:Generated_Source\PSoC4/SongCount.c ****     SongCount_DR = (uint32)drVal;
+ 184              		.loc 1 122 0
+ 185 002a 044B     		ldr	r3, .L5
+ 186 002c 0F22     		mov	r2, #15
+ 187 002e BA18     		add	r2, r7, r2
+ 188 0030 1278     		ldrb	r2, [r2]
+ 189 0032 1A60     		str	r2, [r3]
+ 123:Generated_Source\PSoC4/SongCount.c **** }
+ 190              		.loc 1 123 0
+ 191 0034 BD46     		mov	sp, r7
+ 192 0036 04B0     		add	sp, sp, #16
+ 193              		@ sp needed
+ 194 0038 80BD     		pop	{r7, pc}
+ 195              	.L6:
+ 196 003a C046     		.align	2
+ 197              	.L5:
+ 198 003c 00030440 		.word	1074004736
+ 199              		.cfi_endproc
+ 200              	.LFE1:
+ 201              		.size	SongCount_Write, .-SongCount_Write
+ 202              		.section	.text.SongCount_Read,"ax",%progbits
+ 203              		.align	2
+ 204              		.global	SongCount_Read
+ 205              		.code	16
+ 206              		.thumb_func
+ 207              		.type	SongCount_Read, %function
+ 208              	SongCount_Read:
+ 209              	.LFB2:
+ 124:Generated_Source\PSoC4/SongCount.c **** 
+ 125:Generated_Source\PSoC4/SongCount.c **** 
+ 126:Generated_Source\PSoC4/SongCount.c **** /*******************************************************************************
+ 127:Generated_Source\PSoC4/SongCount.c **** * Function Name: SongCount_Read
+ 128:Generated_Source\PSoC4/SongCount.c **** ****************************************************************************//**
+ 129:Generated_Source\PSoC4/SongCount.c **** *
+ 130:Generated_Source\PSoC4/SongCount.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 131:Generated_Source\PSoC4/SongCount.c **** *  the required bits according to the width and bit position of the component
+ 132:Generated_Source\PSoC4/SongCount.c **** *  instance. 
+ 133:Generated_Source\PSoC4/SongCount.c **** *
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 7
+
+
+ 134:Generated_Source\PSoC4/SongCount.c **** * The pin's status register returns the current logic level present on the 
+ 135:Generated_Source\PSoC4/SongCount.c **** * physical pin.
+ 136:Generated_Source\PSoC4/SongCount.c **** *
+ 137:Generated_Source\PSoC4/SongCount.c **** * \return 
+ 138:Generated_Source\PSoC4/SongCount.c **** *  The current value for the pins in the component as a right justified number.
+ 139:Generated_Source\PSoC4/SongCount.c **** *
+ 140:Generated_Source\PSoC4/SongCount.c **** * \funcusage
+ 141:Generated_Source\PSoC4/SongCount.c **** *  \snippet SongCount_SUT.c usage_SongCount_Read  
+ 142:Generated_Source\PSoC4/SongCount.c **** *******************************************************************************/
+ 143:Generated_Source\PSoC4/SongCount.c **** uint8 SongCount_Read(void)
+ 144:Generated_Source\PSoC4/SongCount.c **** {
+ 210              		.loc 1 144 0
+ 211              		.cfi_startproc
+ 212 0000 80B5     		push	{r7, lr}
+ 213              		.cfi_def_cfa_offset 8
+ 214              		.cfi_offset 7, -8
+ 215              		.cfi_offset 14, -4
+ 216 0002 00AF     		add	r7, sp, #0
+ 217              		.cfi_def_cfa_register 7
+ 145:Generated_Source\PSoC4/SongCount.c ****     return (uint8)((SongCount_PS & SongCount_MASK) >> SongCount_SHIFT);
+ 218              		.loc 1 145 0
+ 219 0004 024B     		ldr	r3, .L9
+ 220 0006 1B68     		ldr	r3, [r3]
+ 221 0008 DBB2     		uxtb	r3, r3
+ 146:Generated_Source\PSoC4/SongCount.c **** }
+ 222              		.loc 1 146 0
+ 223 000a 181C     		mov	r0, r3
+ 224 000c BD46     		mov	sp, r7
+ 225              		@ sp needed
+ 226 000e 80BD     		pop	{r7, pc}
+ 227              	.L10:
+ 228              		.align	2
+ 229              	.L9:
+ 230 0010 04030440 		.word	1074004740
+ 231              		.cfi_endproc
+ 232              	.LFE2:
+ 233              		.size	SongCount_Read, .-SongCount_Read
+ 234              		.section	.text.SongCount_ReadDataReg,"ax",%progbits
+ 235              		.align	2
+ 236              		.global	SongCount_ReadDataReg
+ 237              		.code	16
+ 238              		.thumb_func
+ 239              		.type	SongCount_ReadDataReg, %function
+ 240              	SongCount_ReadDataReg:
+ 241              	.LFB3:
+ 147:Generated_Source\PSoC4/SongCount.c **** 
+ 148:Generated_Source\PSoC4/SongCount.c **** 
+ 149:Generated_Source\PSoC4/SongCount.c **** /*******************************************************************************
+ 150:Generated_Source\PSoC4/SongCount.c **** * Function Name: SongCount_ReadDataReg
+ 151:Generated_Source\PSoC4/SongCount.c **** ****************************************************************************//**
+ 152:Generated_Source\PSoC4/SongCount.c **** *
+ 153:Generated_Source\PSoC4/SongCount.c **** * \brief Reads the associated physical port's data output register and masks 
+ 154:Generated_Source\PSoC4/SongCount.c **** *  the correct bits according to the width and bit position of the component 
+ 155:Generated_Source\PSoC4/SongCount.c **** *  instance. 
+ 156:Generated_Source\PSoC4/SongCount.c **** *
+ 157:Generated_Source\PSoC4/SongCount.c **** * The data output register controls the signal applied to the physical pin in 
+ 158:Generated_Source\PSoC4/SongCount.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 8
+
+
+ 159:Generated_Source\PSoC4/SongCount.c **** * preferred SongCount_Read() API because the 
+ 160:Generated_Source\PSoC4/SongCount.c **** * SongCount_ReadDataReg() reads the data register instead of the status 
+ 161:Generated_Source\PSoC4/SongCount.c **** * register. For output pins this is a useful function to determine the value 
+ 162:Generated_Source\PSoC4/SongCount.c **** * just written to the pin.
+ 163:Generated_Source\PSoC4/SongCount.c **** *
+ 164:Generated_Source\PSoC4/SongCount.c **** * \return 
+ 165:Generated_Source\PSoC4/SongCount.c **** *  The current value of the data register masked and shifted into a right 
+ 166:Generated_Source\PSoC4/SongCount.c **** *  justified number for the component instance.
+ 167:Generated_Source\PSoC4/SongCount.c **** *
+ 168:Generated_Source\PSoC4/SongCount.c **** * \funcusage
+ 169:Generated_Source\PSoC4/SongCount.c **** *  \snippet SongCount_SUT.c usage_SongCount_ReadDataReg 
+ 170:Generated_Source\PSoC4/SongCount.c **** *******************************************************************************/
+ 171:Generated_Source\PSoC4/SongCount.c **** uint8 SongCount_ReadDataReg(void)
+ 172:Generated_Source\PSoC4/SongCount.c **** {
+ 242              		.loc 1 172 0
+ 243              		.cfi_startproc
+ 244 0000 80B5     		push	{r7, lr}
+ 245              		.cfi_def_cfa_offset 8
+ 246              		.cfi_offset 7, -8
+ 247              		.cfi_offset 14, -4
+ 248 0002 00AF     		add	r7, sp, #0
+ 249              		.cfi_def_cfa_register 7
+ 173:Generated_Source\PSoC4/SongCount.c ****     return (uint8)((SongCount_DR & SongCount_MASK) >> SongCount_SHIFT);
+ 250              		.loc 1 173 0
+ 251 0004 024B     		ldr	r3, .L13
+ 252 0006 1B68     		ldr	r3, [r3]
+ 253 0008 DBB2     		uxtb	r3, r3
+ 174:Generated_Source\PSoC4/SongCount.c **** }
+ 254              		.loc 1 174 0
+ 255 000a 181C     		mov	r0, r3
+ 256 000c BD46     		mov	sp, r7
+ 257              		@ sp needed
+ 258 000e 80BD     		pop	{r7, pc}
+ 259              	.L14:
+ 260              		.align	2
+ 261              	.L13:
+ 262 0010 00030440 		.word	1074004736
+ 263              		.cfi_endproc
+ 264              	.LFE3:
+ 265              		.size	SongCount_ReadDataReg, .-SongCount_ReadDataReg
+ 266              		.section	.text.SongCount_SetInterruptMode,"ax",%progbits
+ 267              		.align	2
+ 268              		.global	SongCount_SetInterruptMode
+ 269              		.code	16
+ 270              		.thumb_func
+ 271              		.type	SongCount_SetInterruptMode, %function
+ 272              	SongCount_SetInterruptMode:
+ 273              	.LFB4:
+ 175:Generated_Source\PSoC4/SongCount.c **** 
+ 176:Generated_Source\PSoC4/SongCount.c **** 
+ 177:Generated_Source\PSoC4/SongCount.c **** /*******************************************************************************
+ 178:Generated_Source\PSoC4/SongCount.c **** * Function Name: SongCount_SetInterruptMode
+ 179:Generated_Source\PSoC4/SongCount.c **** ****************************************************************************//**
+ 180:Generated_Source\PSoC4/SongCount.c **** *
+ 181:Generated_Source\PSoC4/SongCount.c **** * \brief Configures the interrupt mode for each of the Pins component's
+ 182:Generated_Source\PSoC4/SongCount.c **** *  pins. Alternatively you may set the interrupt mode for all the pins
+ 183:Generated_Source\PSoC4/SongCount.c **** *  specified in the Pins component.
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 9
+
+
+ 184:Generated_Source\PSoC4/SongCount.c **** *
+ 185:Generated_Source\PSoC4/SongCount.c **** *  <b>Note</b> The interrupt is port-wide and therefore any enabled pin
+ 186:Generated_Source\PSoC4/SongCount.c **** *  interrupt may trigger it.
+ 187:Generated_Source\PSoC4/SongCount.c **** *
+ 188:Generated_Source\PSoC4/SongCount.c **** * \param position
+ 189:Generated_Source\PSoC4/SongCount.c **** *  The pin position as listed in the Pins component. You may OR these to be 
+ 190:Generated_Source\PSoC4/SongCount.c **** *  able to configure the interrupt mode of multiple pins within a Pins 
+ 191:Generated_Source\PSoC4/SongCount.c **** *  component. Or you may use SongCount_INTR_ALL to configure the
+ 192:Generated_Source\PSoC4/SongCount.c **** *  interrupt mode of all the pins in the Pins component.       
+ 193:Generated_Source\PSoC4/SongCount.c **** *  - SongCount_0_INTR       (First pin in the list)
+ 194:Generated_Source\PSoC4/SongCount.c **** *  - SongCount_1_INTR       (Second pin in the list)
+ 195:Generated_Source\PSoC4/SongCount.c **** *  - ...
+ 196:Generated_Source\PSoC4/SongCount.c **** *  - SongCount_INTR_ALL     (All pins in Pins component)
+ 197:Generated_Source\PSoC4/SongCount.c **** *
+ 198:Generated_Source\PSoC4/SongCount.c **** * \param mode
+ 199:Generated_Source\PSoC4/SongCount.c **** *  Interrupt mode for the selected pins. Valid options are documented in
+ 200:Generated_Source\PSoC4/SongCount.c **** *  \ref intrMode.
+ 201:Generated_Source\PSoC4/SongCount.c **** *
+ 202:Generated_Source\PSoC4/SongCount.c **** * \return 
+ 203:Generated_Source\PSoC4/SongCount.c **** *  None
+ 204:Generated_Source\PSoC4/SongCount.c **** *  
+ 205:Generated_Source\PSoC4/SongCount.c **** * \sideeffect
+ 206:Generated_Source\PSoC4/SongCount.c **** *  It is recommended that the interrupt be disabled before calling this 
+ 207:Generated_Source\PSoC4/SongCount.c **** *  function to avoid unintended interrupt requests. Note that the interrupt
+ 208:Generated_Source\PSoC4/SongCount.c **** *  type is port wide, and therefore will trigger for any enabled pin on the 
+ 209:Generated_Source\PSoC4/SongCount.c **** *  port.
+ 210:Generated_Source\PSoC4/SongCount.c **** *
+ 211:Generated_Source\PSoC4/SongCount.c **** * \funcusage
+ 212:Generated_Source\PSoC4/SongCount.c **** *  \snippet SongCount_SUT.c usage_SongCount_SetInterruptMode
+ 213:Generated_Source\PSoC4/SongCount.c **** *******************************************************************************/
+ 214:Generated_Source\PSoC4/SongCount.c **** void SongCount_SetInterruptMode(uint16 position, uint16 mode)
+ 215:Generated_Source\PSoC4/SongCount.c **** {
+ 274              		.loc 1 215 0
+ 275              		.cfi_startproc
+ 276 0000 80B5     		push	{r7, lr}
+ 277              		.cfi_def_cfa_offset 8
+ 278              		.cfi_offset 7, -8
+ 279              		.cfi_offset 14, -4
+ 280 0002 84B0     		sub	sp, sp, #16
+ 281              		.cfi_def_cfa_offset 24
+ 282 0004 00AF     		add	r7, sp, #0
+ 283              		.cfi_def_cfa_register 7
+ 284 0006 021C     		mov	r2, r0
+ 285 0008 BB1D     		add	r3, r7, #6
+ 286 000a 1A80     		strh	r2, [r3]
+ 287 000c 3B1D     		add	r3, r7, #4
+ 288 000e 0A1C     		add	r2, r1, #0
+ 289 0010 1A80     		strh	r2, [r3]
+ 216:Generated_Source\PSoC4/SongCount.c ****     uint32 intrCfg;
+ 217:Generated_Source\PSoC4/SongCount.c ****     
+ 218:Generated_Source\PSoC4/SongCount.c ****     intrCfg =  SongCount_INTCFG & (uint32)(~(uint32)position);
+ 290              		.loc 1 218 0
+ 291 0012 0A4B     		ldr	r3, .L16
+ 292 0014 1B68     		ldr	r3, [r3]
+ 293 0016 BA1D     		add	r2, r7, #6
+ 294 0018 1288     		ldrh	r2, [r2]
+ 295 001a D243     		mvn	r2, r2
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 10
+
+
+ 296 001c 1340     		and	r3, r2
+ 297 001e FB60     		str	r3, [r7, #12]
+ 219:Generated_Source\PSoC4/SongCount.c ****     SongCount_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 298              		.loc 1 219 0
+ 299 0020 064B     		ldr	r3, .L16
+ 300 0022 BA1D     		add	r2, r7, #6
+ 301 0024 391D     		add	r1, r7, #4
+ 302 0026 1288     		ldrh	r2, [r2]
+ 303 0028 0988     		ldrh	r1, [r1]
+ 304 002a 0A40     		and	r2, r1
+ 305 002c 92B2     		uxth	r2, r2
+ 306 002e 111C     		mov	r1, r2
+ 307 0030 FA68     		ldr	r2, [r7, #12]
+ 308 0032 0A43     		orr	r2, r1
+ 309 0034 1A60     		str	r2, [r3]
+ 220:Generated_Source\PSoC4/SongCount.c **** }
+ 310              		.loc 1 220 0
+ 311 0036 BD46     		mov	sp, r7
+ 312 0038 04B0     		add	sp, sp, #16
+ 313              		@ sp needed
+ 314 003a 80BD     		pop	{r7, pc}
+ 315              	.L17:
+ 316              		.align	2
+ 317              	.L16:
+ 318 003c 0C030440 		.word	1074004748
+ 319              		.cfi_endproc
+ 320              	.LFE4:
+ 321              		.size	SongCount_SetInterruptMode, .-SongCount_SetInterruptMode
+ 322              		.section	.text.SongCount_ClearInterrupt,"ax",%progbits
+ 323              		.align	2
+ 324              		.global	SongCount_ClearInterrupt
+ 325              		.code	16
+ 326              		.thumb_func
+ 327              		.type	SongCount_ClearInterrupt, %function
+ 328              	SongCount_ClearInterrupt:
+ 329              	.LFB5:
+ 221:Generated_Source\PSoC4/SongCount.c **** 
+ 222:Generated_Source\PSoC4/SongCount.c **** 
+ 223:Generated_Source\PSoC4/SongCount.c **** /*******************************************************************************
+ 224:Generated_Source\PSoC4/SongCount.c **** * Function Name: SongCount_ClearInterrupt
+ 225:Generated_Source\PSoC4/SongCount.c **** ****************************************************************************//**
+ 226:Generated_Source\PSoC4/SongCount.c **** *
+ 227:Generated_Source\PSoC4/SongCount.c **** * \brief Clears any active interrupts attached with the component and returns 
+ 228:Generated_Source\PSoC4/SongCount.c **** *  the value of the interrupt status register allowing determination of which
+ 229:Generated_Source\PSoC4/SongCount.c **** *  pins generated an interrupt event.
+ 230:Generated_Source\PSoC4/SongCount.c **** *
+ 231:Generated_Source\PSoC4/SongCount.c **** * \return 
+ 232:Generated_Source\PSoC4/SongCount.c **** *  The right-shifted current value of the interrupt status register. Each pin 
+ 233:Generated_Source\PSoC4/SongCount.c **** *  has one bit set if it generated an interrupt event. For example, bit 0 is 
+ 234:Generated_Source\PSoC4/SongCount.c **** *  for pin 0 and bit 1 is for pin 1 of the Pins component.
+ 235:Generated_Source\PSoC4/SongCount.c **** *  
+ 236:Generated_Source\PSoC4/SongCount.c **** * \sideeffect
+ 237:Generated_Source\PSoC4/SongCount.c **** *  Clears all bits of the physical port's interrupt status register, not just
+ 238:Generated_Source\PSoC4/SongCount.c **** *  those associated with the Pins component.
+ 239:Generated_Source\PSoC4/SongCount.c **** *
+ 240:Generated_Source\PSoC4/SongCount.c **** * \funcusage
+ 241:Generated_Source\PSoC4/SongCount.c **** *  \snippet SongCount_SUT.c usage_SongCount_ClearInterrupt
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 11
+
+
+ 242:Generated_Source\PSoC4/SongCount.c **** *******************************************************************************/
+ 243:Generated_Source\PSoC4/SongCount.c **** uint8 SongCount_ClearInterrupt(void)
+ 244:Generated_Source\PSoC4/SongCount.c **** {
+ 330              		.loc 1 244 0
+ 331              		.cfi_startproc
+ 332 0000 80B5     		push	{r7, lr}
+ 333              		.cfi_def_cfa_offset 8
+ 334              		.cfi_offset 7, -8
+ 335              		.cfi_offset 14, -4
+ 336 0002 82B0     		sub	sp, sp, #8
+ 337              		.cfi_def_cfa_offset 16
+ 338 0004 00AF     		add	r7, sp, #0
+ 339              		.cfi_def_cfa_register 7
+ 245:Generated_Source\PSoC4/SongCount.c **** 	uint8 maskedStatus = (uint8)(SongCount_INTSTAT & SongCount_MASK);
+ 340              		.loc 1 245 0
+ 341 0006 074B     		ldr	r3, .L20
+ 342 0008 1A68     		ldr	r2, [r3]
+ 343 000a FB1D     		add	r3, r7, #7
+ 344 000c 1A70     		strb	r2, [r3]
+ 246:Generated_Source\PSoC4/SongCount.c **** 	SongCount_INTSTAT = maskedStatus;
+ 345              		.loc 1 246 0
+ 346 000e 054B     		ldr	r3, .L20
+ 347 0010 FA1D     		add	r2, r7, #7
+ 348 0012 1278     		ldrb	r2, [r2]
+ 349 0014 1A60     		str	r2, [r3]
+ 247:Generated_Source\PSoC4/SongCount.c ****     return maskedStatus >> SongCount_SHIFT;
+ 350              		.loc 1 247 0
+ 351 0016 FB1D     		add	r3, r7, #7
+ 352 0018 1B78     		ldrb	r3, [r3]
+ 248:Generated_Source\PSoC4/SongCount.c **** }
+ 353              		.loc 1 248 0
+ 354 001a 181C     		mov	r0, r3
+ 355 001c BD46     		mov	sp, r7
+ 356 001e 02B0     		add	sp, sp, #8
+ 357              		@ sp needed
+ 358 0020 80BD     		pop	{r7, pc}
+ 359              	.L21:
+ 360 0022 C046     		.align	2
+ 361              	.L20:
+ 362 0024 10030440 		.word	1074004752
+ 363              		.cfi_endproc
+ 364              	.LFE5:
+ 365              		.size	SongCount_ClearInterrupt, .-SongCount_ClearInterrupt
+ 366              		.text
+ 367              	.Letext0:
+ 368              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 369              		.section	.debug_info,"",%progbits
+ 370              	.Ldebug_info0:
+ 371 0000 96010000 		.4byte	0x196
+ 372 0004 0400     		.2byte	0x4
+ 373 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 374 000a 04       		.byte	0x4
+ 375 000b 01       		.uleb128 0x1
+ 376 000c 9E000000 		.4byte	.LASF28
+ 377 0010 01       		.byte	0x1
+ 378 0011 71020000 		.4byte	.LASF29
+ 379 0015 43010000 		.4byte	.LASF30
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 12
+
+
+ 380 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 381 001d 00000000 		.4byte	0
+ 382 0021 00000000 		.4byte	.Ldebug_line0
+ 383 0025 02       		.uleb128 0x2
+ 384 0026 01       		.byte	0x1
+ 385 0027 06       		.byte	0x6
+ 386 0028 9D020000 		.4byte	.LASF0
+ 387 002c 02       		.uleb128 0x2
+ 388 002d 01       		.byte	0x1
+ 389 002e 08       		.byte	0x8
+ 390 002f 48000000 		.4byte	.LASF1
+ 391 0033 02       		.uleb128 0x2
+ 392 0034 02       		.byte	0x2
+ 393 0035 05       		.byte	0x5
+ 394 0036 61020000 		.4byte	.LASF2
+ 395 003a 02       		.uleb128 0x2
+ 396 003b 02       		.byte	0x2
+ 397 003c 07       		.byte	0x7
+ 398 003d 6E000000 		.4byte	.LASF3
+ 399 0041 02       		.uleb128 0x2
+ 400 0042 04       		.byte	0x4
+ 401 0043 05       		.byte	0x5
+ 402 0044 94020000 		.4byte	.LASF4
+ 403 0048 02       		.uleb128 0x2
+ 404 0049 04       		.byte	0x4
+ 405 004a 07       		.byte	0x7
+ 406 004b 5C000000 		.4byte	.LASF5
+ 407 004f 02       		.uleb128 0x2
+ 408 0050 08       		.byte	0x8
+ 409 0051 05       		.byte	0x5
+ 410 0052 41020000 		.4byte	.LASF6
+ 411 0056 02       		.uleb128 0x2
+ 412 0057 08       		.byte	0x8
+ 413 0058 07       		.byte	0x7
+ 414 0059 0A020000 		.4byte	.LASF7
+ 415 005d 03       		.uleb128 0x3
+ 416 005e 04       		.byte	0x4
+ 417 005f 05       		.byte	0x5
+ 418 0060 696E7400 		.ascii	"int\000"
+ 419 0064 02       		.uleb128 0x2
+ 420 0065 04       		.byte	0x4
+ 421 0066 07       		.byte	0x7
+ 422 0067 E4010000 		.4byte	.LASF8
+ 423 006b 04       		.uleb128 0x4
+ 424 006c 6B020000 		.4byte	.LASF9
+ 425 0070 02       		.byte	0x2
+ 426 0071 B901     		.2byte	0x1b9
+ 427 0073 2C000000 		.4byte	0x2c
+ 428 0077 04       		.uleb128 0x4
+ 429 0078 2C010000 		.4byte	.LASF10
+ 430 007c 02       		.byte	0x2
+ 431 007d BA01     		.2byte	0x1ba
+ 432 007f 3A000000 		.4byte	0x3a
+ 433 0083 04       		.uleb128 0x4
+ 434 0084 3C010000 		.4byte	.LASF11
+ 435 0088 02       		.byte	0x2
+ 436 0089 BB01     		.2byte	0x1bb
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 13
+
+
+ 437 008b 48000000 		.4byte	0x48
+ 438 008f 02       		.uleb128 0x2
+ 439 0090 04       		.byte	0x4
+ 440 0091 04       		.byte	0x4
+ 441 0092 42000000 		.4byte	.LASF12
+ 442 0096 02       		.uleb128 0x2
+ 443 0097 08       		.byte	0x8
+ 444 0098 04       		.byte	0x4
+ 445 0099 97000000 		.4byte	.LASF13
+ 446 009d 02       		.uleb128 0x2
+ 447 009e 01       		.byte	0x1
+ 448 009f 08       		.byte	0x8
+ 449 00a0 5C020000 		.4byte	.LASF14
+ 450 00a4 04       		.uleb128 0x4
+ 451 00a5 00000000 		.4byte	.LASF15
+ 452 00a9 02       		.byte	0x2
+ 453 00aa 6502     		.2byte	0x265
+ 454 00ac B0000000 		.4byte	0xb0
+ 455 00b0 05       		.uleb128 0x5
+ 456 00b1 83000000 		.4byte	0x83
+ 457 00b5 06       		.uleb128 0x6
+ 458 00b6 1C000000 		.4byte	.LASF16
+ 459 00ba 01       		.byte	0x1
+ 460 00bb 48       		.byte	0x48
+ 461 00bc 00000000 		.4byte	.LFB0
+ 462 00c0 D0000000 		.4byte	.LFE0-.LFB0
+ 463 00c4 01       		.uleb128 0x1
+ 464 00c5 9C       		.byte	0x9c
+ 465 00c6 D9000000 		.4byte	0xd9
+ 466 00ca 07       		.uleb128 0x7
+ 467 00cb 3C020000 		.4byte	.LASF18
+ 468 00cf 01       		.byte	0x1
+ 469 00d0 48       		.byte	0x48
+ 470 00d1 6B000000 		.4byte	0x6b
+ 471 00d5 02       		.uleb128 0x2
+ 472 00d6 91       		.byte	0x91
+ 473 00d7 77       		.sleb128 -9
+ 474 00d8 00       		.byte	0
+ 475 00d9 06       		.uleb128 0x6
+ 476 00da 06000000 		.4byte	.LASF17
+ 477 00de 01       		.byte	0x1
+ 478 00df 76       		.byte	0x76
+ 479 00e0 00000000 		.4byte	.LFB1
+ 480 00e4 40000000 		.4byte	.LFE1-.LFB1
+ 481 00e8 01       		.uleb128 0x1
+ 482 00e9 9C       		.byte	0x9c
+ 483 00ea 0B010000 		.4byte	0x10b
+ 484 00ee 07       		.uleb128 0x7
+ 485 00ef 16000000 		.4byte	.LASF19
+ 486 00f3 01       		.byte	0x1
+ 487 00f4 76       		.byte	0x76
+ 488 00f5 6B000000 		.4byte	0x6b
+ 489 00f9 02       		.uleb128 0x2
+ 490 00fa 91       		.byte	0x91
+ 491 00fb 6F       		.sleb128 -17
+ 492 00fc 08       		.uleb128 0x8
+ 493 00fd 56000000 		.4byte	.LASF24
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 14
+
+
+ 494 0101 01       		.byte	0x1
+ 495 0102 78       		.byte	0x78
+ 496 0103 6B000000 		.4byte	0x6b
+ 497 0107 02       		.uleb128 0x2
+ 498 0108 91       		.byte	0x91
+ 499 0109 77       		.sleb128 -9
+ 500 010a 00       		.byte	0
+ 501 010b 09       		.uleb128 0x9
+ 502 010c 33000000 		.4byte	.LASF20
+ 503 0110 01       		.byte	0x1
+ 504 0111 8F       		.byte	0x8f
+ 505 0112 6B000000 		.4byte	0x6b
+ 506 0116 00000000 		.4byte	.LFB2
+ 507 011a 14000000 		.4byte	.LFE2-.LFB2
+ 508 011e 01       		.uleb128 0x1
+ 509 011f 9C       		.byte	0x9c
+ 510 0120 09       		.uleb128 0x9
+ 511 0121 81000000 		.4byte	.LASF21
+ 512 0125 01       		.byte	0x1
+ 513 0126 AB       		.byte	0xab
+ 514 0127 6B000000 		.4byte	0x6b
+ 515 012b 00000000 		.4byte	.LFB3
+ 516 012f 14000000 		.4byte	.LFE3-.LFB3
+ 517 0133 01       		.uleb128 0x1
+ 518 0134 9C       		.byte	0x9c
+ 519 0135 06       		.uleb128 0x6
+ 520 0136 21020000 		.4byte	.LASF22
+ 521 013a 01       		.byte	0x1
+ 522 013b D6       		.byte	0xd6
+ 523 013c 00000000 		.4byte	.LFB4
+ 524 0140 40000000 		.4byte	.LFE4-.LFB4
+ 525 0144 01       		.uleb128 0x1
+ 526 0145 9C       		.byte	0x9c
+ 527 0146 75010000 		.4byte	0x175
+ 528 014a 07       		.uleb128 0x7
+ 529 014b 33010000 		.4byte	.LASF23
+ 530 014f 01       		.byte	0x1
+ 531 0150 D6       		.byte	0xd6
+ 532 0151 77000000 		.4byte	0x77
+ 533 0155 02       		.uleb128 0x2
+ 534 0156 91       		.byte	0x91
+ 535 0157 6E       		.sleb128 -18
+ 536 0158 07       		.uleb128 0x7
+ 537 0159 3C020000 		.4byte	.LASF18
+ 538 015d 01       		.byte	0x1
+ 539 015e D6       		.byte	0xd6
+ 540 015f 77000000 		.4byte	0x77
+ 541 0163 02       		.uleb128 0x2
+ 542 0164 91       		.byte	0x91
+ 543 0165 6C       		.sleb128 -20
+ 544 0166 08       		.uleb128 0x8
+ 545 0167 DC010000 		.4byte	.LASF25
+ 546 016b 01       		.byte	0x1
+ 547 016c D8       		.byte	0xd8
+ 548 016d 83000000 		.4byte	0x83
+ 549 0171 02       		.uleb128 0x2
+ 550 0172 91       		.byte	0x91
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 15
+
+
+ 551 0173 74       		.sleb128 -12
+ 552 0174 00       		.byte	0
+ 553 0175 0A       		.uleb128 0xa
+ 554 0176 F1010000 		.4byte	.LASF26
+ 555 017a 01       		.byte	0x1
+ 556 017b F3       		.byte	0xf3
+ 557 017c 6B000000 		.4byte	0x6b
+ 558 0180 00000000 		.4byte	.LFB5
+ 559 0184 28000000 		.4byte	.LFE5-.LFB5
+ 560 0188 01       		.uleb128 0x1
+ 561 0189 9C       		.byte	0x9c
+ 562 018a 08       		.uleb128 0x8
+ 563 018b 4F020000 		.4byte	.LASF27
+ 564 018f 01       		.byte	0x1
+ 565 0190 F5       		.byte	0xf5
+ 566 0191 6B000000 		.4byte	0x6b
+ 567 0195 02       		.uleb128 0x2
+ 568 0196 91       		.byte	0x91
+ 569 0197 77       		.sleb128 -9
+ 570 0198 00       		.byte	0
+ 571 0199 00       		.byte	0
+ 572              		.section	.debug_abbrev,"",%progbits
+ 573              	.Ldebug_abbrev0:
+ 574 0000 01       		.uleb128 0x1
+ 575 0001 11       		.uleb128 0x11
+ 576 0002 01       		.byte	0x1
+ 577 0003 25       		.uleb128 0x25
+ 578 0004 0E       		.uleb128 0xe
+ 579 0005 13       		.uleb128 0x13
+ 580 0006 0B       		.uleb128 0xb
+ 581 0007 03       		.uleb128 0x3
+ 582 0008 0E       		.uleb128 0xe
+ 583 0009 1B       		.uleb128 0x1b
+ 584 000a 0E       		.uleb128 0xe
+ 585 000b 55       		.uleb128 0x55
+ 586 000c 17       		.uleb128 0x17
+ 587 000d 11       		.uleb128 0x11
+ 588 000e 01       		.uleb128 0x1
+ 589 000f 10       		.uleb128 0x10
+ 590 0010 17       		.uleb128 0x17
+ 591 0011 00       		.byte	0
+ 592 0012 00       		.byte	0
+ 593 0013 02       		.uleb128 0x2
+ 594 0014 24       		.uleb128 0x24
+ 595 0015 00       		.byte	0
+ 596 0016 0B       		.uleb128 0xb
+ 597 0017 0B       		.uleb128 0xb
+ 598 0018 3E       		.uleb128 0x3e
+ 599 0019 0B       		.uleb128 0xb
+ 600 001a 03       		.uleb128 0x3
+ 601 001b 0E       		.uleb128 0xe
+ 602 001c 00       		.byte	0
+ 603 001d 00       		.byte	0
+ 604 001e 03       		.uleb128 0x3
+ 605 001f 24       		.uleb128 0x24
+ 606 0020 00       		.byte	0
+ 607 0021 0B       		.uleb128 0xb
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 16
+
+
+ 608 0022 0B       		.uleb128 0xb
+ 609 0023 3E       		.uleb128 0x3e
+ 610 0024 0B       		.uleb128 0xb
+ 611 0025 03       		.uleb128 0x3
+ 612 0026 08       		.uleb128 0x8
+ 613 0027 00       		.byte	0
+ 614 0028 00       		.byte	0
+ 615 0029 04       		.uleb128 0x4
+ 616 002a 16       		.uleb128 0x16
+ 617 002b 00       		.byte	0
+ 618 002c 03       		.uleb128 0x3
+ 619 002d 0E       		.uleb128 0xe
+ 620 002e 3A       		.uleb128 0x3a
+ 621 002f 0B       		.uleb128 0xb
+ 622 0030 3B       		.uleb128 0x3b
+ 623 0031 05       		.uleb128 0x5
+ 624 0032 49       		.uleb128 0x49
+ 625 0033 13       		.uleb128 0x13
+ 626 0034 00       		.byte	0
+ 627 0035 00       		.byte	0
+ 628 0036 05       		.uleb128 0x5
+ 629 0037 35       		.uleb128 0x35
+ 630 0038 00       		.byte	0
+ 631 0039 49       		.uleb128 0x49
+ 632 003a 13       		.uleb128 0x13
+ 633 003b 00       		.byte	0
+ 634 003c 00       		.byte	0
+ 635 003d 06       		.uleb128 0x6
+ 636 003e 2E       		.uleb128 0x2e
+ 637 003f 01       		.byte	0x1
+ 638 0040 3F       		.uleb128 0x3f
+ 639 0041 19       		.uleb128 0x19
+ 640 0042 03       		.uleb128 0x3
+ 641 0043 0E       		.uleb128 0xe
+ 642 0044 3A       		.uleb128 0x3a
+ 643 0045 0B       		.uleb128 0xb
+ 644 0046 3B       		.uleb128 0x3b
+ 645 0047 0B       		.uleb128 0xb
+ 646 0048 27       		.uleb128 0x27
+ 647 0049 19       		.uleb128 0x19
+ 648 004a 11       		.uleb128 0x11
+ 649 004b 01       		.uleb128 0x1
+ 650 004c 12       		.uleb128 0x12
+ 651 004d 06       		.uleb128 0x6
+ 652 004e 40       		.uleb128 0x40
+ 653 004f 18       		.uleb128 0x18
+ 654 0050 9742     		.uleb128 0x2117
+ 655 0052 19       		.uleb128 0x19
+ 656 0053 01       		.uleb128 0x1
+ 657 0054 13       		.uleb128 0x13
+ 658 0055 00       		.byte	0
+ 659 0056 00       		.byte	0
+ 660 0057 07       		.uleb128 0x7
+ 661 0058 05       		.uleb128 0x5
+ 662 0059 00       		.byte	0
+ 663 005a 03       		.uleb128 0x3
+ 664 005b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 17
+
+
+ 665 005c 3A       		.uleb128 0x3a
+ 666 005d 0B       		.uleb128 0xb
+ 667 005e 3B       		.uleb128 0x3b
+ 668 005f 0B       		.uleb128 0xb
+ 669 0060 49       		.uleb128 0x49
+ 670 0061 13       		.uleb128 0x13
+ 671 0062 02       		.uleb128 0x2
+ 672 0063 18       		.uleb128 0x18
+ 673 0064 00       		.byte	0
+ 674 0065 00       		.byte	0
+ 675 0066 08       		.uleb128 0x8
+ 676 0067 34       		.uleb128 0x34
+ 677 0068 00       		.byte	0
+ 678 0069 03       		.uleb128 0x3
+ 679 006a 0E       		.uleb128 0xe
+ 680 006b 3A       		.uleb128 0x3a
+ 681 006c 0B       		.uleb128 0xb
+ 682 006d 3B       		.uleb128 0x3b
+ 683 006e 0B       		.uleb128 0xb
+ 684 006f 49       		.uleb128 0x49
+ 685 0070 13       		.uleb128 0x13
+ 686 0071 02       		.uleb128 0x2
+ 687 0072 18       		.uleb128 0x18
+ 688 0073 00       		.byte	0
+ 689 0074 00       		.byte	0
+ 690 0075 09       		.uleb128 0x9
+ 691 0076 2E       		.uleb128 0x2e
+ 692 0077 00       		.byte	0
+ 693 0078 3F       		.uleb128 0x3f
+ 694 0079 19       		.uleb128 0x19
+ 695 007a 03       		.uleb128 0x3
+ 696 007b 0E       		.uleb128 0xe
+ 697 007c 3A       		.uleb128 0x3a
+ 698 007d 0B       		.uleb128 0xb
+ 699 007e 3B       		.uleb128 0x3b
+ 700 007f 0B       		.uleb128 0xb
+ 701 0080 27       		.uleb128 0x27
+ 702 0081 19       		.uleb128 0x19
+ 703 0082 49       		.uleb128 0x49
+ 704 0083 13       		.uleb128 0x13
+ 705 0084 11       		.uleb128 0x11
+ 706 0085 01       		.uleb128 0x1
+ 707 0086 12       		.uleb128 0x12
+ 708 0087 06       		.uleb128 0x6
+ 709 0088 40       		.uleb128 0x40
+ 710 0089 18       		.uleb128 0x18
+ 711 008a 9742     		.uleb128 0x2117
+ 712 008c 19       		.uleb128 0x19
+ 713 008d 00       		.byte	0
+ 714 008e 00       		.byte	0
+ 715 008f 0A       		.uleb128 0xa
+ 716 0090 2E       		.uleb128 0x2e
+ 717 0091 01       		.byte	0x1
+ 718 0092 3F       		.uleb128 0x3f
+ 719 0093 19       		.uleb128 0x19
+ 720 0094 03       		.uleb128 0x3
+ 721 0095 0E       		.uleb128 0xe
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 18
+
+
+ 722 0096 3A       		.uleb128 0x3a
+ 723 0097 0B       		.uleb128 0xb
+ 724 0098 3B       		.uleb128 0x3b
+ 725 0099 0B       		.uleb128 0xb
+ 726 009a 27       		.uleb128 0x27
+ 727 009b 19       		.uleb128 0x19
+ 728 009c 49       		.uleb128 0x49
+ 729 009d 13       		.uleb128 0x13
+ 730 009e 11       		.uleb128 0x11
+ 731 009f 01       		.uleb128 0x1
+ 732 00a0 12       		.uleb128 0x12
+ 733 00a1 06       		.uleb128 0x6
+ 734 00a2 40       		.uleb128 0x40
+ 735 00a3 18       		.uleb128 0x18
+ 736 00a4 9742     		.uleb128 0x2117
+ 737 00a6 19       		.uleb128 0x19
+ 738 00a7 00       		.byte	0
+ 739 00a8 00       		.byte	0
+ 740 00a9 00       		.byte	0
+ 741              		.section	.debug_aranges,"",%progbits
+ 742 0000 44000000 		.4byte	0x44
+ 743 0004 0200     		.2byte	0x2
+ 744 0006 00000000 		.4byte	.Ldebug_info0
+ 745 000a 04       		.byte	0x4
+ 746 000b 00       		.byte	0
+ 747 000c 0000     		.2byte	0
+ 748 000e 0000     		.2byte	0
+ 749 0010 00000000 		.4byte	.LFB0
+ 750 0014 D0000000 		.4byte	.LFE0-.LFB0
+ 751 0018 00000000 		.4byte	.LFB1
+ 752 001c 40000000 		.4byte	.LFE1-.LFB1
+ 753 0020 00000000 		.4byte	.LFB2
+ 754 0024 14000000 		.4byte	.LFE2-.LFB2
+ 755 0028 00000000 		.4byte	.LFB3
+ 756 002c 14000000 		.4byte	.LFE3-.LFB3
+ 757 0030 00000000 		.4byte	.LFB4
+ 758 0034 40000000 		.4byte	.LFE4-.LFB4
+ 759 0038 00000000 		.4byte	.LFB5
+ 760 003c 28000000 		.4byte	.LFE5-.LFB5
+ 761 0040 00000000 		.4byte	0
+ 762 0044 00000000 		.4byte	0
+ 763              		.section	.debug_ranges,"",%progbits
+ 764              	.Ldebug_ranges0:
+ 765 0000 00000000 		.4byte	.LFB0
+ 766 0004 D0000000 		.4byte	.LFE0
+ 767 0008 00000000 		.4byte	.LFB1
+ 768 000c 40000000 		.4byte	.LFE1
+ 769 0010 00000000 		.4byte	.LFB2
+ 770 0014 14000000 		.4byte	.LFE2
+ 771 0018 00000000 		.4byte	.LFB3
+ 772 001c 14000000 		.4byte	.LFE3
+ 773 0020 00000000 		.4byte	.LFB4
+ 774 0024 40000000 		.4byte	.LFE4
+ 775 0028 00000000 		.4byte	.LFB5
+ 776 002c 28000000 		.4byte	.LFE5
+ 777 0030 00000000 		.4byte	0
+ 778 0034 00000000 		.4byte	0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 19
+
+
+ 779              		.section	.debug_line,"",%progbits
+ 780              	.Ldebug_line0:
+ 781 0000 C3000000 		.section	.debug_str,"MS",%progbits,1
+ 781      02004600 
+ 781      00000201 
+ 781      FB0E0D00 
+ 781      01010101 
+ 782              	.LASF15:
+ 783 0000 72656733 		.ascii	"reg32\000"
+ 783      3200
+ 784              	.LASF17:
+ 785 0006 536F6E67 		.ascii	"SongCount_Write\000"
+ 785      436F756E 
+ 785      745F5772 
+ 785      69746500 
+ 786              	.LASF19:
+ 787 0016 76616C75 		.ascii	"value\000"
+ 787      6500
+ 788              	.LASF16:
+ 789 001c 536F6E67 		.ascii	"SongCount_SetDriveMode\000"
+ 789      436F756E 
+ 789      745F5365 
+ 789      74447269 
+ 789      76654D6F 
+ 790              	.LASF20:
+ 791 0033 536F6E67 		.ascii	"SongCount_Read\000"
+ 791      436F756E 
+ 791      745F5265 
+ 791      616400
+ 792              	.LASF12:
+ 793 0042 666C6F61 		.ascii	"float\000"
+ 793      7400
+ 794              	.LASF1:
+ 795 0048 756E7369 		.ascii	"unsigned char\000"
+ 795      676E6564 
+ 795      20636861 
+ 795      7200
+ 796              	.LASF24:
+ 797 0056 64725661 		.ascii	"drVal\000"
+ 797      6C00
+ 798              	.LASF5:
+ 799 005c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 799      20756E73 
+ 799      69676E65 
+ 799      6420696E 
+ 799      7400
+ 800              	.LASF3:
+ 801 006e 73686F72 		.ascii	"short unsigned int\000"
+ 801      7420756E 
+ 801      7369676E 
+ 801      65642069 
+ 801      6E7400
+ 802              	.LASF21:
+ 803 0081 536F6E67 		.ascii	"SongCount_ReadDataReg\000"
+ 803      436F756E 
+ 803      745F5265 
+ 803      61644461 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 20
+
+
+ 803      74615265 
+ 804              	.LASF13:
+ 805 0097 646F7562 		.ascii	"double\000"
+ 805      6C6500
+ 806              	.LASF28:
+ 807 009e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 807      4320342E 
+ 807      392E3320 
+ 807      32303135 
+ 807      30333033 
+ 808 00d1 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 808      20726576 
+ 808      6973696F 
+ 808      6E203232 
+ 808      31323230 
+ 809 0104 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 809      66756E63 
+ 809      74696F6E 
+ 809      2D736563 
+ 809      74696F6E 
+ 810              	.LASF10:
+ 811 012c 75696E74 		.ascii	"uint16\000"
+ 811      313600
+ 812              	.LASF23:
+ 813 0133 706F7369 		.ascii	"position\000"
+ 813      74696F6E 
+ 813      00
+ 814              	.LASF11:
+ 815 013c 75696E74 		.ascii	"uint32\000"
+ 815      333200
+ 816              	.LASF30:
+ 817 0143 433A5C55 		.ascii	"C:\\Users\\Aaron Wubshet\\Google Drive\\1 College\\"
+ 817      73657273 
+ 817      5C416172 
+ 817      6F6E2057 
+ 817      75627368 
+ 818 0171 3220536F 		.ascii	"2 Sophomore Year\\3 SPRING\\6.115\\Final Project PS"
+ 818      70686F6D 
+ 818      6F726520 
+ 818      59656172 
+ 818      5C332053 
+ 819 01a1 6F432057 		.ascii	"oC Workspace\\Final Project\\BLE_UART_peripheral_OT"
+ 819      6F726B73 
+ 819      70616365 
+ 819      5C46696E 
+ 819      616C2050 
+ 820 01d2 4845522E 		.ascii	"HER.cydsn\000"
+ 820      63796473 
+ 820      6E00
+ 821              	.LASF25:
+ 822 01dc 696E7472 		.ascii	"intrCfg\000"
+ 822      43666700 
+ 823              	.LASF8:
+ 824 01e4 756E7369 		.ascii	"unsigned int\000"
+ 824      676E6564 
+ 824      20696E74 
+ 824      00
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cct1EPiT.s 			page 21
+
+
+ 825              	.LASF26:
+ 826 01f1 536F6E67 		.ascii	"SongCount_ClearInterrupt\000"
+ 826      436F756E 
+ 826      745F436C 
+ 826      65617249 
+ 826      6E746572 
+ 827              	.LASF7:
+ 828 020a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 828      206C6F6E 
+ 828      6720756E 
+ 828      7369676E 
+ 828      65642069 
+ 829              	.LASF22:
+ 830 0221 536F6E67 		.ascii	"SongCount_SetInterruptMode\000"
+ 830      436F756E 
+ 830      745F5365 
+ 830      74496E74 
+ 830      65727275 
+ 831              	.LASF18:
+ 832 023c 6D6F6465 		.ascii	"mode\000"
+ 832      00
+ 833              	.LASF6:
+ 834 0241 6C6F6E67 		.ascii	"long long int\000"
+ 834      206C6F6E 
+ 834      6720696E 
+ 834      7400
+ 835              	.LASF27:
+ 836 024f 6D61736B 		.ascii	"maskedStatus\000"
+ 836      65645374 
+ 836      61747573 
+ 836      00
+ 837              	.LASF14:
+ 838 025c 63686172 		.ascii	"char\000"
+ 838      00
+ 839              	.LASF2:
+ 840 0261 73686F72 		.ascii	"short int\000"
+ 840      7420696E 
+ 840      7400
+ 841              	.LASF9:
+ 842 026b 75696E74 		.ascii	"uint8\000"
+ 842      3800
+ 843              	.LASF29:
+ 844 0271 47656E65 		.ascii	"Generated_Source\\PSoC4\\SongCount.c\000"
+ 844      72617465 
+ 844      645F536F 
+ 844      75726365 
+ 844      5C50536F 
+ 845              	.LASF4:
+ 846 0294 6C6F6E67 		.ascii	"long int\000"
+ 846      20696E74 
+ 846      00
+ 847              	.LASF0:
+ 848 029d 7369676E 		.ascii	"signed char\000"
+ 848      65642063 
+ 848      68617200 
+ 849              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

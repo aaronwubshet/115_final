@@ -1,0 +1,719 @@
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"app_LED.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HandleLeds,"ax",%progbits
+  18              		.align	2
+  19              		.global	HandleLeds
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	HandleLeds, %function
+  23              	HandleLeds:
+  24              	.LFB37:
+  25              		.file 1 "app_LED.c"
+   1:app_LED.c     **** /*******************************************************************************
+   2:app_LED.c     **** * File Name: app_LED.c
+   3:app_LED.c     **** *
+   4:app_LED.c     **** * Description:
+   5:app_LED.c     **** *  Common BLE application code for client devices.
+   6:app_LED.c     **** *
+   7:app_LED.c     **** *******************************************************************************
+   8:app_LED.c     **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+   9:app_LED.c     **** * You may use this file only in accordance with the license, terms, conditions,
+  10:app_LED.c     **** * disclaimers, and limitations in the end user license agreement accompanying
+  11:app_LED.c     **** * the software package with which this file was provided.
+  12:app_LED.c     **** *******************************************************************************/
+  13:app_LED.c     **** 
+  14:app_LED.c     **** #include "app_LED.h"
+  15:app_LED.c     **** 
+  16:app_LED.c     **** 
+  17:app_LED.c     **** /*******************************************************************************
+  18:app_LED.c     **** * Function Name: HandleLeds
+  19:app_LED.c     **** ********************************************************************************
+  20:app_LED.c     **** *
+  21:app_LED.c     **** * Summary:
+  22:app_LED.c     **** *  This function handles the toggling of Scan and Connection LED. 
+  23:app_LED.c     **** *
+  24:app_LED.c     **** * Parameters:
+  25:app_LED.c     **** *  None.
+  26:app_LED.c     **** *
+  27:app_LED.c     **** * Return:
+  28:app_LED.c     **** *   None.
+  29:app_LED.c     **** *
+  30:app_LED.c     **** *******************************************************************************/
+  31:app_LED.c     **** void HandleLeds(void)
+  32:app_LED.c     **** {
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 2
+
+
+  26              		.loc 1 32 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 00AF     		add	r7, sp, #0
+  33              		.cfi_def_cfa_register 7
+  33:app_LED.c     ****     static uint8        ledState        = LED_OFF;
+  34:app_LED.c     ****     static uint32       advLedTimer     = ADV_LED_TIMEOUT;   
+  35:app_LED.c     ****     static uint32       connLedTimer    = CONN_LED_TIMEOUT;   
+  36:app_LED.c     ****     
+  37:app_LED.c     ****     switch (cyBle_state)
+  34              		.loc 1 37 0
+  35 0004 204B     		ldr	r3, .L7
+  36 0006 1B78     		ldrb	r3, [r3]
+  37 0008 022B     		cmp	r3, #2
+  38 000a 1FD0     		beq	.L3
+  39 000c 032B     		cmp	r3, #3
+  40 000e 00D0     		beq	.L4
+  38:app_LED.c     ****     {
+  39:app_LED.c     ****         case CYBLE_STATE_ADVERTISING:
+  40:app_LED.c     ****             
+  41:app_LED.c     ****             Conn_LED_Write(LED_OFF);
+  42:app_LED.c     ****             
+  43:app_LED.c     ****             if(--advLedTimer == 0u) 
+  44:app_LED.c     ****             {
+  45:app_LED.c     ****                 advLedTimer = ADV_LED_TIMEOUT;
+  46:app_LED.c     ****                 ledState ^= LED_OFF;
+  47:app_LED.c     ****                 
+  48:app_LED.c     ****                 Adv_LED_Write(ledState);
+  49:app_LED.c     ****             }
+  50:app_LED.c     ****             
+  51:app_LED.c     ****             break;
+  52:app_LED.c     ****             
+  53:app_LED.c     ****         case CYBLE_STATE_CONNECTED: 
+  54:app_LED.c     ****             
+  55:app_LED.c     ****             Adv_LED_Write(LED_OFF);
+  56:app_LED.c     ****             
+  57:app_LED.c     ****             if(--connLedTimer == 0u) 
+  58:app_LED.c     ****             {
+  59:app_LED.c     ****                 connLedTimer = CONN_LED_TIMEOUT;
+  60:app_LED.c     ****                 ledState    ^= LED_OFF;
+  61:app_LED.c     ****                 
+  62:app_LED.c     ****                 Conn_LED_Write(ledState);
+  63:app_LED.c     ****             }
+  64:app_LED.c     ****             
+  65:app_LED.c     ****         default:
+  66:app_LED.c     ****             break;
+  41              		.loc 1 66 0
+  42 0010 38E0     		b	.L1
+  43              	.L4:
+  41:app_LED.c     ****             
+  44              		.loc 1 41 0
+  45 0012 0120     		mov	r0, #1
+  46 0014 FFF7FEFF 		bl	Conn_LED_Write
+  43:app_LED.c     ****             {
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 3
+
+
+  47              		.loc 1 43 0
+  48 0018 1C4B     		ldr	r3, .L7+4
+  49 001a 1B68     		ldr	r3, [r3]
+  50 001c 5A1E     		sub	r2, r3, #1
+  51 001e 1B4B     		ldr	r3, .L7+4
+  52 0020 1A60     		str	r2, [r3]
+  53 0022 1A4B     		ldr	r3, .L7+4
+  54 0024 1B68     		ldr	r3, [r3]
+  55 0026 002B     		cmp	r3, #0
+  56 0028 0FD1     		bne	.L5
+  45:app_LED.c     ****                 ledState ^= LED_OFF;
+  57              		.loc 1 45 0
+  58 002a 184B     		ldr	r3, .L7+4
+  59 002c 0322     		mov	r2, #3
+  60 002e 1A60     		str	r2, [r3]
+  46:app_LED.c     ****                 
+  61              		.loc 1 46 0
+  62 0030 174B     		ldr	r3, .L7+8
+  63 0032 1B78     		ldrb	r3, [r3]
+  64 0034 0122     		mov	r2, #1
+  65 0036 5340     		eor	r3, r2
+  66 0038 DAB2     		uxtb	r2, r3
+  67 003a 154B     		ldr	r3, .L7+8
+  68 003c 1A70     		strb	r2, [r3]
+  48:app_LED.c     ****             }
+  69              		.loc 1 48 0
+  70 003e 144B     		ldr	r3, .L7+8
+  71 0040 1B78     		ldrb	r3, [r3]
+  72 0042 181C     		mov	r0, r3
+  73 0044 FFF7FEFF 		bl	Adv_LED_Write
+  51:app_LED.c     ****             
+  74              		.loc 1 51 0
+  75 0048 1CE0     		b	.L1
+  76              	.L5:
+  77 004a 1BE0     		b	.L1
+  78              	.L3:
+  55:app_LED.c     ****             
+  79              		.loc 1 55 0
+  80 004c 0120     		mov	r0, #1
+  81 004e FFF7FEFF 		bl	Adv_LED_Write
+  57:app_LED.c     ****             {
+  82              		.loc 1 57 0
+  83 0052 104B     		ldr	r3, .L7+12
+  84 0054 1B68     		ldr	r3, [r3]
+  85 0056 5A1E     		sub	r2, r3, #1
+  86 0058 0E4B     		ldr	r3, .L7+12
+  87 005a 1A60     		str	r2, [r3]
+  88 005c 0D4B     		ldr	r3, .L7+12
+  89 005e 1B68     		ldr	r3, [r3]
+  90 0060 002B     		cmp	r3, #0
+  91 0062 0ED1     		bne	.L2
+  59:app_LED.c     ****                 ledState    ^= LED_OFF;
+  92              		.loc 1 59 0
+  93 0064 0B4B     		ldr	r3, .L7+12
+  94 0066 1E22     		mov	r2, #30
+  95 0068 1A60     		str	r2, [r3]
+  60:app_LED.c     ****                 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 4
+
+
+  96              		.loc 1 60 0
+  97 006a 094B     		ldr	r3, .L7+8
+  98 006c 1B78     		ldrb	r3, [r3]
+  99 006e 0122     		mov	r2, #1
+ 100 0070 5340     		eor	r3, r2
+ 101 0072 DAB2     		uxtb	r2, r3
+ 102 0074 064B     		ldr	r3, .L7+8
+ 103 0076 1A70     		strb	r2, [r3]
+  62:app_LED.c     ****             }
+ 104              		.loc 1 62 0
+ 105 0078 054B     		ldr	r3, .L7+8
+ 106 007a 1B78     		ldrb	r3, [r3]
+ 107 007c 181C     		mov	r0, r3
+ 108 007e FFF7FEFF 		bl	Conn_LED_Write
+ 109              	.L2:
+ 110              		.loc 1 66 0
+ 111 0082 C046     		mov	r8, r8
+ 112              	.L1:
+  67:app_LED.c     ****     }
+  68:app_LED.c     **** }
+ 113              		.loc 1 68 0
+ 114 0084 BD46     		mov	sp, r7
+ 115              		@ sp needed
+ 116 0086 80BD     		pop	{r7, pc}
+ 117              	.L8:
+ 118              		.align	2
+ 119              	.L7:
+ 120 0088 00000000 		.word	cyBle_state
+ 121 008c 00000000 		.word	advLedTimer.7259
+ 122 0090 04000000 		.word	ledState.7258
+ 123 0094 08000000 		.word	connLedTimer.7260
+ 124              		.cfi_endproc
+ 125              	.LFE37:
+ 126              		.size	HandleLeds, .-HandleLeds
+ 127              		.data
+ 128              		.align	2
+ 129              		.type	advLedTimer.7259, %object
+ 130              		.size	advLedTimer.7259, 4
+ 131              	advLedTimer.7259:
+ 132 0000 03000000 		.word	3
+ 133              		.type	ledState.7258, %object
+ 134              		.size	ledState.7258, 1
+ 135              	ledState.7258:
+ 136 0004 01       		.byte	1
+ 137 0005 000000   		.align	2
+ 138              		.type	connLedTimer.7260, %object
+ 139              		.size	connLedTimer.7260, 4
+ 140              	connLedTimer.7260:
+ 141 0008 1E000000 		.word	30
+ 142              		.text
+ 143              	.Letext0:
+ 144              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 145              		.file 3 "Generated_Source\\PSoC4/BLE_eventHandler.h"
+ 146              		.section	.debug_info,"",%progbits
+ 147              	.Ldebug_info0:
+ 148 0000 25010000 		.4byte	0x125
+ 149 0004 0400     		.2byte	0x4
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 5
+
+
+ 150 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 151 000a 04       		.byte	0x4
+ 152 000b 01       		.uleb128 0x1
+ 153 000c C4010000 		.4byte	.LASF24
+ 154 0010 01       		.byte	0x1
+ 155 0011 28000000 		.4byte	.LASF25
+ 156 0015 F0000000 		.4byte	.LASF26
+ 157 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 158 001d 00000000 		.4byte	0
+ 159 0021 00000000 		.4byte	.Ldebug_line0
+ 160 0025 02       		.uleb128 0x2
+ 161 0026 01       		.byte	0x1
+ 162 0027 06       		.byte	0x6
+ 163 0028 64010000 		.4byte	.LASF0
+ 164 002c 02       		.uleb128 0x2
+ 165 002d 01       		.byte	0x1
+ 166 002e 08       		.byte	0x8
+ 167 002f D4000000 		.4byte	.LASF1
+ 168 0033 02       		.uleb128 0x2
+ 169 0034 02       		.byte	0x2
+ 170 0035 05       		.byte	0x5
+ 171 0036 A6010000 		.4byte	.LASF2
+ 172 003a 02       		.uleb128 0x2
+ 173 003b 02       		.byte	0x2
+ 174 003c 07       		.byte	0x7
+ 175 003d 93000000 		.4byte	.LASF3
+ 176 0041 02       		.uleb128 0x2
+ 177 0042 04       		.byte	0x4
+ 178 0043 05       		.byte	0x5
+ 179 0044 E7000000 		.4byte	.LASF4
+ 180 0048 02       		.uleb128 0x2
+ 181 0049 04       		.byte	0x4
+ 182 004a 07       		.byte	0x7
+ 183 004b 51000000 		.4byte	.LASF5
+ 184 004f 02       		.uleb128 0x2
+ 185 0050 08       		.byte	0x8
+ 186 0051 05       		.byte	0x5
+ 187 0052 4A010000 		.4byte	.LASF6
+ 188 0056 02       		.uleb128 0x2
+ 189 0057 08       		.byte	0x8
+ 190 0058 07       		.byte	0x7
+ 191 0059 7C000000 		.4byte	.LASF7
+ 192 005d 03       		.uleb128 0x3
+ 193 005e 04       		.byte	0x4
+ 194 005f 05       		.byte	0x5
+ 195 0060 696E7400 		.ascii	"int\000"
+ 196 0064 02       		.uleb128 0x2
+ 197 0065 04       		.byte	0x4
+ 198 0066 07       		.byte	0x7
+ 199 0067 1B000000 		.4byte	.LASF8
+ 200 006b 04       		.uleb128 0x4
+ 201 006c 4B000000 		.4byte	.LASF9
+ 202 0070 02       		.byte	0x2
+ 203 0071 B901     		.2byte	0x1b9
+ 204 0073 2C000000 		.4byte	0x2c
+ 205 0077 04       		.uleb128 0x4
+ 206 0078 14000000 		.4byte	.LASF10
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 6
+
+
+ 207 007c 02       		.byte	0x2
+ 208 007d BB01     		.2byte	0x1bb
+ 209 007f 48000000 		.4byte	0x48
+ 210 0083 02       		.uleb128 0x2
+ 211 0084 04       		.byte	0x4
+ 212 0085 04       		.byte	0x4
+ 213 0086 92010000 		.4byte	.LASF11
+ 214 008a 02       		.uleb128 0x2
+ 215 008b 08       		.byte	0x8
+ 216 008c 04       		.byte	0x4
+ 217 008d 43010000 		.4byte	.LASF12
+ 218 0091 02       		.uleb128 0x2
+ 219 0092 01       		.byte	0x1
+ 220 0093 08       		.byte	0x8
+ 221 0094 E2000000 		.4byte	.LASF13
+ 222 0098 02       		.uleb128 0x2
+ 223 0099 04       		.byte	0x4
+ 224 009a 07       		.byte	0x7
+ 225 009b BB010000 		.4byte	.LASF14
+ 226 009f 05       		.uleb128 0x5
+ 227 00a0 01       		.byte	0x1
+ 228 00a1 03       		.byte	0x3
+ 229 00a2 5008     		.2byte	0x850
+ 230 00a4 C7000000 		.4byte	0xc7
+ 231 00a8 06       		.uleb128 0x6
+ 232 00a9 00000000 		.4byte	.LASF15
+ 233 00ad 00       		.sleb128 0
+ 234 00ae 06       		.uleb128 0x6
+ 235 00af 63000000 		.4byte	.LASF16
+ 236 00b3 01       		.sleb128 1
+ 237 00b4 06       		.uleb128 0x6
+ 238 00b5 7C010000 		.4byte	.LASF17
+ 239 00b9 02       		.sleb128 2
+ 240 00ba 06       		.uleb128 0x6
+ 241 00bb BC000000 		.4byte	.LASF18
+ 242 00bf 03       		.sleb128 3
+ 243 00c0 06       		.uleb128 0x6
+ 244 00c1 32000000 		.4byte	.LASF19
+ 245 00c5 04       		.sleb128 4
+ 246 00c6 00       		.byte	0
+ 247 00c7 04       		.uleb128 0x4
+ 248 00c8 98010000 		.4byte	.LASF20
+ 249 00cc 03       		.byte	0x3
+ 250 00cd 5E08     		.2byte	0x85e
+ 251 00cf 9F000000 		.4byte	0x9f
+ 252 00d3 07       		.uleb128 0x7
+ 253 00d4 B0010000 		.4byte	.LASF27
+ 254 00d8 01       		.byte	0x1
+ 255 00d9 1F       		.byte	0x1f
+ 256 00da 00000000 		.4byte	.LFB37
+ 257 00de 98000000 		.4byte	.LFE37-.LFB37
+ 258 00e2 01       		.uleb128 0x1
+ 259 00e3 9C       		.byte	0x9c
+ 260 00e4 1C010000 		.4byte	0x11c
+ 261 00e8 08       		.uleb128 0x8
+ 262 00e9 B3000000 		.4byte	.LASF21
+ 263 00ed 01       		.byte	0x1
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 7
+
+
+ 264 00ee 21       		.byte	0x21
+ 265 00ef 6B000000 		.4byte	0x6b
+ 266 00f3 05       		.uleb128 0x5
+ 267 00f4 03       		.byte	0x3
+ 268 00f5 04000000 		.4byte	ledState.7258
+ 269 00f9 08       		.uleb128 0x8
+ 270 00fa 70010000 		.4byte	.LASF22
+ 271 00fe 01       		.byte	0x1
+ 272 00ff 22       		.byte	0x22
+ 273 0100 77000000 		.4byte	0x77
+ 274 0104 05       		.uleb128 0x5
+ 275 0105 03       		.byte	0x3
+ 276 0106 00000000 		.4byte	advLedTimer.7259
+ 277 010a 08       		.uleb128 0x8
+ 278 010b A6000000 		.4byte	.LASF23
+ 279 010f 01       		.byte	0x1
+ 280 0110 23       		.byte	0x23
+ 281 0111 77000000 		.4byte	0x77
+ 282 0115 05       		.uleb128 0x5
+ 283 0116 03       		.byte	0x3
+ 284 0117 08000000 		.4byte	connLedTimer.7260
+ 285 011b 00       		.byte	0
+ 286 011c 09       		.uleb128 0x9
+ 287 011d 58010000 		.4byte	.LASF28
+ 288 0121 03       		.byte	0x3
+ 289 0122 A90A     		.2byte	0xaa9
+ 290 0124 C7000000 		.4byte	0xc7
+ 291 0128 00       		.byte	0
+ 292              		.section	.debug_abbrev,"",%progbits
+ 293              	.Ldebug_abbrev0:
+ 294 0000 01       		.uleb128 0x1
+ 295 0001 11       		.uleb128 0x11
+ 296 0002 01       		.byte	0x1
+ 297 0003 25       		.uleb128 0x25
+ 298 0004 0E       		.uleb128 0xe
+ 299 0005 13       		.uleb128 0x13
+ 300 0006 0B       		.uleb128 0xb
+ 301 0007 03       		.uleb128 0x3
+ 302 0008 0E       		.uleb128 0xe
+ 303 0009 1B       		.uleb128 0x1b
+ 304 000a 0E       		.uleb128 0xe
+ 305 000b 55       		.uleb128 0x55
+ 306 000c 17       		.uleb128 0x17
+ 307 000d 11       		.uleb128 0x11
+ 308 000e 01       		.uleb128 0x1
+ 309 000f 10       		.uleb128 0x10
+ 310 0010 17       		.uleb128 0x17
+ 311 0011 00       		.byte	0
+ 312 0012 00       		.byte	0
+ 313 0013 02       		.uleb128 0x2
+ 314 0014 24       		.uleb128 0x24
+ 315 0015 00       		.byte	0
+ 316 0016 0B       		.uleb128 0xb
+ 317 0017 0B       		.uleb128 0xb
+ 318 0018 3E       		.uleb128 0x3e
+ 319 0019 0B       		.uleb128 0xb
+ 320 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 8
+
+
+ 321 001b 0E       		.uleb128 0xe
+ 322 001c 00       		.byte	0
+ 323 001d 00       		.byte	0
+ 324 001e 03       		.uleb128 0x3
+ 325 001f 24       		.uleb128 0x24
+ 326 0020 00       		.byte	0
+ 327 0021 0B       		.uleb128 0xb
+ 328 0022 0B       		.uleb128 0xb
+ 329 0023 3E       		.uleb128 0x3e
+ 330 0024 0B       		.uleb128 0xb
+ 331 0025 03       		.uleb128 0x3
+ 332 0026 08       		.uleb128 0x8
+ 333 0027 00       		.byte	0
+ 334 0028 00       		.byte	0
+ 335 0029 04       		.uleb128 0x4
+ 336 002a 16       		.uleb128 0x16
+ 337 002b 00       		.byte	0
+ 338 002c 03       		.uleb128 0x3
+ 339 002d 0E       		.uleb128 0xe
+ 340 002e 3A       		.uleb128 0x3a
+ 341 002f 0B       		.uleb128 0xb
+ 342 0030 3B       		.uleb128 0x3b
+ 343 0031 05       		.uleb128 0x5
+ 344 0032 49       		.uleb128 0x49
+ 345 0033 13       		.uleb128 0x13
+ 346 0034 00       		.byte	0
+ 347 0035 00       		.byte	0
+ 348 0036 05       		.uleb128 0x5
+ 349 0037 04       		.uleb128 0x4
+ 350 0038 01       		.byte	0x1
+ 351 0039 0B       		.uleb128 0xb
+ 352 003a 0B       		.uleb128 0xb
+ 353 003b 3A       		.uleb128 0x3a
+ 354 003c 0B       		.uleb128 0xb
+ 355 003d 3B       		.uleb128 0x3b
+ 356 003e 05       		.uleb128 0x5
+ 357 003f 01       		.uleb128 0x1
+ 358 0040 13       		.uleb128 0x13
+ 359 0041 00       		.byte	0
+ 360 0042 00       		.byte	0
+ 361 0043 06       		.uleb128 0x6
+ 362 0044 28       		.uleb128 0x28
+ 363 0045 00       		.byte	0
+ 364 0046 03       		.uleb128 0x3
+ 365 0047 0E       		.uleb128 0xe
+ 366 0048 1C       		.uleb128 0x1c
+ 367 0049 0D       		.uleb128 0xd
+ 368 004a 00       		.byte	0
+ 369 004b 00       		.byte	0
+ 370 004c 07       		.uleb128 0x7
+ 371 004d 2E       		.uleb128 0x2e
+ 372 004e 01       		.byte	0x1
+ 373 004f 3F       		.uleb128 0x3f
+ 374 0050 19       		.uleb128 0x19
+ 375 0051 03       		.uleb128 0x3
+ 376 0052 0E       		.uleb128 0xe
+ 377 0053 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 9
+
+
+ 378 0054 0B       		.uleb128 0xb
+ 379 0055 3B       		.uleb128 0x3b
+ 380 0056 0B       		.uleb128 0xb
+ 381 0057 27       		.uleb128 0x27
+ 382 0058 19       		.uleb128 0x19
+ 383 0059 11       		.uleb128 0x11
+ 384 005a 01       		.uleb128 0x1
+ 385 005b 12       		.uleb128 0x12
+ 386 005c 06       		.uleb128 0x6
+ 387 005d 40       		.uleb128 0x40
+ 388 005e 18       		.uleb128 0x18
+ 389 005f 9642     		.uleb128 0x2116
+ 390 0061 19       		.uleb128 0x19
+ 391 0062 01       		.uleb128 0x1
+ 392 0063 13       		.uleb128 0x13
+ 393 0064 00       		.byte	0
+ 394 0065 00       		.byte	0
+ 395 0066 08       		.uleb128 0x8
+ 396 0067 34       		.uleb128 0x34
+ 397 0068 00       		.byte	0
+ 398 0069 03       		.uleb128 0x3
+ 399 006a 0E       		.uleb128 0xe
+ 400 006b 3A       		.uleb128 0x3a
+ 401 006c 0B       		.uleb128 0xb
+ 402 006d 3B       		.uleb128 0x3b
+ 403 006e 0B       		.uleb128 0xb
+ 404 006f 49       		.uleb128 0x49
+ 405 0070 13       		.uleb128 0x13
+ 406 0071 02       		.uleb128 0x2
+ 407 0072 18       		.uleb128 0x18
+ 408 0073 00       		.byte	0
+ 409 0074 00       		.byte	0
+ 410 0075 09       		.uleb128 0x9
+ 411 0076 34       		.uleb128 0x34
+ 412 0077 00       		.byte	0
+ 413 0078 03       		.uleb128 0x3
+ 414 0079 0E       		.uleb128 0xe
+ 415 007a 3A       		.uleb128 0x3a
+ 416 007b 0B       		.uleb128 0xb
+ 417 007c 3B       		.uleb128 0x3b
+ 418 007d 05       		.uleb128 0x5
+ 419 007e 49       		.uleb128 0x49
+ 420 007f 13       		.uleb128 0x13
+ 421 0080 3F       		.uleb128 0x3f
+ 422 0081 19       		.uleb128 0x19
+ 423 0082 3C       		.uleb128 0x3c
+ 424 0083 19       		.uleb128 0x19
+ 425 0084 00       		.byte	0
+ 426 0085 00       		.byte	0
+ 427 0086 00       		.byte	0
+ 428              		.section	.debug_aranges,"",%progbits
+ 429 0000 1C000000 		.4byte	0x1c
+ 430 0004 0200     		.2byte	0x2
+ 431 0006 00000000 		.4byte	.Ldebug_info0
+ 432 000a 04       		.byte	0x4
+ 433 000b 00       		.byte	0
+ 434 000c 0000     		.2byte	0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 10
+
+
+ 435 000e 0000     		.2byte	0
+ 436 0010 00000000 		.4byte	.LFB37
+ 437 0014 98000000 		.4byte	.LFE37-.LFB37
+ 438 0018 00000000 		.4byte	0
+ 439 001c 00000000 		.4byte	0
+ 440              		.section	.debug_ranges,"",%progbits
+ 441              	.Ldebug_ranges0:
+ 442 0000 00000000 		.4byte	.LFB37
+ 443 0004 98000000 		.4byte	.LFE37
+ 444 0008 00000000 		.4byte	0
+ 445 000c 00000000 		.4byte	0
+ 446              		.section	.debug_line,"",%progbits
+ 447              	.Ldebug_line0:
+ 448 0000 82000000 		.section	.debug_str,"MS",%progbits,1
+ 448      02005A00 
+ 448      00000201 
+ 448      FB0E0D00 
+ 448      01010101 
+ 449              	.LASF15:
+ 450 0000 4359424C 		.ascii	"CYBLE_STATE_STOPPED\000"
+ 450      455F5354 
+ 450      4154455F 
+ 450      53544F50 
+ 450      50454400 
+ 451              	.LASF10:
+ 452 0014 75696E74 		.ascii	"uint32\000"
+ 452      333200
+ 453              	.LASF8:
+ 454 001b 756E7369 		.ascii	"unsigned int\000"
+ 454      676E6564 
+ 454      20696E74 
+ 454      00
+ 455              	.LASF25:
+ 456 0028 6170705F 		.ascii	"app_LED.c\000"
+ 456      4C45442E 
+ 456      6300
+ 457              	.LASF19:
+ 458 0032 4359424C 		.ascii	"CYBLE_STATE_DISCONNECTED\000"
+ 458      455F5354 
+ 458      4154455F 
+ 458      44495343 
+ 458      4F4E4E45 
+ 459              	.LASF9:
+ 460 004b 75696E74 		.ascii	"uint8\000"
+ 460      3800
+ 461              	.LASF5:
+ 462 0051 6C6F6E67 		.ascii	"long unsigned int\000"
+ 462      20756E73 
+ 462      69676E65 
+ 462      6420696E 
+ 462      7400
+ 463              	.LASF16:
+ 464 0063 4359424C 		.ascii	"CYBLE_STATE_INITIALIZING\000"
+ 464      455F5354 
+ 464      4154455F 
+ 464      494E4954 
+ 464      49414C49 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 11
+
+
+ 465              	.LASF7:
+ 466 007c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 466      206C6F6E 
+ 466      6720756E 
+ 466      7369676E 
+ 466      65642069 
+ 467              	.LASF3:
+ 468 0093 73686F72 		.ascii	"short unsigned int\000"
+ 468      7420756E 
+ 468      7369676E 
+ 468      65642069 
+ 468      6E7400
+ 469              	.LASF23:
+ 470 00a6 636F6E6E 		.ascii	"connLedTimer\000"
+ 470      4C656454 
+ 470      696D6572 
+ 470      00
+ 471              	.LASF21:
+ 472 00b3 6C656453 		.ascii	"ledState\000"
+ 472      74617465 
+ 472      00
+ 473              	.LASF18:
+ 474 00bc 4359424C 		.ascii	"CYBLE_STATE_ADVERTISING\000"
+ 474      455F5354 
+ 474      4154455F 
+ 474      41445645 
+ 474      52544953 
+ 475              	.LASF1:
+ 476 00d4 756E7369 		.ascii	"unsigned char\000"
+ 476      676E6564 
+ 476      20636861 
+ 476      7200
+ 477              	.LASF13:
+ 478 00e2 63686172 		.ascii	"char\000"
+ 478      00
+ 479              	.LASF4:
+ 480 00e7 6C6F6E67 		.ascii	"long int\000"
+ 480      20696E74 
+ 480      00
+ 481              	.LASF26:
+ 482 00f0 433A5C55 		.ascii	"C:\\Users\\Aaron Wubshet\\Desktop\\UART_to_BLE_peri"
+ 482      73657273 
+ 482      5C416172 
+ 482      6F6E2057 
+ 482      75627368 
+ 483 011f 70686572 		.ascii	"pheral\\UART_to_BLE_peripheral.cydsn\000"
+ 483      616C5C55 
+ 483      4152545F 
+ 483      746F5F42 
+ 483      4C455F70 
+ 484              	.LASF12:
+ 485 0143 646F7562 		.ascii	"double\000"
+ 485      6C6500
+ 486              	.LASF6:
+ 487 014a 6C6F6E67 		.ascii	"long long int\000"
+ 487      206C6F6E 
+ 487      6720696E 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cch9ukPI.s 			page 12
+
+
+ 487      7400
+ 488              	.LASF28:
+ 489 0158 6379426C 		.ascii	"cyBle_state\000"
+ 489      655F7374 
+ 489      61746500 
+ 490              	.LASF0:
+ 491 0164 7369676E 		.ascii	"signed char\000"
+ 491      65642063 
+ 491      68617200 
+ 492              	.LASF22:
+ 493 0170 6164764C 		.ascii	"advLedTimer\000"
+ 493      65645469 
+ 493      6D657200 
+ 494              	.LASF17:
+ 495 017c 4359424C 		.ascii	"CYBLE_STATE_CONNECTED\000"
+ 495      455F5354 
+ 495      4154455F 
+ 495      434F4E4E 
+ 495      45435445 
+ 496              	.LASF11:
+ 497 0192 666C6F61 		.ascii	"float\000"
+ 497      7400
+ 498              	.LASF20:
+ 499 0198 4359424C 		.ascii	"CYBLE_STATE_T\000"
+ 499      455F5354 
+ 499      4154455F 
+ 499      5400
+ 500              	.LASF2:
+ 501 01a6 73686F72 		.ascii	"short int\000"
+ 501      7420696E 
+ 501      7400
+ 502              	.LASF27:
+ 503 01b0 48616E64 		.ascii	"HandleLeds\000"
+ 503      6C654C65 
+ 503      647300
+ 504              	.LASF14:
+ 505 01bb 73697A65 		.ascii	"sizetype\000"
+ 505      74797065 
+ 505      00
+ 506              	.LASF24:
+ 507 01c4 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 507      4320342E 
+ 507      392E3320 
+ 507      32303135 
+ 507      30333033 
+ 508 01f7 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 508      20726576 
+ 508      6973696F 
+ 508      6E203232 
+ 508      31323230 
+ 509 022a 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 509      66756E63 
+ 509      74696F6E 
+ 509      2D736563 
+ 509      74696F6E 
+ 510              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

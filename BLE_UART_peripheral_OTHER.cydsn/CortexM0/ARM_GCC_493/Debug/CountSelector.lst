@@ -1,0 +1,1194 @@
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"CountSelector.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.CountSelector_SetDriveMode,"ax",%progbits
+  18              		.align	2
+  19              		.global	CountSelector_SetDriveMode
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	CountSelector_SetDriveMode, %function
+  23              	CountSelector_SetDriveMode:
+  24              	.LFB0:
+  25              		.file 1 "Generated_Source\\PSoC4\\CountSelector.c"
+   1:Generated_Source\PSoC4/CountSelector.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/CountSelector.c **** * File Name: CountSelector.c  
+   3:Generated_Source\PSoC4/CountSelector.c **** * Version 2.20
+   4:Generated_Source\PSoC4/CountSelector.c **** *
+   5:Generated_Source\PSoC4/CountSelector.c **** * Description:
+   6:Generated_Source\PSoC4/CountSelector.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC4/CountSelector.c **** *
+   8:Generated_Source\PSoC4/CountSelector.c **** ********************************************************************************
+   9:Generated_Source\PSoC4/CountSelector.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC4/CountSelector.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  11:Generated_Source\PSoC4/CountSelector.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  12:Generated_Source\PSoC4/CountSelector.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC4/CountSelector.c **** *******************************************************************************/
+  14:Generated_Source\PSoC4/CountSelector.c **** 
+  15:Generated_Source\PSoC4/CountSelector.c **** #include "cytypes.h"
+  16:Generated_Source\PSoC4/CountSelector.c **** #include "CountSelector.h"
+  17:Generated_Source\PSoC4/CountSelector.c **** 
+  18:Generated_Source\PSoC4/CountSelector.c **** 
+  19:Generated_Source\PSoC4/CountSelector.c **** #if defined(CountSelector__PC)
+  20:Generated_Source\PSoC4/CountSelector.c ****     #define CountSelector_SetP4PinDriveMode(shift, mode)  \
+  21:Generated_Source\PSoC4/CountSelector.c ****     do { \
+  22:Generated_Source\PSoC4/CountSelector.c ****         CountSelector_PC =   (CountSelector_PC & \
+  23:Generated_Source\PSoC4/CountSelector.c ****                                 (uint32)(~(uint32)(CountSelector_DRIVE_MODE_IND_MASK << \
+  24:Generated_Source\PSoC4/CountSelector.c ****                                 (CountSelector_DRIVE_MODE_BITS * (shift))))) | \
+  25:Generated_Source\PSoC4/CountSelector.c ****                                 (uint32)((uint32)(mode) << \
+  26:Generated_Source\PSoC4/CountSelector.c ****                                 (CountSelector_DRIVE_MODE_BITS * (shift))); \
+  27:Generated_Source\PSoC4/CountSelector.c ****     } while (0)
+  28:Generated_Source\PSoC4/CountSelector.c **** #else
+  29:Generated_Source\PSoC4/CountSelector.c ****     #if (CY_PSOC4_4200L)
+  30:Generated_Source\PSoC4/CountSelector.c ****         #define CountSelector_SetP4PinDriveMode(shift, mode)  \
+  31:Generated_Source\PSoC4/CountSelector.c ****         do { \
+  32:Generated_Source\PSoC4/CountSelector.c ****             CountSelector_USBIO_CTRL_REG = (CountSelector_USBIO_CTRL_REG & \
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 2
+
+
+  33:Generated_Source\PSoC4/CountSelector.c ****                                     (uint32)(~(uint32)(CountSelector_DRIVE_MODE_IND_MASK << \
+  34:Generated_Source\PSoC4/CountSelector.c ****                                     (CountSelector_DRIVE_MODE_BITS * (shift))))) | \
+  35:Generated_Source\PSoC4/CountSelector.c ****                                     (uint32)((uint32)(mode) << \
+  36:Generated_Source\PSoC4/CountSelector.c ****                                     (CountSelector_DRIVE_MODE_BITS * (shift))); \
+  37:Generated_Source\PSoC4/CountSelector.c ****         } while (0)
+  38:Generated_Source\PSoC4/CountSelector.c ****     #endif
+  39:Generated_Source\PSoC4/CountSelector.c **** #endif
+  40:Generated_Source\PSoC4/CountSelector.c ****   
+  41:Generated_Source\PSoC4/CountSelector.c **** 
+  42:Generated_Source\PSoC4/CountSelector.c **** #if defined(CountSelector__PC) || (CY_PSOC4_4200L) 
+  43:Generated_Source\PSoC4/CountSelector.c ****     /*******************************************************************************
+  44:Generated_Source\PSoC4/CountSelector.c ****     * Function Name: CountSelector_SetDriveMode
+  45:Generated_Source\PSoC4/CountSelector.c ****     ****************************************************************************//**
+  46:Generated_Source\PSoC4/CountSelector.c ****     *
+  47:Generated_Source\PSoC4/CountSelector.c ****     * \brief Sets the drive mode for each of the Pins component's pins.
+  48:Generated_Source\PSoC4/CountSelector.c ****     * 
+  49:Generated_Source\PSoC4/CountSelector.c ****     * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  50:Generated_Source\PSoC4/CountSelector.c ****     * Per-Pin APIs if you wish to control individual pin's drive modes.
+  51:Generated_Source\PSoC4/CountSelector.c ****     *
+  52:Generated_Source\PSoC4/CountSelector.c ****     * <b>Note</b> USBIOs have limited drive functionality. Refer to the Drive Mode
+  53:Generated_Source\PSoC4/CountSelector.c ****     * parameter for more information.
+  54:Generated_Source\PSoC4/CountSelector.c ****     *
+  55:Generated_Source\PSoC4/CountSelector.c ****     * \param mode
+  56:Generated_Source\PSoC4/CountSelector.c ****     *  Mode for the selected signals. Valid options are documented in 
+  57:Generated_Source\PSoC4/CountSelector.c ****     *  \ref driveMode.
+  58:Generated_Source\PSoC4/CountSelector.c ****     *
+  59:Generated_Source\PSoC4/CountSelector.c ****     * \return
+  60:Generated_Source\PSoC4/CountSelector.c ****     *  None
+  61:Generated_Source\PSoC4/CountSelector.c ****     *
+  62:Generated_Source\PSoC4/CountSelector.c ****     * \sideeffect
+  63:Generated_Source\PSoC4/CountSelector.c ****     *  If you use read-modify-write operations that are not atomic, the ISR can
+  64:Generated_Source\PSoC4/CountSelector.c ****     *  cause corruption of this function. An ISR that interrupts this function 
+  65:Generated_Source\PSoC4/CountSelector.c ****     *  and performs writes to the Pins component Drive Mode registers can cause 
+  66:Generated_Source\PSoC4/CountSelector.c ****     *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  67:Generated_Source\PSoC4/CountSelector.c ****     *  APIs (primary method) or disable interrupts around this function.
+  68:Generated_Source\PSoC4/CountSelector.c ****     *
+  69:Generated_Source\PSoC4/CountSelector.c ****     * \funcusage
+  70:Generated_Source\PSoC4/CountSelector.c ****     *  \snippet CountSelector_SUT.c usage_CountSelector_SetDriveMode
+  71:Generated_Source\PSoC4/CountSelector.c ****     *******************************************************************************/
+  72:Generated_Source\PSoC4/CountSelector.c ****     void CountSelector_SetDriveMode(uint8 mode)
+  73:Generated_Source\PSoC4/CountSelector.c ****     {
+  26              		.loc 1 73 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 82B0     		sub	sp, sp, #8
+  33              		.cfi_def_cfa_offset 16
+  34 0004 00AF     		add	r7, sp, #0
+  35              		.cfi_def_cfa_register 7
+  36 0006 021C     		mov	r2, r0
+  37 0008 FB1D     		add	r3, r7, #7
+  38 000a 1A70     		strb	r2, [r3]
+  74:Generated_Source\PSoC4/CountSelector.c **** 		CountSelector_SetP4PinDriveMode(CountSelector__0__SHIFT, mode);
+  39              		.loc 1 74 0
+  40 000c 0B4B     		ldr	r3, .L2
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 3
+
+
+  41 000e 0B4A     		ldr	r2, .L2
+  42 0010 1268     		ldr	r2, [r2]
+  43 0012 0721     		mov	r1, #7
+  44 0014 8A43     		bic	r2, r1
+  45 0016 111C     		mov	r1, r2
+  46 0018 FA1D     		add	r2, r7, #7
+  47 001a 1278     		ldrb	r2, [r2]
+  48 001c 0A43     		orr	r2, r1
+  49 001e 1A60     		str	r2, [r3]
+  75:Generated_Source\PSoC4/CountSelector.c **** 		CountSelector_SetP4PinDriveMode(CountSelector__1__SHIFT, mode);
+  50              		.loc 1 75 0
+  51 0020 064B     		ldr	r3, .L2
+  52 0022 064A     		ldr	r2, .L2
+  53 0024 1268     		ldr	r2, [r2]
+  54 0026 3821     		mov	r1, #56
+  55 0028 8A43     		bic	r2, r1
+  56 002a 111C     		mov	r1, r2
+  57 002c FA1D     		add	r2, r7, #7
+  58 002e 1278     		ldrb	r2, [r2]
+  59 0030 D200     		lsl	r2, r2, #3
+  60 0032 0A43     		orr	r2, r1
+  61 0034 1A60     		str	r2, [r3]
+  76:Generated_Source\PSoC4/CountSelector.c ****     }
+  62              		.loc 1 76 0
+  63 0036 BD46     		mov	sp, r7
+  64 0038 02B0     		add	sp, sp, #8
+  65              		@ sp needed
+  66 003a 80BD     		pop	{r7, pc}
+  67              	.L3:
+  68              		.align	2
+  69              	.L2:
+  70 003c 08000440 		.word	1074003976
+  71              		.cfi_endproc
+  72              	.LFE0:
+  73              		.size	CountSelector_SetDriveMode, .-CountSelector_SetDriveMode
+  74              		.section	.text.CountSelector_Write,"ax",%progbits
+  75              		.align	2
+  76              		.global	CountSelector_Write
+  77              		.code	16
+  78              		.thumb_func
+  79              		.type	CountSelector_Write, %function
+  80              	CountSelector_Write:
+  81              	.LFB1:
+  77:Generated_Source\PSoC4/CountSelector.c **** #endif
+  78:Generated_Source\PSoC4/CountSelector.c **** 
+  79:Generated_Source\PSoC4/CountSelector.c **** 
+  80:Generated_Source\PSoC4/CountSelector.c **** /*******************************************************************************
+  81:Generated_Source\PSoC4/CountSelector.c **** * Function Name: CountSelector_Write
+  82:Generated_Source\PSoC4/CountSelector.c **** ****************************************************************************//**
+  83:Generated_Source\PSoC4/CountSelector.c **** *
+  84:Generated_Source\PSoC4/CountSelector.c **** * \brief Writes the value to the physical port (data output register), masking
+  85:Generated_Source\PSoC4/CountSelector.c **** *  and shifting the bits appropriately. 
+  86:Generated_Source\PSoC4/CountSelector.c **** *
+  87:Generated_Source\PSoC4/CountSelector.c **** * The data output register controls the signal applied to the physical pin in 
+  88:Generated_Source\PSoC4/CountSelector.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  89:Generated_Source\PSoC4/CountSelector.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  90:Generated_Source\PSoC4/CountSelector.c **** * bit banding).
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 4
+
+
+  91:Generated_Source\PSoC4/CountSelector.c **** *
+  92:Generated_Source\PSoC4/CountSelector.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  93:Generated_Source\PSoC4/CountSelector.c **** * as it is driven by the hardware signal attached to it.
+  94:Generated_Source\PSoC4/CountSelector.c **** *
+  95:Generated_Source\PSoC4/CountSelector.c **** * \param value
+  96:Generated_Source\PSoC4/CountSelector.c **** *  Value to write to the component instance.
+  97:Generated_Source\PSoC4/CountSelector.c **** *
+  98:Generated_Source\PSoC4/CountSelector.c **** * \return 
+  99:Generated_Source\PSoC4/CountSelector.c **** *  None 
+ 100:Generated_Source\PSoC4/CountSelector.c **** *
+ 101:Generated_Source\PSoC4/CountSelector.c **** * \sideeffect
+ 102:Generated_Source\PSoC4/CountSelector.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+ 103:Generated_Source\PSoC4/CountSelector.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+ 104:Generated_Source\PSoC4/CountSelector.c **** *  interrupts this function and performs writes to the Pins component data 
+ 105:Generated_Source\PSoC4/CountSelector.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+ 106:Generated_Source\PSoC4/CountSelector.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+ 107:Generated_Source\PSoC4/CountSelector.c **** *  this function.
+ 108:Generated_Source\PSoC4/CountSelector.c **** *
+ 109:Generated_Source\PSoC4/CountSelector.c **** * \funcusage
+ 110:Generated_Source\PSoC4/CountSelector.c **** *  \snippet CountSelector_SUT.c usage_CountSelector_Write
+ 111:Generated_Source\PSoC4/CountSelector.c **** *******************************************************************************/
+ 112:Generated_Source\PSoC4/CountSelector.c **** void CountSelector_Write(uint8 value)
+ 113:Generated_Source\PSoC4/CountSelector.c **** {
+  82              		.loc 1 113 0
+  83              		.cfi_startproc
+  84 0000 80B5     		push	{r7, lr}
+  85              		.cfi_def_cfa_offset 8
+  86              		.cfi_offset 7, -8
+  87              		.cfi_offset 14, -4
+  88 0002 84B0     		sub	sp, sp, #16
+  89              		.cfi_def_cfa_offset 24
+  90 0004 00AF     		add	r7, sp, #0
+  91              		.cfi_def_cfa_register 7
+  92 0006 021C     		mov	r2, r0
+  93 0008 FB1D     		add	r3, r7, #7
+  94 000a 1A70     		strb	r2, [r3]
+ 114:Generated_Source\PSoC4/CountSelector.c ****     uint8 drVal = (uint8)(CountSelector_DR & (uint8)(~CountSelector_MASK));
+  95              		.loc 1 114 0
+  96 000c 0D4B     		ldr	r3, .L5
+  97 000e 1B68     		ldr	r3, [r3]
+  98 0010 DAB2     		uxtb	r2, r3
+  99 0012 0F23     		mov	r3, #15
+ 100 0014 FB18     		add	r3, r7, r3
+ 101 0016 0321     		mov	r1, #3
+ 102 0018 8A43     		bic	r2, r1
+ 103 001a 1A70     		strb	r2, [r3]
+ 115:Generated_Source\PSoC4/CountSelector.c ****     drVal = (drVal | ((uint8)(value << CountSelector_SHIFT) & CountSelector_MASK));
+ 104              		.loc 1 115 0
+ 105 001c FB1D     		add	r3, r7, #7
+ 106 001e 1B78     		ldrb	r3, [r3]
+ 107 0020 0322     		mov	r2, #3
+ 108 0022 1340     		and	r3, r2
+ 109 0024 D9B2     		uxtb	r1, r3
+ 110 0026 0F23     		mov	r3, #15
+ 111 0028 FB18     		add	r3, r7, r3
+ 112 002a 0F22     		mov	r2, #15
+ 113 002c BA18     		add	r2, r7, r2
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 5
+
+
+ 114 002e 1278     		ldrb	r2, [r2]
+ 115 0030 0A43     		orr	r2, r1
+ 116 0032 1A70     		strb	r2, [r3]
+ 116:Generated_Source\PSoC4/CountSelector.c ****     CountSelector_DR = (uint32)drVal;
+ 117              		.loc 1 116 0
+ 118 0034 034B     		ldr	r3, .L5
+ 119 0036 0F22     		mov	r2, #15
+ 120 0038 BA18     		add	r2, r7, r2
+ 121 003a 1278     		ldrb	r2, [r2]
+ 122 003c 1A60     		str	r2, [r3]
+ 117:Generated_Source\PSoC4/CountSelector.c **** }
+ 123              		.loc 1 117 0
+ 124 003e BD46     		mov	sp, r7
+ 125 0040 04B0     		add	sp, sp, #16
+ 126              		@ sp needed
+ 127 0042 80BD     		pop	{r7, pc}
+ 128              	.L6:
+ 129              		.align	2
+ 130              	.L5:
+ 131 0044 00000440 		.word	1074003968
+ 132              		.cfi_endproc
+ 133              	.LFE1:
+ 134              		.size	CountSelector_Write, .-CountSelector_Write
+ 135              		.section	.text.CountSelector_Read,"ax",%progbits
+ 136              		.align	2
+ 137              		.global	CountSelector_Read
+ 138              		.code	16
+ 139              		.thumb_func
+ 140              		.type	CountSelector_Read, %function
+ 141              	CountSelector_Read:
+ 142              	.LFB2:
+ 118:Generated_Source\PSoC4/CountSelector.c **** 
+ 119:Generated_Source\PSoC4/CountSelector.c **** 
+ 120:Generated_Source\PSoC4/CountSelector.c **** /*******************************************************************************
+ 121:Generated_Source\PSoC4/CountSelector.c **** * Function Name: CountSelector_Read
+ 122:Generated_Source\PSoC4/CountSelector.c **** ****************************************************************************//**
+ 123:Generated_Source\PSoC4/CountSelector.c **** *
+ 124:Generated_Source\PSoC4/CountSelector.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 125:Generated_Source\PSoC4/CountSelector.c **** *  the required bits according to the width and bit position of the component
+ 126:Generated_Source\PSoC4/CountSelector.c **** *  instance. 
+ 127:Generated_Source\PSoC4/CountSelector.c **** *
+ 128:Generated_Source\PSoC4/CountSelector.c **** * The pin's status register returns the current logic level present on the 
+ 129:Generated_Source\PSoC4/CountSelector.c **** * physical pin.
+ 130:Generated_Source\PSoC4/CountSelector.c **** *
+ 131:Generated_Source\PSoC4/CountSelector.c **** * \return 
+ 132:Generated_Source\PSoC4/CountSelector.c **** *  The current value for the pins in the component as a right justified number.
+ 133:Generated_Source\PSoC4/CountSelector.c **** *
+ 134:Generated_Source\PSoC4/CountSelector.c **** * \funcusage
+ 135:Generated_Source\PSoC4/CountSelector.c **** *  \snippet CountSelector_SUT.c usage_CountSelector_Read  
+ 136:Generated_Source\PSoC4/CountSelector.c **** *******************************************************************************/
+ 137:Generated_Source\PSoC4/CountSelector.c **** uint8 CountSelector_Read(void)
+ 138:Generated_Source\PSoC4/CountSelector.c **** {
+ 143              		.loc 1 138 0
+ 144              		.cfi_startproc
+ 145 0000 80B5     		push	{r7, lr}
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 7, -8
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 6
+
+
+ 148              		.cfi_offset 14, -4
+ 149 0002 00AF     		add	r7, sp, #0
+ 150              		.cfi_def_cfa_register 7
+ 139:Generated_Source\PSoC4/CountSelector.c ****     return (uint8)((CountSelector_PS & CountSelector_MASK) >> CountSelector_SHIFT);
+ 151              		.loc 1 139 0
+ 152 0004 044B     		ldr	r3, .L9
+ 153 0006 1B68     		ldr	r3, [r3]
+ 154 0008 DBB2     		uxtb	r3, r3
+ 155 000a 0322     		mov	r2, #3
+ 156 000c 1340     		and	r3, r2
+ 157 000e DBB2     		uxtb	r3, r3
+ 140:Generated_Source\PSoC4/CountSelector.c **** }
+ 158              		.loc 1 140 0
+ 159 0010 181C     		mov	r0, r3
+ 160 0012 BD46     		mov	sp, r7
+ 161              		@ sp needed
+ 162 0014 80BD     		pop	{r7, pc}
+ 163              	.L10:
+ 164 0016 C046     		.align	2
+ 165              	.L9:
+ 166 0018 04000440 		.word	1074003972
+ 167              		.cfi_endproc
+ 168              	.LFE2:
+ 169              		.size	CountSelector_Read, .-CountSelector_Read
+ 170              		.section	.text.CountSelector_ReadDataReg,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	CountSelector_ReadDataReg
+ 173              		.code	16
+ 174              		.thumb_func
+ 175              		.type	CountSelector_ReadDataReg, %function
+ 176              	CountSelector_ReadDataReg:
+ 177              	.LFB3:
+ 141:Generated_Source\PSoC4/CountSelector.c **** 
+ 142:Generated_Source\PSoC4/CountSelector.c **** 
+ 143:Generated_Source\PSoC4/CountSelector.c **** /*******************************************************************************
+ 144:Generated_Source\PSoC4/CountSelector.c **** * Function Name: CountSelector_ReadDataReg
+ 145:Generated_Source\PSoC4/CountSelector.c **** ****************************************************************************//**
+ 146:Generated_Source\PSoC4/CountSelector.c **** *
+ 147:Generated_Source\PSoC4/CountSelector.c **** * \brief Reads the associated physical port's data output register and masks 
+ 148:Generated_Source\PSoC4/CountSelector.c **** *  the correct bits according to the width and bit position of the component 
+ 149:Generated_Source\PSoC4/CountSelector.c **** *  instance. 
+ 150:Generated_Source\PSoC4/CountSelector.c **** *
+ 151:Generated_Source\PSoC4/CountSelector.c **** * The data output register controls the signal applied to the physical pin in 
+ 152:Generated_Source\PSoC4/CountSelector.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 153:Generated_Source\PSoC4/CountSelector.c **** * preferred CountSelector_Read() API because the 
+ 154:Generated_Source\PSoC4/CountSelector.c **** * CountSelector_ReadDataReg() reads the data register instead of the status 
+ 155:Generated_Source\PSoC4/CountSelector.c **** * register. For output pins this is a useful function to determine the value 
+ 156:Generated_Source\PSoC4/CountSelector.c **** * just written to the pin.
+ 157:Generated_Source\PSoC4/CountSelector.c **** *
+ 158:Generated_Source\PSoC4/CountSelector.c **** * \return 
+ 159:Generated_Source\PSoC4/CountSelector.c **** *  The current value of the data register masked and shifted into a right 
+ 160:Generated_Source\PSoC4/CountSelector.c **** *  justified number for the component instance.
+ 161:Generated_Source\PSoC4/CountSelector.c **** *
+ 162:Generated_Source\PSoC4/CountSelector.c **** * \funcusage
+ 163:Generated_Source\PSoC4/CountSelector.c **** *  \snippet CountSelector_SUT.c usage_CountSelector_ReadDataReg 
+ 164:Generated_Source\PSoC4/CountSelector.c **** *******************************************************************************/
+ 165:Generated_Source\PSoC4/CountSelector.c **** uint8 CountSelector_ReadDataReg(void)
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 7
+
+
+ 166:Generated_Source\PSoC4/CountSelector.c **** {
+ 178              		.loc 1 166 0
+ 179              		.cfi_startproc
+ 180 0000 80B5     		push	{r7, lr}
+ 181              		.cfi_def_cfa_offset 8
+ 182              		.cfi_offset 7, -8
+ 183              		.cfi_offset 14, -4
+ 184 0002 00AF     		add	r7, sp, #0
+ 185              		.cfi_def_cfa_register 7
+ 167:Generated_Source\PSoC4/CountSelector.c ****     return (uint8)((CountSelector_DR & CountSelector_MASK) >> CountSelector_SHIFT);
+ 186              		.loc 1 167 0
+ 187 0004 044B     		ldr	r3, .L13
+ 188 0006 1B68     		ldr	r3, [r3]
+ 189 0008 DBB2     		uxtb	r3, r3
+ 190 000a 0322     		mov	r2, #3
+ 191 000c 1340     		and	r3, r2
+ 192 000e DBB2     		uxtb	r3, r3
+ 168:Generated_Source\PSoC4/CountSelector.c **** }
+ 193              		.loc 1 168 0
+ 194 0010 181C     		mov	r0, r3
+ 195 0012 BD46     		mov	sp, r7
+ 196              		@ sp needed
+ 197 0014 80BD     		pop	{r7, pc}
+ 198              	.L14:
+ 199 0016 C046     		.align	2
+ 200              	.L13:
+ 201 0018 00000440 		.word	1074003968
+ 202              		.cfi_endproc
+ 203              	.LFE3:
+ 204              		.size	CountSelector_ReadDataReg, .-CountSelector_ReadDataReg
+ 205              		.section	.text.CountSelector_SetInterruptMode,"ax",%progbits
+ 206              		.align	2
+ 207              		.global	CountSelector_SetInterruptMode
+ 208              		.code	16
+ 209              		.thumb_func
+ 210              		.type	CountSelector_SetInterruptMode, %function
+ 211              	CountSelector_SetInterruptMode:
+ 212              	.LFB4:
+ 169:Generated_Source\PSoC4/CountSelector.c **** 
+ 170:Generated_Source\PSoC4/CountSelector.c **** 
+ 171:Generated_Source\PSoC4/CountSelector.c **** /*******************************************************************************
+ 172:Generated_Source\PSoC4/CountSelector.c **** * Function Name: CountSelector_SetInterruptMode
+ 173:Generated_Source\PSoC4/CountSelector.c **** ****************************************************************************//**
+ 174:Generated_Source\PSoC4/CountSelector.c **** *
+ 175:Generated_Source\PSoC4/CountSelector.c **** * \brief Configures the interrupt mode for each of the Pins component's
+ 176:Generated_Source\PSoC4/CountSelector.c **** *  pins. Alternatively you may set the interrupt mode for all the pins
+ 177:Generated_Source\PSoC4/CountSelector.c **** *  specified in the Pins component.
+ 178:Generated_Source\PSoC4/CountSelector.c **** *
+ 179:Generated_Source\PSoC4/CountSelector.c **** *  <b>Note</b> The interrupt is port-wide and therefore any enabled pin
+ 180:Generated_Source\PSoC4/CountSelector.c **** *  interrupt may trigger it.
+ 181:Generated_Source\PSoC4/CountSelector.c **** *
+ 182:Generated_Source\PSoC4/CountSelector.c **** * \param position
+ 183:Generated_Source\PSoC4/CountSelector.c **** *  The pin position as listed in the Pins component. You may OR these to be 
+ 184:Generated_Source\PSoC4/CountSelector.c **** *  able to configure the interrupt mode of multiple pins within a Pins 
+ 185:Generated_Source\PSoC4/CountSelector.c **** *  component. Or you may use CountSelector_INTR_ALL to configure the
+ 186:Generated_Source\PSoC4/CountSelector.c **** *  interrupt mode of all the pins in the Pins component.       
+ 187:Generated_Source\PSoC4/CountSelector.c **** *  - CountSelector_0_INTR       (First pin in the list)
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 8
+
+
+ 188:Generated_Source\PSoC4/CountSelector.c **** *  - CountSelector_1_INTR       (Second pin in the list)
+ 189:Generated_Source\PSoC4/CountSelector.c **** *  - ...
+ 190:Generated_Source\PSoC4/CountSelector.c **** *  - CountSelector_INTR_ALL     (All pins in Pins component)
+ 191:Generated_Source\PSoC4/CountSelector.c **** *
+ 192:Generated_Source\PSoC4/CountSelector.c **** * \param mode
+ 193:Generated_Source\PSoC4/CountSelector.c **** *  Interrupt mode for the selected pins. Valid options are documented in
+ 194:Generated_Source\PSoC4/CountSelector.c **** *  \ref intrMode.
+ 195:Generated_Source\PSoC4/CountSelector.c **** *
+ 196:Generated_Source\PSoC4/CountSelector.c **** * \return 
+ 197:Generated_Source\PSoC4/CountSelector.c **** *  None
+ 198:Generated_Source\PSoC4/CountSelector.c **** *  
+ 199:Generated_Source\PSoC4/CountSelector.c **** * \sideeffect
+ 200:Generated_Source\PSoC4/CountSelector.c **** *  It is recommended that the interrupt be disabled before calling this 
+ 201:Generated_Source\PSoC4/CountSelector.c **** *  function to avoid unintended interrupt requests. Note that the interrupt
+ 202:Generated_Source\PSoC4/CountSelector.c **** *  type is port wide, and therefore will trigger for any enabled pin on the 
+ 203:Generated_Source\PSoC4/CountSelector.c **** *  port.
+ 204:Generated_Source\PSoC4/CountSelector.c **** *
+ 205:Generated_Source\PSoC4/CountSelector.c **** * \funcusage
+ 206:Generated_Source\PSoC4/CountSelector.c **** *  \snippet CountSelector_SUT.c usage_CountSelector_SetInterruptMode
+ 207:Generated_Source\PSoC4/CountSelector.c **** *******************************************************************************/
+ 208:Generated_Source\PSoC4/CountSelector.c **** void CountSelector_SetInterruptMode(uint16 position, uint16 mode)
+ 209:Generated_Source\PSoC4/CountSelector.c **** {
+ 213              		.loc 1 209 0
+ 214              		.cfi_startproc
+ 215 0000 80B5     		push	{r7, lr}
+ 216              		.cfi_def_cfa_offset 8
+ 217              		.cfi_offset 7, -8
+ 218              		.cfi_offset 14, -4
+ 219 0002 84B0     		sub	sp, sp, #16
+ 220              		.cfi_def_cfa_offset 24
+ 221 0004 00AF     		add	r7, sp, #0
+ 222              		.cfi_def_cfa_register 7
+ 223 0006 021C     		mov	r2, r0
+ 224 0008 BB1D     		add	r3, r7, #6
+ 225 000a 1A80     		strh	r2, [r3]
+ 226 000c 3B1D     		add	r3, r7, #4
+ 227 000e 0A1C     		add	r2, r1, #0
+ 228 0010 1A80     		strh	r2, [r3]
+ 210:Generated_Source\PSoC4/CountSelector.c ****     uint32 intrCfg;
+ 211:Generated_Source\PSoC4/CountSelector.c ****     
+ 212:Generated_Source\PSoC4/CountSelector.c ****     intrCfg =  CountSelector_INTCFG & (uint32)(~(uint32)position);
+ 229              		.loc 1 212 0
+ 230 0012 0A4B     		ldr	r3, .L16
+ 231 0014 1B68     		ldr	r3, [r3]
+ 232 0016 BA1D     		add	r2, r7, #6
+ 233 0018 1288     		ldrh	r2, [r2]
+ 234 001a D243     		mvn	r2, r2
+ 235 001c 1340     		and	r3, r2
+ 236 001e FB60     		str	r3, [r7, #12]
+ 213:Generated_Source\PSoC4/CountSelector.c ****     CountSelector_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 237              		.loc 1 213 0
+ 238 0020 064B     		ldr	r3, .L16
+ 239 0022 BA1D     		add	r2, r7, #6
+ 240 0024 391D     		add	r1, r7, #4
+ 241 0026 1288     		ldrh	r2, [r2]
+ 242 0028 0988     		ldrh	r1, [r1]
+ 243 002a 0A40     		and	r2, r1
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 9
+
+
+ 244 002c 92B2     		uxth	r2, r2
+ 245 002e 111C     		mov	r1, r2
+ 246 0030 FA68     		ldr	r2, [r7, #12]
+ 247 0032 0A43     		orr	r2, r1
+ 248 0034 1A60     		str	r2, [r3]
+ 214:Generated_Source\PSoC4/CountSelector.c **** }
+ 249              		.loc 1 214 0
+ 250 0036 BD46     		mov	sp, r7
+ 251 0038 04B0     		add	sp, sp, #16
+ 252              		@ sp needed
+ 253 003a 80BD     		pop	{r7, pc}
+ 254              	.L17:
+ 255              		.align	2
+ 256              	.L16:
+ 257 003c 0C000440 		.word	1074003980
+ 258              		.cfi_endproc
+ 259              	.LFE4:
+ 260              		.size	CountSelector_SetInterruptMode, .-CountSelector_SetInterruptMode
+ 261              		.section	.text.CountSelector_ClearInterrupt,"ax",%progbits
+ 262              		.align	2
+ 263              		.global	CountSelector_ClearInterrupt
+ 264              		.code	16
+ 265              		.thumb_func
+ 266              		.type	CountSelector_ClearInterrupt, %function
+ 267              	CountSelector_ClearInterrupt:
+ 268              	.LFB5:
+ 215:Generated_Source\PSoC4/CountSelector.c **** 
+ 216:Generated_Source\PSoC4/CountSelector.c **** 
+ 217:Generated_Source\PSoC4/CountSelector.c **** /*******************************************************************************
+ 218:Generated_Source\PSoC4/CountSelector.c **** * Function Name: CountSelector_ClearInterrupt
+ 219:Generated_Source\PSoC4/CountSelector.c **** ****************************************************************************//**
+ 220:Generated_Source\PSoC4/CountSelector.c **** *
+ 221:Generated_Source\PSoC4/CountSelector.c **** * \brief Clears any active interrupts attached with the component and returns 
+ 222:Generated_Source\PSoC4/CountSelector.c **** *  the value of the interrupt status register allowing determination of which
+ 223:Generated_Source\PSoC4/CountSelector.c **** *  pins generated an interrupt event.
+ 224:Generated_Source\PSoC4/CountSelector.c **** *
+ 225:Generated_Source\PSoC4/CountSelector.c **** * \return 
+ 226:Generated_Source\PSoC4/CountSelector.c **** *  The right-shifted current value of the interrupt status register. Each pin 
+ 227:Generated_Source\PSoC4/CountSelector.c **** *  has one bit set if it generated an interrupt event. For example, bit 0 is 
+ 228:Generated_Source\PSoC4/CountSelector.c **** *  for pin 0 and bit 1 is for pin 1 of the Pins component.
+ 229:Generated_Source\PSoC4/CountSelector.c **** *  
+ 230:Generated_Source\PSoC4/CountSelector.c **** * \sideeffect
+ 231:Generated_Source\PSoC4/CountSelector.c **** *  Clears all bits of the physical port's interrupt status register, not just
+ 232:Generated_Source\PSoC4/CountSelector.c **** *  those associated with the Pins component.
+ 233:Generated_Source\PSoC4/CountSelector.c **** *
+ 234:Generated_Source\PSoC4/CountSelector.c **** * \funcusage
+ 235:Generated_Source\PSoC4/CountSelector.c **** *  \snippet CountSelector_SUT.c usage_CountSelector_ClearInterrupt
+ 236:Generated_Source\PSoC4/CountSelector.c **** *******************************************************************************/
+ 237:Generated_Source\PSoC4/CountSelector.c **** uint8 CountSelector_ClearInterrupt(void)
+ 238:Generated_Source\PSoC4/CountSelector.c **** {
+ 269              		.loc 1 238 0
+ 270              		.cfi_startproc
+ 271 0000 80B5     		push	{r7, lr}
+ 272              		.cfi_def_cfa_offset 8
+ 273              		.cfi_offset 7, -8
+ 274              		.cfi_offset 14, -4
+ 275 0002 82B0     		sub	sp, sp, #8
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 10
+
+
+ 276              		.cfi_def_cfa_offset 16
+ 277 0004 00AF     		add	r7, sp, #0
+ 278              		.cfi_def_cfa_register 7
+ 239:Generated_Source\PSoC4/CountSelector.c **** 	uint8 maskedStatus = (uint8)(CountSelector_INTSTAT & CountSelector_MASK);
+ 279              		.loc 1 239 0
+ 280 0006 084B     		ldr	r3, .L20
+ 281 0008 1B68     		ldr	r3, [r3]
+ 282 000a DAB2     		uxtb	r2, r3
+ 283 000c FB1D     		add	r3, r7, #7
+ 284 000e 0321     		mov	r1, #3
+ 285 0010 0A40     		and	r2, r1
+ 286 0012 1A70     		strb	r2, [r3]
+ 240:Generated_Source\PSoC4/CountSelector.c **** 	CountSelector_INTSTAT = maskedStatus;
+ 287              		.loc 1 240 0
+ 288 0014 044B     		ldr	r3, .L20
+ 289 0016 FA1D     		add	r2, r7, #7
+ 290 0018 1278     		ldrb	r2, [r2]
+ 291 001a 1A60     		str	r2, [r3]
+ 241:Generated_Source\PSoC4/CountSelector.c ****     return maskedStatus >> CountSelector_SHIFT;
+ 292              		.loc 1 241 0
+ 293 001c FB1D     		add	r3, r7, #7
+ 294 001e 1B78     		ldrb	r3, [r3]
+ 242:Generated_Source\PSoC4/CountSelector.c **** }
+ 295              		.loc 1 242 0
+ 296 0020 181C     		mov	r0, r3
+ 297 0022 BD46     		mov	sp, r7
+ 298 0024 02B0     		add	sp, sp, #8
+ 299              		@ sp needed
+ 300 0026 80BD     		pop	{r7, pc}
+ 301              	.L21:
+ 302              		.align	2
+ 303              	.L20:
+ 304 0028 10000440 		.word	1074003984
+ 305              		.cfi_endproc
+ 306              	.LFE5:
+ 307              		.size	CountSelector_ClearInterrupt, .-CountSelector_ClearInterrupt
+ 308              		.text
+ 309              	.Letext0:
+ 310              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 311              		.section	.debug_info,"",%progbits
+ 312              	.Ldebug_info0:
+ 313 0000 96010000 		.4byte	0x196
+ 314 0004 0400     		.2byte	0x4
+ 315 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 316 000a 04       		.byte	0x4
+ 317 000b 01       		.uleb128 0x1
+ 318 000c 97000000 		.4byte	.LASF28
+ 319 0010 01       		.byte	0x1
+ 320 0011 46020000 		.4byte	.LASF29
+ 321 0015 3C010000 		.4byte	.LASF30
+ 322 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 323 001d 00000000 		.4byte	0
+ 324 0021 00000000 		.4byte	.Ldebug_line0
+ 325 0025 02       		.uleb128 0x2
+ 326 0026 01       		.byte	0x1
+ 327 0027 06       		.byte	0x6
+ 328 0028 9A020000 		.4byte	.LASF0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 11
+
+
+ 329 002c 02       		.uleb128 0x2
+ 330 002d 01       		.byte	0x1
+ 331 002e 08       		.byte	0x8
+ 332 002f 57000000 		.4byte	.LASF1
+ 333 0033 02       		.uleb128 0x2
+ 334 0034 02       		.byte	0x2
+ 335 0035 05       		.byte	0x5
+ 336 0036 6D020000 		.4byte	.LASF2
+ 337 003a 02       		.uleb128 0x2
+ 338 003b 02       		.byte	0x2
+ 339 003c 07       		.byte	0x7
+ 340 003d 7D000000 		.4byte	.LASF3
+ 341 0041 02       		.uleb128 0x2
+ 342 0042 04       		.byte	0x4
+ 343 0043 05       		.byte	0x5
+ 344 0044 7D020000 		.4byte	.LASF4
+ 345 0048 02       		.uleb128 0x2
+ 346 0049 04       		.byte	0x4
+ 347 004a 07       		.byte	0x7
+ 348 004b 6B000000 		.4byte	.LASF5
+ 349 004f 02       		.uleb128 0x2
+ 350 0050 08       		.byte	0x8
+ 351 0051 05       		.byte	0x5
+ 352 0052 20020000 		.4byte	.LASF6
+ 353 0056 02       		.uleb128 0x2
+ 354 0057 08       		.byte	0x8
+ 355 0058 07       		.byte	0x7
+ 356 0059 EA010000 		.4byte	.LASF7
+ 357 005d 03       		.uleb128 0x3
+ 358 005e 04       		.byte	0x4
+ 359 005f 05       		.byte	0x5
+ 360 0060 696E7400 		.ascii	"int\000"
+ 361 0064 02       		.uleb128 0x2
+ 362 0065 04       		.byte	0x4
+ 363 0066 07       		.byte	0x7
+ 364 0067 DD010000 		.4byte	.LASF8
+ 365 006b 04       		.uleb128 0x4
+ 366 006c 77020000 		.4byte	.LASF9
+ 367 0070 02       		.byte	0x2
+ 368 0071 B901     		.2byte	0x1b9
+ 369 0073 2C000000 		.4byte	0x2c
+ 370 0077 04       		.uleb128 0x4
+ 371 0078 25010000 		.4byte	.LASF10
+ 372 007c 02       		.byte	0x2
+ 373 007d BA01     		.2byte	0x1ba
+ 374 007f 3A000000 		.4byte	0x3a
+ 375 0083 04       		.uleb128 0x4
+ 376 0084 35010000 		.4byte	.LASF11
+ 377 0088 02       		.byte	0x2
+ 378 0089 BB01     		.2byte	0x1bb
+ 379 008b 48000000 		.4byte	0x48
+ 380 008f 02       		.uleb128 0x2
+ 381 0090 04       		.byte	0x4
+ 382 0091 04       		.byte	0x4
+ 383 0092 51000000 		.4byte	.LASF12
+ 384 0096 02       		.uleb128 0x2
+ 385 0097 08       		.byte	0x8
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 12
+
+
+ 386 0098 04       		.byte	0x4
+ 387 0099 90000000 		.4byte	.LASF13
+ 388 009d 02       		.uleb128 0x2
+ 389 009e 01       		.byte	0x1
+ 390 009f 08       		.byte	0x8
+ 391 00a0 41020000 		.4byte	.LASF14
+ 392 00a4 04       		.uleb128 0x4
+ 393 00a5 00000000 		.4byte	.LASF15
+ 394 00a9 02       		.byte	0x2
+ 395 00aa 6502     		.2byte	0x265
+ 396 00ac B0000000 		.4byte	0xb0
+ 397 00b0 05       		.uleb128 0x5
+ 398 00b1 83000000 		.4byte	0x83
+ 399 00b5 06       		.uleb128 0x6
+ 400 00b6 36000000 		.4byte	.LASF16
+ 401 00ba 01       		.byte	0x1
+ 402 00bb 48       		.byte	0x48
+ 403 00bc 00000000 		.4byte	.LFB0
+ 404 00c0 40000000 		.4byte	.LFE0-.LFB0
+ 405 00c4 01       		.uleb128 0x1
+ 406 00c5 9C       		.byte	0x9c
+ 407 00c6 D9000000 		.4byte	0xd9
+ 408 00ca 07       		.uleb128 0x7
+ 409 00cb 01020000 		.4byte	.LASF18
+ 410 00cf 01       		.byte	0x1
+ 411 00d0 48       		.byte	0x48
+ 412 00d1 6B000000 		.4byte	0x6b
+ 413 00d5 02       		.uleb128 0x2
+ 414 00d6 91       		.byte	0x91
+ 415 00d7 77       		.sleb128 -9
+ 416 00d8 00       		.byte	0
+ 417 00d9 06       		.uleb128 0x6
+ 418 00da 86020000 		.4byte	.LASF17
+ 419 00de 01       		.byte	0x1
+ 420 00df 70       		.byte	0x70
+ 421 00e0 00000000 		.4byte	.LFB1
+ 422 00e4 48000000 		.4byte	.LFE1-.LFB1
+ 423 00e8 01       		.uleb128 0x1
+ 424 00e9 9C       		.byte	0x9c
+ 425 00ea 0B010000 		.4byte	0x10b
+ 426 00ee 07       		.uleb128 0x7
+ 427 00ef 30000000 		.4byte	.LASF19
+ 428 00f3 01       		.byte	0x1
+ 429 00f4 70       		.byte	0x70
+ 430 00f5 6B000000 		.4byte	0x6b
+ 431 00f9 02       		.uleb128 0x2
+ 432 00fa 91       		.byte	0x91
+ 433 00fb 6F       		.sleb128 -17
+ 434 00fc 08       		.uleb128 0x8
+ 435 00fd 65000000 		.4byte	.LASF24
+ 436 0101 01       		.byte	0x1
+ 437 0102 72       		.byte	0x72
+ 438 0103 6B000000 		.4byte	0x6b
+ 439 0107 02       		.uleb128 0x2
+ 440 0108 91       		.byte	0x91
+ 441 0109 77       		.sleb128 -9
+ 442 010a 00       		.byte	0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 13
+
+
+ 443 010b 09       		.uleb128 0x9
+ 444 010c 2E020000 		.4byte	.LASF20
+ 445 0110 01       		.byte	0x1
+ 446 0111 89       		.byte	0x89
+ 447 0112 6B000000 		.4byte	0x6b
+ 448 0116 00000000 		.4byte	.LFB2
+ 449 011a 1C000000 		.4byte	.LFE2-.LFB2
+ 450 011e 01       		.uleb128 0x1
+ 451 011f 9C       		.byte	0x9c
+ 452 0120 09       		.uleb128 0x9
+ 453 0121 06020000 		.4byte	.LASF21
+ 454 0125 01       		.byte	0x1
+ 455 0126 A5       		.byte	0xa5
+ 456 0127 6B000000 		.4byte	0x6b
+ 457 012b 00000000 		.4byte	.LFB3
+ 458 012f 1C000000 		.4byte	.LFE3-.LFB3
+ 459 0133 01       		.uleb128 0x1
+ 460 0134 9C       		.byte	0x9c
+ 461 0135 06       		.uleb128 0x6
+ 462 0136 A6020000 		.4byte	.LASF22
+ 463 013a 01       		.byte	0x1
+ 464 013b D0       		.byte	0xd0
+ 465 013c 00000000 		.4byte	.LFB4
+ 466 0140 40000000 		.4byte	.LFE4-.LFB4
+ 467 0144 01       		.uleb128 0x1
+ 468 0145 9C       		.byte	0x9c
+ 469 0146 75010000 		.4byte	0x175
+ 470 014a 07       		.uleb128 0x7
+ 471 014b 2C010000 		.4byte	.LASF23
+ 472 014f 01       		.byte	0x1
+ 473 0150 D0       		.byte	0xd0
+ 474 0151 77000000 		.4byte	0x77
+ 475 0155 02       		.uleb128 0x2
+ 476 0156 91       		.byte	0x91
+ 477 0157 6E       		.sleb128 -18
+ 478 0158 07       		.uleb128 0x7
+ 479 0159 01020000 		.4byte	.LASF18
+ 480 015d 01       		.byte	0x1
+ 481 015e D0       		.byte	0xd0
+ 482 015f 77000000 		.4byte	0x77
+ 483 0163 02       		.uleb128 0x2
+ 484 0164 91       		.byte	0x91
+ 485 0165 6C       		.sleb128 -20
+ 486 0166 08       		.uleb128 0x8
+ 487 0167 D5010000 		.4byte	.LASF25
+ 488 016b 01       		.byte	0x1
+ 489 016c D2       		.byte	0xd2
+ 490 016d 83000000 		.4byte	0x83
+ 491 0171 02       		.uleb128 0x2
+ 492 0172 91       		.byte	0x91
+ 493 0173 74       		.sleb128 -12
+ 494 0174 00       		.byte	0
+ 495 0175 0A       		.uleb128 0xa
+ 496 0176 06000000 		.4byte	.LASF26
+ 497 017a 01       		.byte	0x1
+ 498 017b ED       		.byte	0xed
+ 499 017c 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 14
+
+
+ 500 0180 00000000 		.4byte	.LFB5
+ 501 0184 2C000000 		.4byte	.LFE5-.LFB5
+ 502 0188 01       		.uleb128 0x1
+ 503 0189 9C       		.byte	0x9c
+ 504 018a 08       		.uleb128 0x8
+ 505 018b 23000000 		.4byte	.LASF27
+ 506 018f 01       		.byte	0x1
+ 507 0190 EF       		.byte	0xef
+ 508 0191 6B000000 		.4byte	0x6b
+ 509 0195 02       		.uleb128 0x2
+ 510 0196 91       		.byte	0x91
+ 511 0197 77       		.sleb128 -9
+ 512 0198 00       		.byte	0
+ 513 0199 00       		.byte	0
+ 514              		.section	.debug_abbrev,"",%progbits
+ 515              	.Ldebug_abbrev0:
+ 516 0000 01       		.uleb128 0x1
+ 517 0001 11       		.uleb128 0x11
+ 518 0002 01       		.byte	0x1
+ 519 0003 25       		.uleb128 0x25
+ 520 0004 0E       		.uleb128 0xe
+ 521 0005 13       		.uleb128 0x13
+ 522 0006 0B       		.uleb128 0xb
+ 523 0007 03       		.uleb128 0x3
+ 524 0008 0E       		.uleb128 0xe
+ 525 0009 1B       		.uleb128 0x1b
+ 526 000a 0E       		.uleb128 0xe
+ 527 000b 55       		.uleb128 0x55
+ 528 000c 17       		.uleb128 0x17
+ 529 000d 11       		.uleb128 0x11
+ 530 000e 01       		.uleb128 0x1
+ 531 000f 10       		.uleb128 0x10
+ 532 0010 17       		.uleb128 0x17
+ 533 0011 00       		.byte	0
+ 534 0012 00       		.byte	0
+ 535 0013 02       		.uleb128 0x2
+ 536 0014 24       		.uleb128 0x24
+ 537 0015 00       		.byte	0
+ 538 0016 0B       		.uleb128 0xb
+ 539 0017 0B       		.uleb128 0xb
+ 540 0018 3E       		.uleb128 0x3e
+ 541 0019 0B       		.uleb128 0xb
+ 542 001a 03       		.uleb128 0x3
+ 543 001b 0E       		.uleb128 0xe
+ 544 001c 00       		.byte	0
+ 545 001d 00       		.byte	0
+ 546 001e 03       		.uleb128 0x3
+ 547 001f 24       		.uleb128 0x24
+ 548 0020 00       		.byte	0
+ 549 0021 0B       		.uleb128 0xb
+ 550 0022 0B       		.uleb128 0xb
+ 551 0023 3E       		.uleb128 0x3e
+ 552 0024 0B       		.uleb128 0xb
+ 553 0025 03       		.uleb128 0x3
+ 554 0026 08       		.uleb128 0x8
+ 555 0027 00       		.byte	0
+ 556 0028 00       		.byte	0
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 15
+
+
+ 557 0029 04       		.uleb128 0x4
+ 558 002a 16       		.uleb128 0x16
+ 559 002b 00       		.byte	0
+ 560 002c 03       		.uleb128 0x3
+ 561 002d 0E       		.uleb128 0xe
+ 562 002e 3A       		.uleb128 0x3a
+ 563 002f 0B       		.uleb128 0xb
+ 564 0030 3B       		.uleb128 0x3b
+ 565 0031 05       		.uleb128 0x5
+ 566 0032 49       		.uleb128 0x49
+ 567 0033 13       		.uleb128 0x13
+ 568 0034 00       		.byte	0
+ 569 0035 00       		.byte	0
+ 570 0036 05       		.uleb128 0x5
+ 571 0037 35       		.uleb128 0x35
+ 572 0038 00       		.byte	0
+ 573 0039 49       		.uleb128 0x49
+ 574 003a 13       		.uleb128 0x13
+ 575 003b 00       		.byte	0
+ 576 003c 00       		.byte	0
+ 577 003d 06       		.uleb128 0x6
+ 578 003e 2E       		.uleb128 0x2e
+ 579 003f 01       		.byte	0x1
+ 580 0040 3F       		.uleb128 0x3f
+ 581 0041 19       		.uleb128 0x19
+ 582 0042 03       		.uleb128 0x3
+ 583 0043 0E       		.uleb128 0xe
+ 584 0044 3A       		.uleb128 0x3a
+ 585 0045 0B       		.uleb128 0xb
+ 586 0046 3B       		.uleb128 0x3b
+ 587 0047 0B       		.uleb128 0xb
+ 588 0048 27       		.uleb128 0x27
+ 589 0049 19       		.uleb128 0x19
+ 590 004a 11       		.uleb128 0x11
+ 591 004b 01       		.uleb128 0x1
+ 592 004c 12       		.uleb128 0x12
+ 593 004d 06       		.uleb128 0x6
+ 594 004e 40       		.uleb128 0x40
+ 595 004f 18       		.uleb128 0x18
+ 596 0050 9742     		.uleb128 0x2117
+ 597 0052 19       		.uleb128 0x19
+ 598 0053 01       		.uleb128 0x1
+ 599 0054 13       		.uleb128 0x13
+ 600 0055 00       		.byte	0
+ 601 0056 00       		.byte	0
+ 602 0057 07       		.uleb128 0x7
+ 603 0058 05       		.uleb128 0x5
+ 604 0059 00       		.byte	0
+ 605 005a 03       		.uleb128 0x3
+ 606 005b 0E       		.uleb128 0xe
+ 607 005c 3A       		.uleb128 0x3a
+ 608 005d 0B       		.uleb128 0xb
+ 609 005e 3B       		.uleb128 0x3b
+ 610 005f 0B       		.uleb128 0xb
+ 611 0060 49       		.uleb128 0x49
+ 612 0061 13       		.uleb128 0x13
+ 613 0062 02       		.uleb128 0x2
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 16
+
+
+ 614 0063 18       		.uleb128 0x18
+ 615 0064 00       		.byte	0
+ 616 0065 00       		.byte	0
+ 617 0066 08       		.uleb128 0x8
+ 618 0067 34       		.uleb128 0x34
+ 619 0068 00       		.byte	0
+ 620 0069 03       		.uleb128 0x3
+ 621 006a 0E       		.uleb128 0xe
+ 622 006b 3A       		.uleb128 0x3a
+ 623 006c 0B       		.uleb128 0xb
+ 624 006d 3B       		.uleb128 0x3b
+ 625 006e 0B       		.uleb128 0xb
+ 626 006f 49       		.uleb128 0x49
+ 627 0070 13       		.uleb128 0x13
+ 628 0071 02       		.uleb128 0x2
+ 629 0072 18       		.uleb128 0x18
+ 630 0073 00       		.byte	0
+ 631 0074 00       		.byte	0
+ 632 0075 09       		.uleb128 0x9
+ 633 0076 2E       		.uleb128 0x2e
+ 634 0077 00       		.byte	0
+ 635 0078 3F       		.uleb128 0x3f
+ 636 0079 19       		.uleb128 0x19
+ 637 007a 03       		.uleb128 0x3
+ 638 007b 0E       		.uleb128 0xe
+ 639 007c 3A       		.uleb128 0x3a
+ 640 007d 0B       		.uleb128 0xb
+ 641 007e 3B       		.uleb128 0x3b
+ 642 007f 0B       		.uleb128 0xb
+ 643 0080 27       		.uleb128 0x27
+ 644 0081 19       		.uleb128 0x19
+ 645 0082 49       		.uleb128 0x49
+ 646 0083 13       		.uleb128 0x13
+ 647 0084 11       		.uleb128 0x11
+ 648 0085 01       		.uleb128 0x1
+ 649 0086 12       		.uleb128 0x12
+ 650 0087 06       		.uleb128 0x6
+ 651 0088 40       		.uleb128 0x40
+ 652 0089 18       		.uleb128 0x18
+ 653 008a 9742     		.uleb128 0x2117
+ 654 008c 19       		.uleb128 0x19
+ 655 008d 00       		.byte	0
+ 656 008e 00       		.byte	0
+ 657 008f 0A       		.uleb128 0xa
+ 658 0090 2E       		.uleb128 0x2e
+ 659 0091 01       		.byte	0x1
+ 660 0092 3F       		.uleb128 0x3f
+ 661 0093 19       		.uleb128 0x19
+ 662 0094 03       		.uleb128 0x3
+ 663 0095 0E       		.uleb128 0xe
+ 664 0096 3A       		.uleb128 0x3a
+ 665 0097 0B       		.uleb128 0xb
+ 666 0098 3B       		.uleb128 0x3b
+ 667 0099 0B       		.uleb128 0xb
+ 668 009a 27       		.uleb128 0x27
+ 669 009b 19       		.uleb128 0x19
+ 670 009c 49       		.uleb128 0x49
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 17
+
+
+ 671 009d 13       		.uleb128 0x13
+ 672 009e 11       		.uleb128 0x11
+ 673 009f 01       		.uleb128 0x1
+ 674 00a0 12       		.uleb128 0x12
+ 675 00a1 06       		.uleb128 0x6
+ 676 00a2 40       		.uleb128 0x40
+ 677 00a3 18       		.uleb128 0x18
+ 678 00a4 9742     		.uleb128 0x2117
+ 679 00a6 19       		.uleb128 0x19
+ 680 00a7 00       		.byte	0
+ 681 00a8 00       		.byte	0
+ 682 00a9 00       		.byte	0
+ 683              		.section	.debug_aranges,"",%progbits
+ 684 0000 44000000 		.4byte	0x44
+ 685 0004 0200     		.2byte	0x2
+ 686 0006 00000000 		.4byte	.Ldebug_info0
+ 687 000a 04       		.byte	0x4
+ 688 000b 00       		.byte	0
+ 689 000c 0000     		.2byte	0
+ 690 000e 0000     		.2byte	0
+ 691 0010 00000000 		.4byte	.LFB0
+ 692 0014 40000000 		.4byte	.LFE0-.LFB0
+ 693 0018 00000000 		.4byte	.LFB1
+ 694 001c 48000000 		.4byte	.LFE1-.LFB1
+ 695 0020 00000000 		.4byte	.LFB2
+ 696 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 697 0028 00000000 		.4byte	.LFB3
+ 698 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 699 0030 00000000 		.4byte	.LFB4
+ 700 0034 40000000 		.4byte	.LFE4-.LFB4
+ 701 0038 00000000 		.4byte	.LFB5
+ 702 003c 2C000000 		.4byte	.LFE5-.LFB5
+ 703 0040 00000000 		.4byte	0
+ 704 0044 00000000 		.4byte	0
+ 705              		.section	.debug_ranges,"",%progbits
+ 706              	.Ldebug_ranges0:
+ 707 0000 00000000 		.4byte	.LFB0
+ 708 0004 40000000 		.4byte	.LFE0
+ 709 0008 00000000 		.4byte	.LFB1
+ 710 000c 48000000 		.4byte	.LFE1
+ 711 0010 00000000 		.4byte	.LFB2
+ 712 0014 1C000000 		.4byte	.LFE2
+ 713 0018 00000000 		.4byte	.LFB3
+ 714 001c 1C000000 		.4byte	.LFE3
+ 715 0020 00000000 		.4byte	.LFB4
+ 716 0024 40000000 		.4byte	.LFE4
+ 717 0028 00000000 		.4byte	.LFB5
+ 718 002c 2C000000 		.4byte	.LFE5
+ 719 0030 00000000 		.4byte	0
+ 720 0034 00000000 		.4byte	0
+ 721              		.section	.debug_line,"",%progbits
+ 722              	.Ldebug_line0:
+ 723 0000 C2000000 		.section	.debug_str,"MS",%progbits,1
+ 723      02004A00 
+ 723      00000201 
+ 723      FB0E0D00 
+ 723      01010101 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 18
+
+
+ 724              	.LASF15:
+ 725 0000 72656733 		.ascii	"reg32\000"
+ 725      3200
+ 726              	.LASF26:
+ 727 0006 436F756E 		.ascii	"CountSelector_ClearInterrupt\000"
+ 727      7453656C 
+ 727      6563746F 
+ 727      725F436C 
+ 727      65617249 
+ 728              	.LASF27:
+ 729 0023 6D61736B 		.ascii	"maskedStatus\000"
+ 729      65645374 
+ 729      61747573 
+ 729      00
+ 730              	.LASF19:
+ 731 0030 76616C75 		.ascii	"value\000"
+ 731      6500
+ 732              	.LASF16:
+ 733 0036 436F756E 		.ascii	"CountSelector_SetDriveMode\000"
+ 733      7453656C 
+ 733      6563746F 
+ 733      725F5365 
+ 733      74447269 
+ 734              	.LASF12:
+ 735 0051 666C6F61 		.ascii	"float\000"
+ 735      7400
+ 736              	.LASF1:
+ 737 0057 756E7369 		.ascii	"unsigned char\000"
+ 737      676E6564 
+ 737      20636861 
+ 737      7200
+ 738              	.LASF24:
+ 739 0065 64725661 		.ascii	"drVal\000"
+ 739      6C00
+ 740              	.LASF5:
+ 741 006b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 741      20756E73 
+ 741      69676E65 
+ 741      6420696E 
+ 741      7400
+ 742              	.LASF3:
+ 743 007d 73686F72 		.ascii	"short unsigned int\000"
+ 743      7420756E 
+ 743      7369676E 
+ 743      65642069 
+ 743      6E7400
+ 744              	.LASF13:
+ 745 0090 646F7562 		.ascii	"double\000"
+ 745      6C6500
+ 746              	.LASF28:
+ 747 0097 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 747      4320342E 
+ 747      392E3320 
+ 747      32303135 
+ 747      30333033 
+ 748 00ca 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 748      20726576 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 19
+
+
+ 748      6973696F 
+ 748      6E203232 
+ 748      31323230 
+ 749 00fd 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 749      66756E63 
+ 749      74696F6E 
+ 749      2D736563 
+ 749      74696F6E 
+ 750              	.LASF10:
+ 751 0125 75696E74 		.ascii	"uint16\000"
+ 751      313600
+ 752              	.LASF23:
+ 753 012c 706F7369 		.ascii	"position\000"
+ 753      74696F6E 
+ 753      00
+ 754              	.LASF11:
+ 755 0135 75696E74 		.ascii	"uint32\000"
+ 755      333200
+ 756              	.LASF30:
+ 757 013c 433A5C55 		.ascii	"C:\\Users\\Aaron Wubshet\\Google Drive\\1 College\\"
+ 757      73657273 
+ 757      5C416172 
+ 757      6F6E2057 
+ 757      75627368 
+ 758 016a 3220536F 		.ascii	"2 Sophomore Year\\3 SPRING\\6.115\\Final Project PS"
+ 758      70686F6D 
+ 758      6F726520 
+ 758      59656172 
+ 758      5C332053 
+ 759 019a 6F432057 		.ascii	"oC Workspace\\Final Project\\BLE_UART_peripheral_OT"
+ 759      6F726B73 
+ 759      70616365 
+ 759      5C46696E 
+ 759      616C2050 
+ 760 01cb 4845522E 		.ascii	"HER.cydsn\000"
+ 760      63796473 
+ 760      6E00
+ 761              	.LASF25:
+ 762 01d5 696E7472 		.ascii	"intrCfg\000"
+ 762      43666700 
+ 763              	.LASF8:
+ 764 01dd 756E7369 		.ascii	"unsigned int\000"
+ 764      676E6564 
+ 764      20696E74 
+ 764      00
+ 765              	.LASF7:
+ 766 01ea 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 766      206C6F6E 
+ 766      6720756E 
+ 766      7369676E 
+ 766      65642069 
+ 767              	.LASF18:
+ 768 0201 6D6F6465 		.ascii	"mode\000"
+ 768      00
+ 769              	.LASF21:
+ 770 0206 436F756E 		.ascii	"CountSelector_ReadDataReg\000"
+ 770      7453656C 
+ARM GAS  C:\Users\AARONW~1\AppData\Local\Temp\cctBzMoa.s 			page 20
+
+
+ 770      6563746F 
+ 770      725F5265 
+ 770      61644461 
+ 771              	.LASF6:
+ 772 0220 6C6F6E67 		.ascii	"long long int\000"
+ 772      206C6F6E 
+ 772      6720696E 
+ 772      7400
+ 773              	.LASF20:
+ 774 022e 436F756E 		.ascii	"CountSelector_Read\000"
+ 774      7453656C 
+ 774      6563746F 
+ 774      725F5265 
+ 774      616400
+ 775              	.LASF14:
+ 776 0241 63686172 		.ascii	"char\000"
+ 776      00
+ 777              	.LASF29:
+ 778 0246 47656E65 		.ascii	"Generated_Source\\PSoC4\\CountSelector.c\000"
+ 778      72617465 
+ 778      645F536F 
+ 778      75726365 
+ 778      5C50536F 
+ 779              	.LASF2:
+ 780 026d 73686F72 		.ascii	"short int\000"
+ 780      7420696E 
+ 780      7400
+ 781              	.LASF9:
+ 782 0277 75696E74 		.ascii	"uint8\000"
+ 782      3800
+ 783              	.LASF4:
+ 784 027d 6C6F6E67 		.ascii	"long int\000"
+ 784      20696E74 
+ 784      00
+ 785              	.LASF17:
+ 786 0286 436F756E 		.ascii	"CountSelector_Write\000"
+ 786      7453656C 
+ 786      6563746F 
+ 786      725F5772 
+ 786      69746500 
+ 787              	.LASF0:
+ 788 029a 7369676E 		.ascii	"signed char\000"
+ 788      65642063 
+ 788      68617200 
+ 789              	.LASF22:
+ 790 02a6 436F756E 		.ascii	"CountSelector_SetInterruptMode\000"
+ 790      7453656C 
+ 790      6563746F 
+ 790      725F5365 
+ 790      74496E74 
+ 791              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,5 @@
+C:\Users\Aaron Wubshet\Desktop\UART_to_BLE_peripheral\UART_to_BLE_peripheral.cydsn\UART_to_BLE_peripheral.cyprj|00b1426e-ae12-435c-becb-889ab33ad008
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|4e227d95-304a-446c-84c6-ef0476cfd865
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|33bb6bce-ab14-41b3-9880-f5033cfeec68
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|6d46840e-a751-45e7-b55a-21d7460f92f8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|8edb5925-8c03-4e31-982e-f0567b47e5e6

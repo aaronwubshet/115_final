@@ -1,0 +1,8 @@
+C:\Users\Aaron Wubshet\Google Drive\1 College\2 Sophomore Year\3 SPRING\6.115\Final Project PSoC Workspace\Final Project\WaveDAC8_Example01.cydsn\WaveDAC8_Example01.cyprj|5eb36598-f5b4-4c16-a337-1bfa1907ce7e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|8e3b9a39-c7ac-4f99-93d2-4072caade7fa
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|45da2c5f-cdb7-47ca-9413-d15afddd5548
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|524f9b2a-8984-4317-b918-12edcef31e4b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|bd542b3a-510f-4aa0-ab94-25ab2e98b853
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|120a08a2-a965-48a8-b799-3828a27bb6f1
+C:\Users\Aaron Wubshet\Google Drive\1 College\2 Sophomore Year\3 SPRING\6.115\Final Project PSoC Workspace\Final Project\BLE_UART_CENTRAL.cydsn\BLE_UART_CENTRAL.cyprj|fad26ada-a74a-4607-b48e-2998d2454c0b
+C:\Users\Aaron Wubshet\Google Drive\1 College\2 Sophomore Year\3 SPRING\6.115\Final Project PSoC Workspace\Final Project\BLE_UART_PERIPHERAL.cydsn\BLE_UART_PERIPHERAL.cyprj|1837934d-6758-472f-9dbb-28077017f144

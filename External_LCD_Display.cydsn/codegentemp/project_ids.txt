@@ -1,0 +1,7 @@
+C:\Users\Aaron Wubshet\Google Drive\1 College\2 Sophomore Year\3 SPRING\6.115\Final Project PSoC Workspace\Final Project\External_LCD_Display.cydsn\External_LCD_Display.cyprj|7fe0ba35-c10f-43d4-a9a4-5b6c9b5ec9fc
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|6cab77d8-42c9-4498-b5ed-40c177df511f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|958c39fb-27ec-4002-b3bf-e6cf82eb1e59
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|77e27d4a-090f-4e69-8f30-a2aafbe81f53
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|af021498-ab1d-4899-aa85-29570bc20d5d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|e4e6f3a7-004f-443c-b580-c0f8d41e22b3
+C:\Users\Aaron Wubshet\Google Drive\1 College\2 Sophomore Year\3 SPRING\6.115\Final Project PSoC Workspace\Final Project\BLE_UART_peripheral_OTHER.cydsn\BLE_UART_peripheral_OTHER.cyprj|ab7a3d59-1af8-4567-bd6c-d63876a2b5cb
